@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="dark">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        NYAYSETU | Online Legal Dispute Management System
+    </title>
+
+    <script src="../js/theme.js"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+</head>
+
+<body>
+
+
+<header class="header">
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-scale-balanced"></i>
+
+            <span>
+                NYAYSETU
+            </span>
+
+        </div>
+
+
+        <ul class="nav-menu">
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#practice-areas">Services</a>
+            </li>
+
+            <li>
+                <a href="#lawyers">Lawyers</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+
+        <div class="nav-buttons">
+
+            <button
+                class="register-btn"
+                type="button"
+            >
+                Register
+            </button>
+
+            <a
+                href="login.html?role=client"
+                class="login-btn"
+                id="clientLoginNavBtn"
+            >
+                Client Login
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<section
+    class="hero"
+    id="home"
+>
+
+    <div class="hero-left">
+
+        <span class="hero-tag">
+            India's Trusted Legal Platform
+        </span>
+
+        <h1>
+            Justice Begins With
+            <span>The Right Lawyer</span>
+        </h1>
+
+        <p>
+            Connect with verified lawyers, book consultations,
+            manage legal disputes and receive professional legal
+            assistance through one secure digital platform.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button
+                class="primary-btn"
+                type="button"
+            >
+                Find a Lawyer
+            </button>
+
+            <button
+                class="secondary-btn"
+                type="button"
+            >
+                Book Consultation
+            </button>
+
+        </div>
+
+        <div class="hero-stats">
+
+            <div class="stat-card">
+                <h2>500+</h2>
+                <p>Verified Lawyers</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>2500+</h2>
+                <p>Clients Served</p>
+            </div>
+
+            <div class="stat-card">
+                <h2>98%</h2>
+                <p>Success Rate</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-right">
+
+        <div class="hero-glow"></div>
+
+        <img
+            src="../images/hero.png"
+            alt="Lady Justice"
+            class="lady-justice"
+        >
+
+        <div class="orbit">
+
+            <div class="orbit-item item1">
+                <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+
+            <div class="orbit-item item2">
+                <i class="fa-solid fa-file-lines"></i>
+            </div>
+
+            <div class="orbit-item item3">
+                <i class="fa-solid fa-landmark"></i>
+            </div>
+
+            <div class="orbit-item item4">
+                <i class="fa-solid fa-gavel"></i>
+            </div>
+
+            <div class="orbit-item item5">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section
+    class="practice-areas"
+    id="practice-areas"
+>
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            LEGAL EXPERTISE
+        </span>
+
+        <h2>
+            Find Legal Help For
+            <span>Every Situation</span>
+        </h2>
+
+        <p>
+            Choose your legal category and connect directly
+            with verified human lawyers across India.
+        </p>
+
+    </div>
+
+
+    <div class="practice-grid">
+
+        <article class="practice-card">
+
+            <div class="practice-icon">
+                <i class="fa-solid fa-gavel"></i>
+            </div>
+
+            <h3>Criminal Law</h3>
+
+            <p>
+                Bail, FIR matters, defence, criminal complaints
+                and court representation.
+            </p>
+
+            <button
+                class="view-lawyers-btn"
+                data-category="criminal"
+                type="button"
+            >
+                View Lawyers
+            </button>
+
+        </article>
+
+
+        <article class="practice-card">
+
+            <div class="practice-icon">
+                <i class="fa-solid fa-people-roof"></i>
+            </div>
+
+            <h3>Family Law</h3>
+
+            <p>
+                Divorce, marriage disputes, maintenance,
+                custody and other family matters.
+            </p>
+
+            <button
+                class="view-lawyers-btn"
+                data-category="family"
+                type="button"
+            >
+                View Lawyers
+            </button>
+
+        </article>
+
+
+        <article class="practice-card">
+
+            <div class="practice-icon">
+                <i class="fa-solid fa-house"></i>
+            </div>
+
+            <h3>Property Law</h3>
+
+            <p>
+                Property disputes, ownership, documents,
+                agreements and transactions.
+            </p>
+
+            <button
+                class="view-lawyers-btn"
+                data-category="property"
+                type="button"
+            >
+                View Lawyers
+            </button>
+
+        </article>
+
+
+        <article class="practice-card">
+
+            <div class="practice-icon">
+                <i class="fa-solid fa-briefcase"></i>
+            </div>
+
+            <h3>Corporate Law</h3>
+
+            <p>
+                Contracts, startups, companies, compliance
+                and commercial disputes.
+            </p>
+
+            <button
+                class="view-lawyers-btn"
+                data-category="corporate"
+                type="button"
+            >
+                View Lawyers
+            </button>
+
+        </article>
+
+
+        <article class="practice-card">
+
+            <div class="practice-icon">
+                <i class="fa-solid fa-scale-balanced"></i>
+            </div>
+
+            <h3>Civil Law</h3>
+
+            <p>
+                Civil disputes, injunctions, recovery,
+                compensation and legal claims.
+            </p>
+
+            <button
+                class="view-lawyers-btn"
+                data-category="civil"
+                type="button"
+            >
+                View Lawyers
+            </button>
+
+        </article>
+
+
+        <article class="practice-card">
+
+            <div class="practice-icon">
+                <i class="fa-solid fa-money-bill-transfer"></i>
+            </div>
+
+            <h3>Financial Law</h3>
+
+            <p>
+                Banking disputes, loans, recovery,
+                financial fraud and related matters.
+            </p>
+
+            <button
+                class="view-lawyers-btn"
+                data-category="financial"
+                type="button"
+            >
+                View Lawyers
+            </button>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<section
+    class="lawyers-section"
+    id="lawyers"
+>
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            VERIFIED LEGAL EXPERTS
+        </span>
+
+        <h2>
+            Find Your
+            <span>Right Lawyer</span>
+        </h2>
+
+        <p>
+            Search and compare verified lawyers by legal category,
+            experience, language, fee, rating and availability.
+        </p>
+
+    </div>
+
+
+    <div class="lawyer-filters">
+
+        <div class="lawyer-search">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="lawyerSearch"
+                placeholder="Search lawyer, specialization, city..."
+            >
+
+        </div>
+
+
+        <select
+            class="lawyer-filter"
+            id="lawCategory"
+        >
+
+            <option value="all">
+                All Categories
+            </option>
+
+            <option value="criminal">
+                Criminal Law
+            </option>
+
+            <option value="family">
+                Family Law
+            </option>
+
+            <option value="property">
+                Property Law
+            </option>
+
+            <option value="corporate">
+                Corporate Law
+            </option>
+
+            <option value="civil">
+                Civil Law
+            </option>
+
+            <option value="financial">
+                Financial Law
+            </option>
+
+        </select>
+
+
+        <select
+            class="lawyer-filter"
+            id="experienceFilter"
+        >
+
+            <option value="all">
+                Experience
+            </option>
+
+            <option value="5">
+                5+ Years
+            </option>
+
+            <option value="10">
+                10+ Years
+            </option>
+
+            <option value="15">
+                15+ Years
+            </option>
+
+        </select>
+
+
+        <select
+            class="lawyer-filter"
+            id="feeFilter"
+        >
+
+            <option value="all">
+                Consultation Fee
+            </option>
+
+            <option value="1">
+                ₹1 Lawyers
+            </option>
+
+            <option value="500">
+                Up to ₹500
+            </option>
+
+            <option value="1000">
+                Up to ₹1,000
+            </option>
+
+            <option value="1500">
+                Up to ₹1,500
+            </option>
+
+        </select>
+
+
+        <select
+            class="lawyer-filter"
+            id="languageFilter"
+        >
+
+            <option value="all">Language</option>
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="marathi">Marathi</option>
+            <option value="kannada">Kannada</option>
+            <option value="telugu">Telugu</option>
+            <option value="tamil">Tamil</option>
+            <option value="bengali">Bengali</option>
+            <option value="gujarati">Gujarati</option>
+
+        </select>
+
+
+        <select
+            class="lawyer-filter"
+            id="ratingFilter"
+        >
+
+            <option value="all">Rating</option>
+            <option value="4">4★ & Above</option>
+            <option value="4.5">4.5★ & Above</option>
+
+        </select>
+
+
+        <select
+            class="lawyer-filter"
+            id="availabilityFilter"
+        >
+
+            <option value="all">Availability</option>
+            <option value="today">Today</option>
+            <option value="tomorrow">Tomorrow</option>
+            <option value="week">This Week</option>
+
+        </select>
+
+    </div>
+
+
+    <div class="lawyer-toolbar">
+
+        <p id="lawyerResultCount">
+            Loading lawyers...
+        </p>
+
+        <button
+            id="clearFiltersBtn"
+            class="clear-filter-btn"
+            type="button"
+        >
+            <i class="fa-solid fa-rotate-left"></i>
+            Clear Filters
+        </button>
+
+    </div>
+
+
+    <div
+        class="lawyer-grid"
+        id="lawyerGrid"
+    ></div>
+
+
+    <div
+        class="lawyer-empty"
+        id="lawyerEmpty"
+        hidden
+    >
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <h3>
+            No matching lawyers found
+        </h3>
+
+        <p>
+            Try changing your search or filters.
+        </p>
+
+    </div>
+
+
+    <div class="lawyers-action">
+
+        <button
+            class="view-all-lawyers-btn"
+            id="viewAllLawyersBtn"
+            type="button"
+        >
+            View All Verified Lawyers
+        </button>
+
+    </div>
+
+</section>
+
+
+<section
+    class="about-section"
+    id="about"
+>
+
+    <div class="about-layout">
+
+        <div class="about-copy">
+
+            <span class="section-tag">
+                ABOUT NYAYASETU
+            </span>
+
+            <h2>
+                Legal Support Built Around
+                <span>Trust & Transparency</span>
+            </h2>
+
+            <p class="about-lead">
+                NyayaSetu is an online legal dispute management
+                platform designed to help clients connect with
+                verified human lawyers, manage appointments,
+                share case documents securely and keep
+                consultation payments transparent.
+            </p>
+
+            <p class="about-text">
+                Client, Lawyer and Admin responsibilities remain
+                separated. Lawyers are reviewed before approval
+                and appointment documents are intended only for
+                the client and assigned lawyer.
+            </p>
+
+            <div class="about-highlight">
+
+                <div class="about-highlight-icon">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Human Legal Assistance
+                    </strong>
+
+                    <span>
+                        NyayaSetu connects clients with verified
+                        human lawyers. The platform does not use
+                        an AI chatbot to provide legal advice.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="about-trust-grid">
+
+            <article class="about-trust-card">
+
+                <div class="about-trust-icon">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+
+                <h3>Verified Lawyers</h3>
+
+                <p>
+                    Lawyer professional and Bar Council details
+                    are reviewed before approval.
+                </p>
+
+            </article>
+
+
+            <article class="about-trust-card">
+
+                <div class="about-trust-icon">
+                    <i class="fa-solid fa-file-shield"></i>
+                </div>
+
+                <h3>Private Documents</h3>
+
+                <p>
+                    Legal documents remain limited to authorized
+                    appointment participants.
+                </p>
+
+            </article>
+
+
+            <article class="about-trust-card">
+
+                <div class="about-trust-icon">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+
+                <h3>Transparent Payments</h3>
+
+                <p>
+                    Payment verification, refunds and payouts
+                    follow a clear controlled workflow.
+                </p>
+
+            </article>
+
+
+            <article class="about-trust-card">
+
+                <div class="about-trust-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <h3>Role-Based Access</h3>
+
+                <p>
+                    Clients, lawyers and administrators receive
+                    access only to information relevant to them.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-process">
+
+        <div class="about-process-step">
+
+            <span>01</span>
+
+            <div>
+                <strong>Choose a Lawyer</strong>
+                <p>
+                    Search by category, fee, language,
+                    experience and availability.
+                </p>
+            </div>
+
+        </div>
+
+        <i class="fa-solid fa-arrow-right about-process-arrow"></i>
+
+
+        <div class="about-process-step">
+
+            <span>02</span>
+
+            <div>
+                <strong>Book & Pay</strong>
+                <p>
+                    Submit appointment details and
+                    complete the consultation payment.
+                </p>
+            </div>
+
+        </div>
+
+        <i class="fa-solid fa-arrow-right about-process-arrow"></i>
+
+
+        <div class="about-process-step">
+
+            <span>03</span>
+
+            <div>
+                <strong>Lawyer Decision</strong>
+                <p>
+                    The selected lawyer accepts or
+                    rejects the appointment request.
+                </p>
+            </div>
+
+        </div>
+
+        <i class="fa-solid fa-arrow-right about-process-arrow"></i>
+
+
+        <div class="about-process-step">
+
+            <span>04</span>
+
+            <div>
+                <strong>Consultation & Closure</strong>
+                <p>
+                    Complete consultation, receive
+                    updates and submit a review.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section
+    class="faq-section"
+    id="faq"
+>
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            FREQUENTLY ASKED QUESTIONS
+        </span>
+
+        <h2>
+            Questions?
+            <span>We Have Answers</span>
+        </h2>
+
+        <p>
+            Understand lawyer verification, appointments,
+            payments, refunds and document privacy.
+        </p>
+
+    </div>
+
+
+    <div class="faq-list">
+
+        <details class="faq-item" open>
+
+            <summary>
+
+                <span class="faq-question-main">
+                    <span class="faq-number">01</span>
+                    How do I book a consultation?
+                </span>
+
+                <span class="faq-plus">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+            </summary>
+
+            <div class="faq-answer">
+                Choose a legal category, select a verified
+                lawyer and click <strong>Book Now</strong>.
+                Select date, time and consultation mode,
+                describe your problem and continue to payment.
+            </div>
+
+        </details>
+
+
+        <details class="faq-item">
+
+            <summary>
+
+                <span class="faq-question-main">
+                    <span class="faq-number">02</span>
+                    How are lawyers verified?
+                </span>
+
+                <span class="faq-plus">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+            </summary>
+
+            <div class="faq-answer">
+                Lawyers provide personal, educational,
+                professional and Bar Council information.
+                Their account remains pending until Admin review.
+            </div>
+
+        </details>
+
+
+        <details class="faq-item">
+
+            <summary>
+
+                <span class="faq-question-main">
+                    <span class="faq-number">03</span>
+                    What if my lawyer rejects the appointment?
+                </span>
+
+                <span class="faq-plus">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+            </summary>
+
+            <div class="faq-answer">
+                The lawyer must provide a rejection reason.
+                The client receives a 100% refund. NyayaSetu
+                keeps no platform share and the lawyer receives
+                no payout.
+            </div>
+
+        </details>
+
+
+        <details class="faq-item">
+
+            <summary>
+
+                <span class="faq-question-main">
+                    <span class="faq-number">04</span>
+                    When does the lawyer receive payment?
+                </span>
+
+                <span class="faq-plus">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+            </summary>
+
+            <div class="faq-answer">
+                The lawyer's 90% share is released after the
+                consultation is completed. NyayaSetu accounts
+                for the remaining 10% platform share.
+            </div>
+
+        </details>
+
+
+        <details class="faq-item">
+
+            <summary>
+
+                <span class="faq-question-main">
+                    <span class="faq-number">05</span>
+                    Who can access uploaded legal documents?
+                </span>
+
+                <span class="faq-plus">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+            </summary>
+
+            <div class="faq-answer">
+                Confidential appointment documents are intended
+                only for the client who uploaded them and the
+                lawyer assigned to that appointment.
+            </div>
+
+        </details>
+
+    </div>
+
+</section>
+
+
+<section
+    class="contact-section"
+    id="contact"
+>
+
+    <div class="section-heading">
+
+        <span class="section-tag">
+            CONTACT US
+        </span>
+
+        <h2>
+            We're Here To
+            <span>Help You</span>
+        </h2>
+
+        <p>
+            Have a question about your account,
+            appointment or payment? Contact NyayaSetu support.
+        </p>
+
+    </div>
+
+
+    <div class="contact-layout">
+
+        <div class="contact-info-card">
+
+            <span class="contact-mini-tag">
+                NYAYASETU SUPPORT
+            </span>
+
+            <h3>
+                Need Help With Your Legal Consultation Journey?
+            </h3>
+
+            <p class="contact-info-text">
+                Support is available for platform-related
+                assistance, appointments, payments and
+                general NyayaSetu enquiries.
+            </p>
+
+
+            <div class="contact-detail-list">
+
+                <div class="contact-detail-item">
+
+                    <div class="contact-detail-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        <strong>support@nyayasetu.in</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail-item">
+
+                    <div class="contact-detail-icon">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+
+                    <div>
+                        <span>Phone</span>
+                        <strong>+91 7715046556</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail-item">
+
+                    <div class="contact-detail-icon">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+
+                    <div>
+                        <span>Support Hours</span>
+                        <strong>
+                            Monday - Saturday, 9:00 AM - 7:00 PM
+                        </strong>
+                    </div>
+
+                </div>
+
+
+                <div class="contact-detail-item">
+
+                    <div class="contact-detail-icon">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <span>Service Area</span>
+                        <strong>India</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-privacy-note">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <p>
+                    Do not submit confidential legal documents
+                    through this general contact form.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form
+            class="contact-form-card"
+            id="contactForm"
+        >
+
+            <div class="contact-form-heading">
+
+                <h3>Send Us a Message</h3>
+
+                <p>
+                    Fill in the information below.
+                </p>
+
+            </div>
+
+
+            <div class="contact-form-grid">
+
+                <div class="contact-field">
+
+                    <label for="contactName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="contact-field">
+
+                    <label for="contactEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="contact-field">
+
+                    <label for="contactPhone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="contactPhone"
+                        placeholder="Enter your phone number"
+                    >
+
+                </div>
+
+
+                <div class="contact-field">
+
+                    <label for="contactSubject">
+                        Subject
+                    </label>
+
+                    <select
+                        id="contactSubject"
+                        required
+                    >
+
+                        <option value="">
+                            Select a subject
+                        </option>
+
+                        <option value="account">
+                            Account Help
+                        </option>
+
+                        <option value="appointment">
+                            Appointment Help
+                        </option>
+
+                        <option value="payment">
+                            Payment / Refund
+                        </option>
+
+                        <option value="lawyer">
+                            Lawyer Registration
+                        </option>
+
+                        <option value="general">
+                            General Enquiry
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-field contact-message-field">
+
+                <label for="contactMessage">
+                    Message
+                </label>
+
+                <textarea
+                    id="contactMessage"
+                    placeholder="Tell us how we can help..."
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="contact-submit-btn"
+            >
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Send Message
+
+            </button>
+
+
+            <!--
+                Hidden internal placeholder.
+                Nothing is shown to the visitor.
+                This keeps the current app.js form handling stable.
+            -->
+
+            <div
+                id="contactFormStatus"
+                hidden
+                style="display:none !important;"
+            ></div>
+
+        </form>
+
+    </div>
+
+</section>
+
+
+<section
+    class="terms-section"
+    id="terms"
+>
+
+    <div class="terms-panel">
+
+        <div class="terms-heading">
+
+            <span class="section-tag">
+                TERMS & CONDITIONS
+            </span>
+
+            <h2>
+                Clear Rules For A
+                <span>Transparent Platform</span>
+            </h2>
+
+        </div>
+
+
+        <div class="terms-grid">
+
+            <article class="term-card">
+
+                <span>01</span>
+
+                <div>
+                    <h3>Human Legal Services</h3>
+
+                    <p>
+                        NyayaSetu connects clients with verified
+                        human lawyers and manages consultation
+                        workflows.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="term-card">
+
+                <span>02</span>
+
+                <div>
+
+                    <h3>Appointments</h3>
+
+                    <p>
+                        Appointment requests remain subject to
+                        lawyer acceptance, availability and
+                        professional scope.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="term-card">
+
+                <span>03</span>
+
+                <div>
+
+                    <h3>Payments & Refunds</h3>
+
+                    <p>
+                        Payment confirmation requires verification.
+                        Lawyer rejection results in a full
+                        consultation refund.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="term-card">
+
+                <span>04</span>
+
+                <div>
+
+                    <h3>Lawyer Payout</h3>
+
+                    <p>
+                        The lawyer's 90% share is released after
+                        consultation completion.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="term-card">
+
+                <span>05</span>
+
+                <div>
+
+                    <h3>Document Privacy</h3>
+
+                    <p>
+                        Confidential legal documents must only
+                        be available to authorized appointment
+                        participants.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="term-card">
+
+                <span>06</span>
+
+                <div>
+
+                    <h3>User Responsibility</h3>
+
+                    <p>
+                        Users must provide accurate information
+                        and protect their account credentials.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer class="site-footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <a
+                href="#home"
+                class="footer-logo"
+            >
+
+                <i class="fa-solid fa-scale-balanced"></i>
+
+                <span>
+                    NYAYSETU
+                </span>
+
+            </a>
+
+            <p>
+                A secure digital platform connecting clients
+                with verified human lawyers.
+            </p>
+
+            <div class="footer-trust-row">
+
+                <span>
+                    <i class="fa-solid fa-user-check"></i>
+                    Verified Lawyers
+                </span>
+
+                <span>
+                    <i class="fa-solid fa-file-shield"></i>
+                    Secure Documents
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-links-column">
+
+            <h3>Quick Links</h3>
+
+            <a href="#home">Home</a>
+            <a href="#practice-areas">Services</a>
+            <a href="#lawyers">Lawyers</a>
+            <a href="#about">About Us</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact Us</a>
+
+        </div>
+
+
+        <div class="footer-links-column">
+
+            <h3>Legal Categories</h3>
+
+            <a href="#practice-areas">Criminal Law</a>
+            <a href="#practice-areas">Family Law</a>
+            <a href="#practice-areas">Property Law</a>
+            <a href="#practice-areas">Corporate Law</a>
+            <a href="#practice-areas">Civil Law</a>
+            <a href="#practice-areas">Financial Law</a>
+
+        </div>
+
+
+        <div class="footer-links-column footer-contact-column">
+
+            <h3>Support</h3>
+
+            <a href="mailto:support@nyayasetu.in">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                support@nyayasetu.in
+
+            </a>
+
+            <a href="tel:+917715046556">
+
+                <i class="fa-solid fa-phone"></i>
+
+                +91 7715046556
+
+            </a>
+
+            <a href="#terms">
+
+                <i class="fa-solid fa-file-contract"></i>
+
+                Terms & Conditions
+
+            </a>
+
+            <a href="#contact">
+
+                <i class="fa-solid fa-headset"></i>
+
+                Contact Support
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 NyayaSetu. All rights reserved.
+        </p>
+
+        <div>
+
+            <a href="#terms">
+                Terms & Conditions
+            </a>
+
+            <span>•</span>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- =========================================================
+     SUPABASE SESSION CLIENT FOR SINGLE-FLOW ROUTING
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="../js/supabase.js"></script>
+
+
+<!-- =========================================================
+     MAIN WEBSITE LOGIC
+========================================================= -->
+
+<script src="../js/app.js"></script>
+
+</body>
+
+</html>

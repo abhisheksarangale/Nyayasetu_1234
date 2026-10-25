@@ -1,0 +1,1581 @@
+/* =========================================================
+   NYAYASETU — AUTHENTICATION PAGE
+========================================================= */
+
+
+/* =========================================================
+   AUTH PAGE
+========================================================= */
+
+.auth-page{
+
+    min-height:100vh;
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(430px,.92fr)
+        minmax(540px,1.08fr);
+
+    background:
+        var(--page-bg);
+
+}
+
+
+/* =========================================================
+   BRAND PANEL
+========================================================= */
+
+.auth-brand-panel{
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:100vh;
+
+    padding:
+        46px 54px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 15%,
+            rgba(215,167,45,.14),
+            transparent 35%
+        ),
+
+        var(--section-bg);
+
+    border-right:
+        1px solid
+        var(--border);
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.auth-logo{
+
+    position:relative;
+
+    z-index:2;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    width:max-content;
+
+    color:
+        var(--text-main);
+
+}
+
+
+.auth-logo-icon{
+
+    width:45px;
+
+    height:45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:13px;
+
+    color:
+        var(--gold);
+
+    background:
+        var(--gold-surface);
+
+    font-size:20px;
+
+}
+
+
+.auth-logo strong{
+
+    display:block;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        24px !important;
+
+    font-weight:
+        750;
+
+    letter-spacing:
+        .01em;
+
+}
+
+
+.auth-logo small{
+
+    display:block;
+
+    margin-top:2px;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        13px !important;
+
+}
+
+
+/* =========================================================
+   BRAND CONTENT
+========================================================= */
+
+.auth-brand-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:570px;
+
+    margin:auto 0;
+
+}
+
+
+.auth-brand-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-bottom:22px;
+
+    padding:
+        8px 13px;
+
+    border-radius:999px;
+
+    color:
+        var(--gold);
+
+    background:
+        var(--gold-surface);
+
+    font-size:
+        13px !important;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .04em;
+
+}
+
+
+.auth-brand-content h1{
+
+    margin:
+        0 0 19px;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        clamp(
+            42px,
+            4vw,
+            58px
+        ) !important;
+
+    line-height:
+        1.12;
+
+}
+
+
+.auth-brand-content h1 span{
+
+    display:block;
+
+    color:
+        var(--gold);
+
+}
+
+
+.auth-brand-content > p{
+
+    max-width:520px;
+
+    margin:
+        0 0 28px;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        16px !important;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   TRUST LIST
+========================================================= */
+
+.auth-trust-list{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:12px;
+
+}
+
+
+.auth-trust-item{
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:11px;
+
+    border-radius:14px;
+
+    background:
+        var(--surface-1);
+
+    border:
+        1px solid
+        var(--border);
+
+}
+
+
+.auth-trust-item > i{
+
+    width:36px;
+
+    height:36px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    color:
+        var(--gold);
+
+    background:
+        var(--gold-surface);
+
+}
+
+
+.auth-trust-item strong{
+
+    display:block;
+
+    margin-bottom:3px;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        14px !important;
+
+    font-weight:
+        700;
+
+}
+
+
+.auth-trust-item span{
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        13px !important;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* =========================================================
+   WATERMARK
+========================================================= */
+
+.auth-watermark{
+
+    position:absolute;
+
+    right:-55px;
+
+    bottom:40px;
+
+    color:
+        var(--gold);
+
+    font-size:250px;
+
+    opacity:.035;
+
+}
+
+
+/* =========================================================
+   BRAND FOOTER
+========================================================= */
+
+.auth-brand-footer{
+
+    position:relative;
+
+    z-index:2;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        13px !important;
+
+}
+
+
+.auth-home-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        13px !important;
+
+    font-weight:
+        600;
+
+}
+
+
+.auth-home-link:hover{
+
+    color:
+        var(--gold);
+
+}
+
+
+/* =========================================================
+   FORM PANEL
+========================================================= */
+
+.auth-form-panel{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:45px;
+
+    background:
+        var(--page-bg);
+
+}
+
+
+.auth-container{
+
+    width:100%;
+
+    max-width:640px;
+
+}
+
+
+/* =========================================================
+   FORM HEADING
+========================================================= */
+
+.auth-form-heading{
+
+    margin-bottom:23px;
+
+}
+
+
+.auth-form-heading > span{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:7px;
+
+    margin-bottom:10px;
+
+    color:
+        var(--gold);
+
+    font-size:
+        13px !important;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        .05em;
+
+}
+
+
+.auth-form-heading h2{
+
+    margin:
+        0 0 7px;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        36px !important;
+
+    line-height:
+        1.2;
+
+}
+
+
+.auth-form-heading p{
+
+    margin:0;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        15px !important;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   ROLE SELECTION
+========================================================= */
+
+.auth-role-grid{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:16px;
+
+}
+
+
+/* =========================================================
+   DEFAULT ROLE BUTTON
+========================================================= */
+
+.auth-role-button{
+
+    width:100%;
+
+    max-width:320px;
+
+    min-height:130px;
+
+    padding:20px 24px;
+
+    margin:0 auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    border-radius:16px;
+
+    color:
+        var(--text-secondary) !important;
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    box-shadow:
+        none !important;
+
+    transition:
+
+        background .2s ease,
+        border-color .2s ease,
+        color .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
+
+}
+
+
+/* =========================================================
+   ROLE BUTTON HOVER
+========================================================= */
+
+.auth-role-button:hover{
+
+    color:
+        var(--text-main) !important;
+
+    border-color:
+        var(--gold) !important;
+
+    background:
+        var(--surface-3) !important;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================================
+   SELECTED / ACTIVE ROLE
+
+   IMPORTANT:
+   These !important rules intentionally override the
+   global theme readability layer.
+
+   Only the role carrying .active should appear selected.
+========================================================= */
+
+.auth-role-button.active{
+
+    color:
+        var(--gold) !important;
+
+    background:
+        rgba(214,165,44,.16) !important;
+
+    border:
+        2px solid
+        var(--gold) !important;
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(214,165,44,.08),
+
+        inset 0 0 28px
+        rgba(214,165,44,.04) !important;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================================================
+   ACTIVE ROLE ICON
+========================================================= */
+
+.auth-role-button.active
+.auth-role-icon{
+
+    color:
+        #121820 !important;
+
+    background:
+        var(--gold) !important;
+
+    box-shadow:
+        0 4px 14px
+        rgba(214,165,44,.22) !important;
+
+}
+
+
+/* =========================================================
+   ACTIVE ROLE TITLE
+========================================================= */
+
+.auth-role-button.active strong{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+/* =========================================================
+   ACTIVE ROLE DESCRIPTION
+========================================================= */
+
+.auth-role-button.active small,
+.auth-role-button.active span{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+/* =========================================================
+   ROLE ICON
+========================================================= */
+
+.auth-role-icon{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    color:
+        var(--gold) !important;
+
+    background:
+        var(--gold-surface) !important;
+
+    font-size:
+        20px;
+
+    transition:
+        .2s ease;
+
+}
+
+
+/* =========================================================
+   ROLE TEXT
+========================================================= */
+
+.auth-role-button strong{
+
+    color:
+        var(--text-main) !important;
+
+    font-size:
+        18px !important;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.02em;
+
+}
+
+
+.auth-role-button small{
+
+    color:
+        var(--text-muted) !important;
+
+    font-size:
+        13px !important;
+
+    line-height:
+        1.4;
+
+}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.auth-card{
+
+    padding:25px;
+
+    border-radius:19px;
+
+    background:
+        var(--surface-1);
+
+    border:
+        1px solid
+        var(--border);
+
+    box-shadow:
+        var(--shadow-md);
+
+}
+
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
+.auth-card-title{
+
+    margin-bottom:21px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+
+.auth-card-title-icon{
+
+    width:43px;
+
+    height:43px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:11px;
+
+    color:
+        var(--gold);
+
+    background:
+        var(--gold-surface);
+
+}
+
+
+.auth-card-title h3{
+
+    margin:
+        0 0 3px;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        20px !important;
+
+}
+
+
+.auth-card-title p{
+
+    margin:0;
+
+    color:
+        var(--text-secondary);
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.auth-field{
+
+    margin-bottom:16px;
+
+}
+
+
+.auth-field label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        14px !important;
+
+    font-weight:
+        650;
+
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+========================================================= */
+
+.auth-input-wrapper{
+
+    position:relative;
+
+}
+
+
+.auth-input-icon{
+
+    position:absolute;
+
+    top:50%;
+
+    left:14px;
+
+    transform:
+        translateY(-50%);
+
+    color:
+        var(--gold);
+
+    pointer-events:none;
+
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.auth-field input{
+
+    width:100%;
+
+    height:54px;
+
+    padding:
+        0 46px
+        0 42px;
+
+    outline:0;
+
+    color:
+        var(--text-main);
+
+    background:
+        var(--input-bg);
+
+    border:
+        1px solid
+        var(--border-strong);
+
+    border-radius:11px;
+
+    font-size:
+        15px !important;
+
+}
+
+
+.auth-field input::placeholder{
+
+    color:
+        var(--text-faint);
+
+    font-size:
+        14px !important;
+
+}
+
+
+.auth-field input:focus{
+
+    border-color:
+        var(--gold);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(215,167,45,.09);
+
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+========================================================= */
+
+.password-toggle{
+
+    position:absolute;
+
+    top:50%;
+
+    right:12px;
+
+    transform:
+        translateY(-50%);
+
+    width:36px;
+
+    height:36px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        14px !important;
+
+}
+
+
+.password-toggle:hover{
+
+    color:
+        var(--gold);
+
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.auth-submit-button{
+
+    width:100%;
+
+    min-height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    border:0;
+
+    border-radius:11px;
+
+    color:#fff;
+
+    background:
+        var(--blue);
+
+    font-size:
+        14px !important;
+
+    font-weight:
+        700;
+
+    transition:
+        .2s;
+
+}
+
+
+.auth-submit-button:hover{
+
+    background:
+        var(--blue-hover);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+.auth-submit-button:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.65;
+
+}
+
+
+/* =========================================================
+   REGISTER BOX
+========================================================= */
+
+.auth-register-box{
+
+    margin-top:15px;
+
+    padding:13px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:14px;
+
+    border-radius:12px;
+
+    background:
+        var(--surface-2);
+
+    border:
+        1px solid
+        var(--border);
+
+}
+
+
+.auth-register-box span{
+
+    display:block;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        13px !important;
+
+}
+
+
+.auth-register-box strong{
+
+    display:block;
+
+    margin-top:2px;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        14px !important;
+
+}
+
+
+.auth-register-link{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:
+        var(--gold);
+
+    font-size:
+        14px !important;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+   ADMIN LOGIN NOTE
+========================================================= */
+
+.admin-login-note{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:13px;
+
+    align-items:flex-start;
+
+    gap:9px;
+
+    border-radius:12px;
+
+    color:
+        var(--text-secondary);
+
+    background:
+        var(--surface-2);
+
+    border:
+        1px solid
+        var(--border);
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.6;
+
+}
+
+
+.admin-login-note.show{
+
+    display:flex;
+
+}
+
+
+.admin-login-note i{
+
+    margin-top:3px;
+
+    color:
+        var(--gold);
+
+}
+
+
+/* =========================================================
+   AUTH MESSAGE
+========================================================= */
+
+.auth-message{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+    border-radius:11px;
+
+    color:#ffb5bc;
+
+    background:
+        rgba(215,92,102,.10);
+
+    border:
+        1px solid
+        rgba(215,92,102,.35);
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.6;
+
+}
+
+
+.auth-message.show{
+
+    display:flex;
+
+}
+
+
+/* =========================================================
+   SECURITY NOTE
+========================================================= */
+
+.auth-security-note{
+
+    margin-top:15px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        13px !important;
+
+}
+
+
+/* =========================================================
+   DAY MODE ACTIVE ROLE
+========================================================= */
+
+html[data-theme="light"]
+.auth-role-button.active{
+
+    color:
+        #9b6d00 !important;
+
+    background:
+        #fff5d7 !important;
+
+    border:
+        2px solid
+        var(--gold) !important;
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(214,165,44,.10),
+
+        0 8px 22px
+        rgba(112,82,12,.07) !important;
+
+}
+
+
+html[data-theme="light"]
+.auth-role-button.active strong{
+
+    color:
+        #9b6d00 !important;
+
+}
+
+
+html[data-theme="light"]
+.auth-role-button.active small,
+html[data-theme="light"]
+.auth-role-button.active span{
+
+    color:
+        #3b4653 !important;
+
+}
+
+
+/* =========================================================
+   DARK MODE ACTIVE ROLE
+========================================================= */
+
+html[data-theme="dark"]
+.auth-role-button.active{
+
+    color:
+        #efbd39 !important;
+
+    background:
+        rgba(214,165,44,.17) !important;
+
+    border:
+        2px solid
+        #d6a52c !important;
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(214,165,44,.08),
+
+        inset 0 0 30px
+        rgba(214,165,44,.035) !important;
+
+}
+
+
+html[data-theme="dark"]
+.auth-role-button.active strong{
+
+    color:
+        #f1bf3a !important;
+
+}
+
+
+html[data-theme="dark"]
+.auth-role-button.active small,
+html[data-theme="dark"]
+.auth-role-button.active span{
+
+    color:
+        #f0f3f6 !important;
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+.auth-role-button:focus-visible,
+.auth-submit-button:focus-visible,
+.password-toggle:focus-visible,
+.auth-register-link:focus-visible,
+.auth-home-link:focus-visible{
+
+    outline:
+        3px solid
+        rgba(214,165,44,.40);
+
+    outline-offset:
+        3px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1050px){
+
+
+    .auth-page{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .auth-brand-panel{
+
+        min-height:auto;
+
+        padding:38px;
+
+    }
+
+
+    .auth-brand-content{
+
+        margin:
+            55px 0;
+
+    }
+
+
+    .auth-form-panel{
+
+        min-height:auto;
+
+        padding:
+            50px 25px;
+
+    }
+
+
+}
+
+
+@media(max-width:650px){
+
+
+    .auth-brand-panel{
+
+        padding:
+            28px 20px;
+
+    }
+
+
+    .auth-brand-content h1{
+
+        font-size:
+            39px !important;
+
+    }
+
+
+    .auth-trust-list{
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .auth-role-grid{
+
+        display:flex;
+
+        justify-content:center;
+
+    }
+
+
+    .auth-role-button{
+
+        min-height:
+            94px;
+
+    }
+
+
+    .auth-brand-footer{
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+    }
+
+
+    .auth-form-panel{
+
+        padding:
+            38px 15px;
+
+    }
+
+
+    .auth-card{
+
+        padding:
+            20px;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   FINAL ROLE-SELECTION OVERRIDE
+
+   KEEP THIS SECTION AT THE VERY END.
+
+   theme.css contains global !important authentication
+   styling. These selectors intentionally have higher
+   specificity so the selected User / Lawyer / Admin role
+   always remains visibly highlighted.
+========================================================= */
+
+html body.auth-page
+.auth-role-button.active,
+html body
+.auth-page
+.auth-role-button.active{
+
+    background:
+        rgba(214,165,44,.17) !important;
+
+    border:
+        2px solid
+        var(--gold) !important;
+
+    color:
+        var(--gold) !important;
+
+    box-shadow:
+
+        0 0 0 3px
+        rgba(214,165,44,.08),
+
+        inset 0 0 26px
+        rgba(214,165,44,.04) !important;
+
+}
+
+
+html body.auth-page
+.auth-role-button.active
+.auth-role-icon,
+html body
+.auth-page
+.auth-role-button.active
+.auth-role-icon{
+
+    background:
+        var(--gold) !important;
+
+    color:
+        #111820 !important;
+
+}
+
+
+html body.auth-page
+.auth-role-button.active strong,
+html body
+.auth-page
+.auth-role-button.active strong{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+html body.auth-page
+.auth-role-button.active small,
+html body
+.auth-page
+.auth-role-button.active small{
+
+    color:
+        var(--text-main) !important;
+
+}

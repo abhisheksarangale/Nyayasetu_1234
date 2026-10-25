@@ -1,0 +1,5408 @@
+/* =========================================================
+   =========================================================
+
+                         NYAYASETU
+                 GLOBAL VISUAL SYSTEM V14
+
+          DARK / LIGHT COMPLETELY SEPARATED
+           PROFESSIONAL READABLE TYPOGRAPHY
+
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
+                     GLOBAL FONT SYSTEM
+========================================================= */
+
+:root{
+
+    --font-main:
+        "Segoe UI Variable Text",
+        "Segoe UI Variable",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+
+    /* =====================================================
+                         SHARED ACCENTS
+    ====================================================== */
+
+    --gold:
+        #d6a52c;
+
+    --gold-hover:
+        #e4b640;
+
+    --blue:
+        #3565e8;
+
+    --blue-hover:
+        #4776ed;
+
+    --green:
+        #1fa76c;
+
+}
+
+
+/* =========================================================
+                    DARK MODE VARIABLES
+========================================================= */
+
+html,
+html[data-theme="dark"]{
+
+    color-scheme:
+        dark;
+
+
+    --page-bg:
+        #0b1118;
+
+
+    --section-bg:
+        #0f1721;
+
+
+    --surface-1:
+        #151f2b;
+
+
+    --surface-2:
+        #111a24;
+
+
+    --surface-3:
+        #1a2532;
+
+
+    --input-bg:
+        #0c151f;
+
+
+    --border:
+        #2c3948;
+
+
+    --border-strong:
+        #3b4959;
+
+
+    --text-main:
+        #f4f6f8;
+
+
+    --text-secondary:
+        #c3ccd7;
+
+
+    --text-muted:
+        #96a2b1;
+
+
+    --text-faint:
+        #788696;
+
+
+    --gold-surface:
+        #332a16;
+
+
+    --gold-soft:
+        rgba(214,165,44,.10);
+
+
+    --green-surface:
+        rgba(31,167,108,.11);
+
+
+    --shadow:
+        0 18px 48px
+        rgba(0,0,0,.28);
+
+}
+
+
+/* =========================================================
+                    DAY MODE VARIABLES
+========================================================= */
+
+html[data-theme="light"]{
+
+    color-scheme:
+        light;
+
+
+    --page-bg:
+        #f8f7f3;
+
+
+    --section-bg:
+        #f2f0e9;
+
+
+    --surface-1:
+        #ffffff;
+
+
+    --surface-2:
+        #faf9f6;
+
+
+    --surface-3:
+        #f3f5f7;
+
+
+    --input-bg:
+        #ffffff;
+
+
+    --border:
+        #dfe3e8;
+
+
+    --border-strong:
+        #cbd2da;
+
+
+    --text-main:
+        #172131;
+
+
+    --text-secondary:
+        #4d5969;
+
+
+    --text-muted:
+        #707b8a;
+
+
+    --text-faint:
+        #8993a0;
+
+
+    --gold-surface:
+        #fff4d8;
+
+
+    --gold-soft:
+        #fff8e8;
+
+
+    --green-surface:
+        #edf9f3;
+
+
+    --shadow:
+        0 14px 38px
+        rgba(26,35,50,.08);
+
+}
+
+
+/* =========================================================
+                      MASTER RESET
+========================================================= */
+
+*{
+
+    box-sizing:
+        border-box;
+
+}
+
+
+html{
+
+    font-size:
+        16px !important;
+
+    background:
+        var(--page-bg) !important;
+
+}
+
+
+body{
+
+    margin:
+        0;
+
+    background:
+        var(--page-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+    font-family:
+        var(--font-main) !important;
+
+    font-size:
+        16px !important;
+
+    font-weight:
+        400 !important;
+
+    line-height:
+        1.6 !important;
+
+    letter-spacing:
+        0 !important;
+
+    -webkit-font-smoothing:
+        antialiased;
+
+    text-rendering:
+        optimizeLegibility;
+
+}
+
+
+body,
+button,
+input,
+select,
+textarea,
+option{
+
+    font-family:
+        var(--font-main) !important;
+
+}
+
+
+p{
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7 !important;
+
+}
+
+
+button{
+
+    letter-spacing:
+        0 !important;
+
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+
+    font-family:
+        var(--font-main) !important;
+
+    color:
+        var(--text-main);
+
+    letter-spacing:
+        -.015em !important;
+
+}
+
+
+/* =========================================================
+                    FONT HIERARCHY
+========================================================= */
+
+h1{
+
+    font-weight:
+        750 !important;
+
+}
+
+
+h2{
+
+    font-weight:
+        720 !important;
+
+}
+
+
+h3{
+
+    font-weight:
+        680 !important;
+
+}
+
+
+strong{
+
+    font-weight:
+        650;
+
+}
+
+
+/* =========================================================
+                          HEADER
+========================================================= */
+
+.header{
+
+    background:
+        var(--surface-1) !important;
+
+    border-bottom:
+        1px solid
+        var(--border) !important;
+
+    box-shadow:
+        0 4px 20px
+        rgba(0,0,0,.10) !important;
+
+}
+
+
+html[data-theme="light"] .header{
+
+    box-shadow:
+        0 4px 22px
+        rgba(30,40,55,.05) !important;
+
+}
+
+
+.navbar{
+
+    min-height:
+        86px !important;
+
+}
+
+
+.logo{
+
+    color:
+        var(--text-main) !important;
+
+    font-family:
+        var(--font-main) !important;
+
+    font-weight:
+        750 !important;
+
+}
+
+
+.logo i{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.nav-menu a,
+.nav-links a{
+
+    color:
+        var(--text-secondary) !important;
+
+    font-size:
+        15px !important;
+
+    font-weight:
+        600 !important;
+
+}
+
+
+.nav-menu a:hover,
+.nav-links a:hover{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.login-btn{
+
+    background:
+        var(--surface-3) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.register-btn{
+
+    background:
+        var(--blue) !important;
+
+    color:
+        #ffffff !important;
+
+    border-color:
+        var(--blue) !important;
+
+}
+
+
+/* =========================================================
+                          SETTINGS
+========================================================= */
+
+.settings-wrapper{
+
+    position:
+        relative !important;
+
+}
+
+
+.settings-btn{
+
+    width:
+        48px !important;
+
+    height:
+        48px !important;
+
+    background:
+        var(--surface-3) !important;
+
+    color:
+        var(--text-secondary) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    border-radius:
+        12px !important;
+
+}
+
+
+.settings-btn:hover{
+
+    color:
+        var(--gold) !important;
+
+    border-color:
+        var(--gold) !important;
+
+}
+
+
+.settings-menu{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.settings-menu-header{
+
+    border-bottom-color:
+        var(--border) !important;
+
+}
+
+
+.settings-menu-header-icon{
+
+    background:
+        var(--gold-surface) !important;
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.settings-menu-header strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.settings-menu-header span,
+.settings-section-label{
+
+    color:
+        var(--text-muted) !important;
+
+}
+
+
+.theme-option,
+.settings-logout{
+
+    background:
+        var(--surface-2) !important;
+
+    color:
+        var(--text-secondary) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.theme-option.active{
+
+    background:
+        var(--gold-surface) !important;
+
+    color:
+        var(--gold) !important;
+
+    border-color:
+        var(--gold) !important;
+
+}
+
+
+/* =========================================================
+                         HERO
+========================================================= */
+
+.hero{
+
+    background:
+        var(--page-bg) !important;
+
+}
+
+
+.hero h1{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.hero h1 span{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.hero p{
+
+    color:
+        var(--text-secondary) !important;
+
+    font-size:
+        18px !important;
+
+    line-height:
+        1.75 !important;
+
+}
+
+
+.hero-tag,
+.section-tag{
+
+    background:
+        var(--gold-surface) !important;
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.stat-card,
+.practice-card{
+
+    background:
+        var(--surface-1) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    box-shadow:
+        var(--shadow) !important;
+
+}
+
+
+.stat-card p,
+.practice-card p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.practice-card h3{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+/* =========================================================
+                    GLOBAL SECTION COLORS
+========================================================= */
+
+.practice-areas,
+.about-section,
+.contact-section{
+
+    background:
+        var(--section-bg) !important;
+
+}
+
+
+.lawyers-section,
+.faq-section,
+.terms-section{
+
+    background:
+        var(--page-bg) !important;
+
+}
+
+
+.section-heading h2,
+.about-copy h2,
+.terms-heading h2{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.section-heading p,
+.about-lead,
+.about-text{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+/* =========================================================
+                      LAWYER FILTERS
+========================================================= */
+
+.lawyer-filters::before{
+
+    display:
+        none !important;
+
+}
+
+
+.lawyer-filters{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    box-shadow:
+        var(--shadow) !important;
+
+}
+
+
+.lawyer-search{
+
+    background:
+        var(--input-bg) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.lawyer-search input{
+
+    background:
+        transparent !important;
+
+    color:
+        var(--text-main) !important;
+
+    font-size:
+        15px !important;
+
+}
+
+
+.lawyer-search input::placeholder{
+
+    color:
+        var(--text-faint) !important;
+
+}
+
+
+.lawyer-filter.ns-native-filter-hidden{
+
+    display:
+        none !important;
+
+}
+
+
+.ns-filter-trigger{
+
+    background:
+        var(--input-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    font-size:
+        14px !important;
+
+    font-weight:
+        600 !important;
+
+}
+
+
+.ns-filter-trigger:hover{
+
+    border-color:
+        var(--border-strong) !important;
+
+}
+
+
+.ns-filter-select.open
+.ns-filter-trigger{
+
+    border-color:
+        var(--gold) !important;
+
+}
+
+
+.ns-filter-menu{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border-strong) !important;
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.ns-filter-option{
+
+    color:
+        var(--text-secondary) !important;
+
+    font-size:
+        14px !important;
+
+}
+
+
+.ns-filter-option:hover{
+
+    background:
+        var(--surface-3) !important;
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.ns-filter-option.selected{
+
+    background:
+        var(--gold-soft) !important;
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+/* =========================================================
+                       LAWYER CARDS
+========================================================= */
+
+.lawyer-card{
+
+    background:
+        var(--surface-1) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    box-shadow:
+        var(--shadow) !important;
+
+}
+
+
+.lawyer-info h3{
+
+    color:
+        var(--text-main) !important;
+
+    font-size:
+        17px !important;
+
+}
+
+
+.lawyer-specialization{
+
+    color:
+        var(--gold) !important;
+
+    font-size:
+        12px !important;
+
+    font-weight:
+        600 !important;
+
+}
+
+
+.lawyer-rating span,
+.lawyer-details > span{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.consultation-fee small{
+
+    color:
+        var(--text-muted) !important;
+
+}
+
+
+.consultation-fee strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+/* =========================================================
+                           ABOUT
+========================================================= */
+
+.about-highlight,
+.contact-privacy-note{
+
+    background:
+        var(--gold-soft) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--gold) !important;
+
+}
+
+
+.about-highlight strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.about-highlight span,
+.contact-privacy-note p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.about-trust-card,
+.about-process{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.about-trust-card h3,
+.about-process-step strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.about-trust-card p,
+.about-process-step p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+/* =========================================================
+                            FAQ
+========================================================= */
+
+.faq-item{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.faq-item summary{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.faq-answer{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+/* =========================================================
+                           CONTACT
+========================================================= */
+
+.contact-info-card,
+.contact-form-card{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.contact-info-card h3,
+.contact-form-heading h3{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.contact-info-text,
+.contact-form-heading p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.contact-detail-item{
+
+    background:
+        var(--surface-2) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.contact-detail-item span{
+
+    color:
+        var(--text-muted) !important;
+
+}
+
+
+.contact-detail-item strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.contact-field label{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea{
+
+    background:
+        var(--input-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+/* =========================================================
+                       TERMS
+========================================================= */
+
+.terms-panel{
+
+    background:
+        var(--section-bg) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.term-card{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.term-card h3{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.term-card p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.terms-heading > p,
+.terms-note{
+
+    display:
+        none !important;
+
+}
+
+
+/* =========================================================
+                           FOOTER
+========================================================= */
+
+.site-footer{
+
+    background:
+        var(--section-bg) !important;
+
+    border-top:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.footer-logo,
+.footer-links-column h3{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.footer-brand > p,
+.footer-links-column a{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.footer-trust-row span{
+
+    background:
+        var(--surface-2) !important;
+
+    color:
+        var(--text-secondary) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.footer-bottom{
+
+    color:
+        var(--text-muted) !important;
+
+    border-top:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+/* =========================================================
+   =========================================================
+
+                      BOOKING PAGE
+
+   =========================================================
+   ========================================================= */
+
+.booking-page,
+.payment-page,
+.confirmation-page{
+
+    background:
+        var(--page-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.selected-lawyer-card,
+.booking-form-card,
+.payment-card,
+.payment-summary-card,
+.confirmation-card,
+.confirmation-payment-card,
+.confirmation-next{
+
+    background:
+        var(--surface-1) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+    box-shadow:
+        var(--shadow) !important;
+
+}
+
+
+/* =========================================================
+                 SELECTED LAWYER CARD
+========================================================= */
+
+.selected-label{
+
+    display:
+        none !important;
+
+}
+
+
+.selected-lawyer-content h2{
+
+    color:
+        var(--text-main) !important;
+
+    font-size:
+        24px !important;
+
+}
+
+
+.booking-specialization{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.booking-lawyer-rating span,
+.booking-lawyer-details > div{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.booking-fee-box{
+
+    background:
+        var(--surface-2) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.booking-fee-box span{
+
+    color:
+        var(--text-muted) !important;
+
+}
+
+
+.booking-fee-box strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.booking-fee-box > i{
+
+    display:
+        none !important;
+
+}
+
+
+.change-lawyer-link{
+
+    background:
+        var(--gold-soft) !important;
+
+    color:
+        var(--gold) !important;
+
+    border:
+        1px solid
+        var(--gold) !important;
+
+}
+
+
+.change-lawyer-link:hover{
+
+    background:
+        var(--gold) !important;
+
+    color:
+        #111820 !important;
+
+}
+
+
+/* =========================================================
+                     BOOKING INPUTS
+========================================================= */
+
+.booking-form-heading h2,
+.booking-field > label{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.booking-form-heading p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.booking-field input[type="date"],
+.booking-field select,
+.booking-field textarea{
+
+    background:
+        var(--input-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border-strong) !important;
+
+}
+
+
+/* OPTIONAL */
+
+.booking-field > label small{
+
+    font-size:
+        0 !important;
+
+}
+
+
+.booking-field > label small::before{
+
+    content:
+        "(Optional)";
+
+    color:
+        var(--text-muted);
+
+    font-size:
+        12px;
+
+}
+
+
+/* =========================================================
+                    CONSULTATION MODE
+========================================================= */
+
+.consultation-option > div{
+
+    background:
+        var(--input-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        2px solid
+        var(--border-strong) !important;
+
+}
+
+
+.consultation-option > div > i{
+
+    background:
+        var(--gold-surface) !important;
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.consultation-option strong{
+
+    color:
+        var(--text-main) !important;
+
+    font-size:
+        16px !important;
+
+}
+
+
+.consultation-option small{
+
+    color:
+        var(--text-muted) !important;
+
+    font-size:
+        13px !important;
+
+}
+
+
+.consultation-option input:checked + div{
+
+    background:
+        var(--gold-soft) !important;
+
+    border-color:
+        var(--gold) !important;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(214,165,44,.09) !important;
+
+}
+
+
+.consultation-option input:checked + div::after{
+
+    content:
+        "✓ SELECTED";
+
+    position:
+        absolute;
+
+    top:
+        11px;
+
+    right:
+        11px;
+
+    padding:
+        6px 9px;
+
+    border-radius:
+        999px;
+
+    background:
+        var(--gold);
+
+    color:
+        #111820;
+
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+}
+
+
+/* =========================================================
+                    SUPPORT DOCUMENTS
+========================================================= */
+
+.document-upload-box{
+
+    background:
+        var(--input-bg) !important;
+
+    border-color:
+        var(--border-strong) !important;
+
+}
+
+
+.upload-content strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.upload-content p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.upload-content small{
+
+    color:
+        var(--text-muted) !important;
+
+}
+
+
+.selected-file-item{
+
+    background:
+        var(--surface-3) !important;
+
+    color:
+        var(--text-secondary) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+/* =========================================================
+                     BOOKING SUMMARY
+========================================================= */
+
+.booking-summary{
+
+    background:
+        var(--surface-2) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.booking-summary h3{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.summary-row span{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.summary-row strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.summary-divider{
+
+    background:
+        var(--border) !important;
+
+}
+
+
+.summary-total span{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.summary-total strong{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+/* =========================================================
+                      PROGRESS BAR
+========================================================= */
+
+.booking-progress,
+.payment-progress,
+.confirmation-progress{
+
+    display:
+        flex !important;
+
+    flex-direction:
+        row !important;
+
+    align-items:
+        flex-start !important;
+
+    justify-content:
+        center !important;
+
+}
+
+
+.booking-step span{
+
+    background:
+        var(--input-bg) !important;
+
+    color:
+        var(--text-muted) !important;
+
+    border-color:
+        var(--border-strong) !important;
+
+}
+
+
+.booking-step p{
+
+    color:
+        var(--text-muted) !important;
+
+}
+
+
+.booking-step.active span{
+
+    background:
+        var(--gold) !important;
+
+    color:
+        #111820 !important;
+
+    border-color:
+        var(--gold) !important;
+
+}
+
+
+.booking-step.active p{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.booking-step.completed span{
+
+    background:
+        var(--green) !important;
+
+    color:
+        #ffffff !important;
+
+    border-color:
+        var(--green) !important;
+
+}
+
+
+.booking-progress-line{
+
+    background:
+        var(--border-strong) !important;
+
+}
+
+
+.completed-line{
+
+    background:
+        var(--green) !important;
+
+}
+
+
+/* =========================================================
+                        PAYMENT
+========================================================= */
+
+.gpay-layout{
+
+    background:
+        var(--input-bg) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.gpay-information h3,
+.payment-summary-heading h2,
+.payment-breakdown h3,
+.payment-fund-flow h3{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.gpay-information p,
+.payment-appointment-details small,
+.payment-breakdown-row span,
+.fund-flow-row span{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.payment-amount-highlight,
+.payment-breakdown,
+.payment-fund-flow{
+
+    background:
+        var(--surface-2) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.payment-amount-highlight strong{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.utr-input{
+
+    background:
+        var(--input-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border-color:
+        var(--border-strong) !important;
+
+}
+
+
+/* =========================================================
+                       CONFIRMATION
+========================================================= */
+
+.confirmation-lawyer,
+.confirmation-detail,
+.confirmation-problem,
+.confirmation-documents,
+.receipt-info,
+.receipt-money,
+.next-step-card{
+
+    background:
+        var(--surface-2) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.confirmation-lawyer h3,
+.confirmation-card-heading h2,
+.confirmation-payment-heading h2,
+.confirmation-problem h3,
+.confirmation-documents h3,
+.next-step-card h3{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.confirmation-lawyer p{
+
+    color:
+        var(--gold) !important;
+
+}
+
+
+.confirmation-detail span,
+.receipt-info span,
+.receipt-money span{
+
+    color:
+        var(--text-muted) !important;
+
+}
+
+
+.confirmation-detail strong,
+.receipt-info strong,
+.receipt-money strong{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.confirmation-problem p,
+.next-step-card p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+/* =========================================================
+                   WHAT HAPPENS NEXT
+========================================================= */
+
+.confirmation-next h2{
+
+    color:
+        var(--text-main) !important;
+
+    font-size:
+        26px !important;
+
+    font-weight:
+        720 !important;
+
+}
+
+
+.next-step-card h3{
+
+    font-size:
+        16px !important;
+
+    font-weight:
+        680 !important;
+
+}
+
+
+.next-step-card p{
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.65 !important;
+
+}
+
+
+/* =========================================================
+                     AUTH / LOGIN
+========================================================= */
+
+.auth-page,
+.auth-form-panel{
+
+    background:
+        var(--page-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.auth-brand-panel{
+
+    background:
+        var(--section-bg) !important;
+
+}
+
+
+.auth-logo,
+.auth-brand-content h1,
+.auth-form-heading h2,
+.auth-role-button strong,
+.auth-card-title h3,
+.auth-field label{
+
+    color:
+        var(--text-main) !important;
+
+}
+
+
+.auth-brand-content > p,
+.auth-form-heading p,
+.auth-card-title p{
+
+    color:
+        var(--text-secondary) !important;
+
+}
+
+
+.auth-card,
+.auth-role-button,
+.auth-register-box,
+.admin-login-note{
+
+    background:
+        var(--surface-1) !important;
+
+    border:
+        1px solid
+        var(--border) !important;
+
+}
+
+
+.auth-field input{
+
+    background:
+        var(--input-bg) !important;
+
+    color:
+        var(--text-main) !important;
+
+    border:
+        1px solid
+        var(--border-strong) !important;
+
+}
+
+
+/* =========================================================
+                      LIGHT MODE SAFETY
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    These rules prevent dark fragments from surviving
+    inside Day Mode.
+*/
+
+html[data-theme="light"]
+:is(
+    .lawyer-card,
+    .practice-card,
+    .about-trust-card,
+    .about-process,
+    .faq-item,
+    .contact-info-card,
+    .contact-form-card,
+    .term-card,
+    .selected-lawyer-card,
+    .booking-form-card,
+    .payment-card,
+    .payment-summary-card,
+    .confirmation-card,
+    .confirmation-payment-card,
+    .confirmation-next,
+    .auth-card,
+    .auth-role-button,
+    .auth-register-box
+){
+
+    background:
+        #ffffff !important;
+
+    color:
+        #172131 !important;
+
+    border-color:
+        #dfe3e8 !important;
+
+}
+
+
+html[data-theme="light"]
+:is(
+    .booking-summary,
+    .booking-fee-box,
+    .confirmation-lawyer,
+    .confirmation-detail,
+    .confirmation-problem,
+    .confirmation-documents,
+    .receipt-info,
+    .receipt-money,
+    .next-step-card,
+    .contact-detail-item,
+    .payment-breakdown,
+    .payment-fund-flow,
+    .payment-amount-highlight
+){
+
+    background:
+        #f7f8fa !important;
+
+    border-color:
+        #dfe3e8 !important;
+
+}
+
+
+/* =========================================================
+                       DARK MODE SAFETY
+========================================================= */
+
+/*
+    IMPORTANT:
+
+    These rules prevent white / cream fragments from
+    surviving inside Dark Mode.
+*/
+
+html[data-theme="dark"]
+:is(
+    .lawyer-card,
+    .practice-card,
+    .about-trust-card,
+    .about-process,
+    .faq-item,
+    .contact-info-card,
+    .contact-form-card,
+    .term-card,
+    .selected-lawyer-card,
+    .booking-form-card,
+    .payment-card,
+    .payment-summary-card,
+    .confirmation-card,
+    .confirmation-payment-card,
+    .confirmation-next,
+    .auth-card,
+    .auth-role-button,
+    .auth-register-box
+){
+
+    background:
+        #151f2b !important;
+
+    color:
+        #f6f7f9 !important;
+
+    border-color:
+        #2d3a49 !important;
+
+}
+
+
+html[data-theme="dark"]
+:is(
+    .booking-summary,
+    .booking-fee-box,
+    .confirmation-lawyer,
+    .confirmation-detail,
+    .confirmation-problem,
+    .confirmation-documents,
+    .receipt-info,
+    .receipt-money,
+    .next-step-card,
+    .contact-detail-item,
+    .payment-breakdown,
+    .payment-fund-flow,
+    .payment-amount-highlight
+){
+
+    background:
+        #111a24 !important;
+
+    border-color:
+        #2d3a49 !important;
+
+}
+
+
+/* =========================================================
+                        RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+
+    .booking-layout,
+    .payment-layout,
+    .confirmation-layout{
+
+        grid-template-columns:
+            1fr !important;
+
+    }
+
+
+}
+
+
+@media(max-width:750px){
+
+
+    .consultation-options{
+
+        grid-template-columns:
+            1fr !important;
+
+    }
+
+
+    .next-steps-grid{
+
+        grid-template-columns:
+            1fr !important;
+
+    }
+
+
+    .lawyer-filters{
+
+        grid-template-columns:
+            1fr !important;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   =========================================================
+
+                    NYAYASETU
+           GLOBAL READABILITY SYSTEM V15
+
+      ACCESSIBLE DESKTOP TYPOGRAPHY LAYER
+
+   This section intentionally uses !important so that
+   extremely small 7px / 8px / 9px / 10px inline page
+   styles cannot make important website text unreadable.
+
+   =========================================================
+   ========================================================= */
+
+
+/* =========================================================
+                 GLOBAL FONT RENDERING
+========================================================= */
+
+html{
+
+    font-size:
+        16px !important;
+
+}
+
+
+body{
+
+    font-family:
+        "Segoe UI Variable Text",
+        "Segoe UI Variable",
+        "Segoe UI",
+        Arial,
+        Helvetica,
+        sans-serif !important;
+
+    font-size:
+        16px !important;
+
+    line-height:
+        1.65 !important;
+
+    font-weight:
+        400 !important;
+
+    text-rendering:
+        optimizeLegibility !important;
+
+    -webkit-font-smoothing:
+        antialiased !important;
+
+}
+
+
+button,
+input,
+select,
+textarea,
+option{
+
+    font-family:
+        inherit !important;
+
+}
+
+
+/* =========================================================
+                  STANDARD BODY TEXT
+========================================================= */
+
+p{
+
+    font-size:
+        16px !important;
+
+    line-height:
+        1.7 !important;
+
+}
+
+
+label{
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.45 !important;
+
+}
+
+
+small{
+
+    font-size:
+        13px !important;
+
+    line-height:
+        1.5 !important;
+
+}
+
+
+button{
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.35 !important;
+
+}
+
+
+input,
+select,
+textarea{
+
+    font-size:
+        15px !important;
+
+    line-height:
+        1.45 !important;
+
+}
+
+
+input::placeholder,
+textarea::placeholder{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+                     HEADINGS
+========================================================= */
+
+h1{
+
+    font-size:
+        clamp(
+            34px,
+            4vw,
+            58px
+        ) !important;
+
+    line-height:
+        1.12 !important;
+
+    font-weight:
+        750 !important;
+
+}
+
+
+h2{
+
+    font-size:
+        clamp(
+            24px,
+            2.3vw,
+            36px
+        ) !important;
+
+    line-height:
+        1.22 !important;
+
+    font-weight:
+        720 !important;
+
+}
+
+
+h3{
+
+    font-size:
+        19px !important;
+
+    line-height:
+        1.35 !important;
+
+    font-weight:
+        680 !important;
+
+}
+
+
+h4{
+
+    font-size:
+        17px !important;
+
+    line-height:
+        1.4 !important;
+
+}
+
+
+h5,
+h6{
+
+    font-size:
+        15px !important;
+
+    line-height:
+        1.45 !important;
+
+}
+
+
+/* =========================================================
+                       NAVBAR
+========================================================= */
+
+.logo{
+
+    font-size:
+        24px !important;
+
+}
+
+
+.nav-menu a,
+.nav-links a{
+
+    font-size:
+        15px !important;
+
+    font-weight:
+        600 !important;
+
+}
+
+
+.login-btn,
+.register-btn{
+
+    font-size:
+        14px !important;
+
+    font-weight:
+        650 !important;
+
+}
+
+
+.settings-menu,
+.settings-menu button,
+.settings-menu span{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+                        HERO
+========================================================= */
+
+.hero p{
+
+    font-size:
+        18px !important;
+
+    line-height:
+        1.75 !important;
+
+}
+
+
+.hero-tag,
+.section-tag{
+
+    font-size:
+        13px !important;
+
+    font-weight:
+        700 !important;
+
+}
+
+
+/* =========================================================
+                    SECTION HEADINGS
+========================================================= */
+
+.section-heading p,
+.about-lead,
+.about-text{
+
+    font-size:
+        16px !important;
+
+    line-height:
+        1.7 !important;
+
+}
+
+
+/* =========================================================
+                     LAWYER FILTERS
+========================================================= */
+
+.lawyer-search input{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.ns-filter-trigger{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.ns-filter-option{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+                     LAWYER CARDS
+========================================================= */
+
+.verified-badge,
+.one-rupee-badge{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.lawyer-info h3{
+
+    font-size:
+        19px !important;
+
+}
+
+
+.lawyer-specialization{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.lawyer-rating strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.lawyer-rating span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-details > span{
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.55 !important;
+
+}
+
+
+.consultation-fee small{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.consultation-fee strong{
+
+    font-size:
+        22px !important;
+
+}
+
+
+.book-lawyer-btn{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+                  ABOUT / FAQ / CONTACT
+========================================================= */
+
+.about-highlight span,
+.about-trust-card p,
+.about-process-step p{
+
+    font-size:
+        15px !important;
+
+    line-height:
+        1.65 !important;
+
+}
+
+
+.faq-item summary{
+
+    font-size:
+        16px !important;
+
+    line-height:
+        1.55 !important;
+
+}
+
+
+.faq-answer{
+
+    font-size:
+        15px !important;
+
+    line-height:
+        1.7 !important;
+
+}
+
+
+.contact-info-text,
+.contact-form-heading p{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.contact-detail-item span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.contact-detail-item strong{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.contact-field label{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea{
+
+    font-size:
+        15px !important;
+
+}
+
+
+/* =========================================================
+                     TERMS
+========================================================= */
+
+.term-card h3{
+
+    font-size:
+        18px !important;
+
+}
+
+
+.term-card p{
+
+    font-size:
+        15px !important;
+
+    line-height:
+        1.7 !important;
+
+}
+
+
+/* =========================================================
+                     FOOTER
+========================================================= */
+
+.footer-brand > p,
+.footer-links-column a{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.footer-trust-row span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.footer-bottom{
+
+    font-size:
+        13px !important;
+
+}
+
+
+/* =========================================================
+                  BOOKING PAGE
+========================================================= */
+
+.booking-heading p{
+
+    font-size:
+        16px !important;
+
+}
+
+
+.booking-eyebrow{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.verified-lawyer{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.selected-lawyer-content h2{
+
+    font-size:
+        25px !important;
+
+}
+
+
+.booking-specialization{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.booking-lawyer-rating{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.booking-lawyer-details > div{
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.55 !important;
+
+}
+
+
+.booking-fee-box span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.booking-fee-box strong{
+
+    font-size:
+        27px !important;
+
+}
+
+
+.change-lawyer-link{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.booking-form-heading p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.booking-field > label{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.booking-field input[type="date"],
+.booking-field select,
+.booking-field textarea{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.consultation-option strong{
+
+    font-size:
+        16px !important;
+
+}
+
+
+.consultation-option small{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.description-bottom,
+.description-bottom small,
+.description-bottom span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.upload-content strong{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.upload-content p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.upload-content small{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.selected-file-item{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.booking-summary h3{
+
+    font-size:
+        18px !important;
+
+}
+
+
+.summary-row span,
+.summary-row strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.summary-total span{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.summary-total strong{
+
+    font-size:
+        23px !important;
+
+}
+
+
+.continue-payment-btn{
+
+    font-size:
+        15px !important;
+
+}
+
+
+/* =========================================================
+                 BOOKING PROGRESS
+========================================================= */
+
+.booking-step p{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.booking-step span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+/* =========================================================
+                     PAYMENT PAGE
+========================================================= */
+
+.payment-heading p{
+
+    font-size:
+        16px !important;
+
+}
+
+
+.payment-eyebrow{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.payment-title h2{
+
+    font-size:
+        25px !important;
+
+}
+
+
+.payment-title p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.gpay-information h3{
+
+    font-size:
+        20px !important;
+
+}
+
+
+.gpay-information p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.payment-amount-highlight span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.payment-amount-highlight strong{
+
+    font-size:
+        25px !important;
+
+}
+
+
+.utr-label{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.utr-input{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.payment-verification-help{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.payment-lawyer h3{
+
+    font-size:
+        18px !important;
+
+}
+
+
+.payment-lawyer p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.payment-verified{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.payment-appointment-details small{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.payment-appointment-details strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.payment-breakdown h3,
+.payment-fund-flow h3{
+
+    font-size:
+        17px !important;
+
+}
+
+
+.payment-breakdown-row span,
+.fund-flow-row span{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.payment-breakdown-row strong,
+.fund-flow-row strong{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.final-pay-btn,
+.back-to-booking-btn{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.appointment-reference{
+
+    font-size:
+        12px !important;
+
+}
+
+
+/* =========================================================
+                  CONFIRMATION PAGE
+========================================================= */
+
+.confirmation-heading p{
+
+    font-size:
+        16px !important;
+
+}
+
+
+.confirmation-eyebrow{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.confirmation-lawyer h3{
+
+    font-size:
+        20px !important;
+
+}
+
+
+.confirmation-lawyer p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.confirmation-detail span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.confirmation-detail strong{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.confirmation-problem h3,
+.confirmation-documents h3{
+
+    font-size:
+        17px !important;
+
+}
+
+
+.confirmation-problem p{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.receipt-info span,
+.receipt-money span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.receipt-info strong,
+.receipt-money strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.confirmation-next h2{
+
+    font-size:
+        27px !important;
+
+}
+
+
+.next-step-card h3{
+
+    font-size:
+        17px !important;
+
+}
+
+
+.next-step-card p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+                   LOGIN / AUTH PAGES
+========================================================= */
+
+.auth-logo strong{
+
+    font-size:
+        24px !important;
+
+}
+
+
+.auth-logo small{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.auth-brand-content > p{
+
+    font-size:
+        16px !important;
+
+}
+
+
+.auth-role-button strong{
+
+    font-size:
+        18px !important;
+
+}
+
+
+.auth-role-button span,
+.auth-role-button small{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.auth-card-title h3{
+
+    font-size:
+        20px !important;
+
+}
+
+
+.auth-card-title p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.auth-field label{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.auth-field input{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.auth-register-box,
+.admin-login-note{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+                REGISTRATION PAGES
+========================================================= */
+
+.registration-page label,
+.client-register-page label,
+.lawyer-register-page label{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.registration-page input,
+.registration-page select,
+.registration-page textarea,
+.client-register-page input,
+.client-register-page select,
+.client-register-page textarea,
+.lawyer-register-page input,
+.lawyer-register-page select,
+.lawyer-register-page textarea{
+
+    font-size:
+        15px !important;
+
+}
+
+
+/* =========================================================
+               CLIENT DASHBOARD READABILITY
+========================================================= */
+
+.client-dashboard,
+.client-dashboard-page{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.client-dashboard span,
+.client-dashboard-page span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.client-dashboard p,
+.client-dashboard-page p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.client-dashboard small,
+.client-dashboard-page small{
+
+    font-size:
+        12px !important;
+
+}
+
+
+/* =========================================================
+              COMMON DASHBOARD SIDEBARS
+========================================================= */
+
+:is(
+    .admin-nav-button,
+    .lawyer-nav-button,
+    .client-nav-button,
+    .dashboard-nav-button
+){
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.4 !important;
+
+}
+
+
+:is(
+    .admin-nav-title,
+    .lawyer-nav-title,
+    .client-nav-title
+){
+
+    font-size:
+        12px !important;
+
+    letter-spacing:
+        .6px !important;
+
+}
+
+
+:is(
+    .admin-brand strong,
+    .lawyer-brand strong,
+    .client-brand strong
+){
+
+    font-size:
+        18px !important;
+
+}
+
+
+:is(
+    .admin-brand small,
+    .lawyer-brand small,
+    .client-brand small
+){
+
+    font-size:
+        12px !important;
+
+}
+
+
+/* =========================================================
+              ADMIN DASHBOARD READABILITY
+========================================================= */
+
+.admin-main,
+.admin-content,
+.admin-page{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.admin-eyebrow{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.admin-topbar h1{
+
+    font-size:
+        30px !important;
+
+}
+
+
+.admin-topbar p{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.admin-refresh{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-kpi-label{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-kpi-value{
+
+    font-size:
+        28px !important;
+
+}
+
+
+.admin-kpi-foot{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.admin-panel-title h2{
+
+    font-size:
+        18px !important;
+
+}
+
+
+.admin-panel-title p{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-count-badge{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.payment-code{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.payment-time{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.status-badge{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.payment-detail span{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.payment-detail strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.person-box span{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.person-box strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.verify-payment-btn,
+.reject-payment-btn{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-lawyer-name{
+
+    font-size:
+        16px !important;
+
+}
+
+
+.admin-lawyer-category{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-lawyer-meta{
+
+    font-size:
+        13px !important;
+
+    line-height:
+        1.65 !important;
+
+}
+
+
+.lawyer-approve-btn,
+.lawyer-reject-btn{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-table th{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.admin-table td{
+
+    font-size:
+        14px !important;
+
+    line-height:
+        1.5 !important;
+
+}
+
+
+.admin-empty strong{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.admin-empty span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-user-copy strong{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-user-copy span{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.admin-logout{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.admin-message{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+              LAWYER DASHBOARD READABILITY
+========================================================= */
+
+.lawyer-main,
+.lawyer-page{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.lawyer-eyebrow{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.lawyer-topbar h1{
+
+    font-size:
+        30px !important;
+
+}
+
+
+.lawyer-topbar p{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.lawyer-refresh{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-welcome-label{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.lawyer-welcome h2{
+
+    font-size:
+        24px !important;
+
+}
+
+
+.lawyer-welcome p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.verified-lawyer-badge{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.lawyer-kpi-label{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-kpi-value{
+
+    font-size:
+        26px !important;
+
+}
+
+
+.lawyer-kpi-foot{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.lawyer-panel-title h2{
+
+    font-size:
+        18px !important;
+
+}
+
+
+.lawyer-panel-title p{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-count{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.lawyer-profile-copy h3{
+
+    font-size:
+        17px !important;
+
+}
+
+
+.lawyer-profile-category{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-profile-meta{
+
+    font-size:
+        13px !important;
+
+    line-height:
+        1.75 !important;
+
+}
+
+
+.appointment-title{
+
+    font-size:
+        16px !important;
+
+}
+
+
+.appointment-id{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.appointment-status{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.appointment-detail span{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.appointment-detail strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.problem-box span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.problem-box p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.accept-btn,
+.reject-btn,
+.document-btn{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.document-name{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.notification-content strong{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.notification-content p{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.notification-content small{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.earning-box span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.earning-box strong{
+
+    font-size:
+        22px !important;
+
+}
+
+
+.review-stars{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.review-card p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.lawyer-empty strong{
+
+    font-size:
+        15px !important;
+
+}
+
+
+.lawyer-empty span{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-sidebar-copy strong{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-sidebar-copy span{
+
+    font-size:
+        12px !important;
+
+}
+
+
+.lawyer-logout{
+
+    font-size:
+        13px !important;
+
+}
+
+
+.lawyer-message{
+
+    font-size:
+        14px !important;
+
+}
+
+
+/* =========================================================
+                DASHBOARD MODALS
+========================================================= */
+
+.admin-modal-card h3,
+.lawyer-modal-card h3{
+
+    font-size:
+        20px !important;
+
+}
+
+
+.admin-modal-card p,
+.lawyer-modal-card > p{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.admin-modal-field label,
+.lawyer-modal-field label{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.admin-modal-field select,
+.admin-modal-field textarea,
+.lawyer-modal-field select,
+.lawyer-modal-field textarea{
+
+    font-size:
+        14px !important;
+
+}
+
+
+.modal-cancel,
+.modal-confirm,
+.modal-reject{
+
+    font-size:
+        13px !important;
+
+}
+
+
+/* =========================================================
+              LAST-RESORT SMALL-TEXT SAFETY
+========================================================= */
+
+/*
+    These rules catch text inside dashboard structures
+    that was previously hard-coded at 7px, 8px, 9px,
+    10px or 11px.
+
+    They intentionally do NOT affect Font Awesome icons.
+*/
+
+:is(
+    .admin-page,
+    .lawyer-page,
+    .client-dashboard,
+    .client-dashboard-page
+)
+ :is(
+    p,
+    label,
+    button,
+    input,
+    select,
+    textarea,
+    td,
+    th
+){
+    font-size:
+        13px !important;
+}
+
+
+/* =========================================================
+           HIGH CONTRAST SECONDARY TEXT
+========================================================= */
+
+html[data-theme="dark"]{
+
+    --text-secondary:
+        #d2dae4;
+
+    --text-muted:
+        #aeb9c6;
+
+    --text-faint:
+        #929fad;
+
+}
+
+
+html[data-theme="light"]{
+
+    --text-secondary:
+        #3f4c5c;
+
+    --text-muted:
+        #5d6978;
+
+    --text-faint:
+        #707b89;
+
+}
+
+
+/* =========================================================
+                  RESPONSIVE READABILITY
+========================================================= */
+
+@media(max-width:900px){
+
+
+    body{
+
+        font-size:
+            16px !important;
+
+    }
+
+
+    .nav-menu a,
+    .nav-links a{
+
+        font-size:
+            14px !important;
+
+    }
+
+
+    .lawyer-kpis,
+    .admin-kpis{
+
+        gap:
+            14px !important;
+
+    }
+
+
+}
+
+
+@media(max-width:600px){
+
+
+    body{
+
+        font-size:
+            16px !important;
+
+    }
+
+
+    input,
+    select,
+    textarea{
+
+        font-size:
+            16px !important;
+
+    }
+
+
+    button{
+
+        min-height:
+            42px;
+
+    }
+
+
+}
+
+
+/* =========================================================
+              FINAL DASHBOARD READABILITY GUARD
+========================================================= */
+
+/*
+    Prevent tiny inline metadata text from overriding the
+    accessible type scale on the three protected dashboards.
+*/
+
+.admin-page :is(
+    .admin-kpi-label,
+    .admin-kpi-foot,
+    .admin-panel-title p,
+    .payment-time,
+    .payment-detail span,
+    .person-box span,
+    .admin-lawyer-category,
+    .admin-lawyer-meta,
+    .admin-user-copy span
+),
+.lawyer-page :is(
+    .lawyer-kpi-label,
+    .lawyer-kpi-foot,
+    .lawyer-panel-title p,
+    .appointment-id,
+    .appointment-detail span,
+    .problem-box span,
+    .notification-content p,
+    .notification-content small,
+    .lawyer-profile-category,
+    .lawyer-profile-meta,
+    .lawyer-sidebar-copy span
+){
+    font-size:
+        13px !important;
+
+    line-height:
+        1.5 !important;
+}
+
+.admin-page :is(
+    .payment-detail strong,
+    .person-box strong,
+    .admin-table td,
+    .admin-lawyer-name
+),
+.lawyer-page :is(
+    .appointment-detail strong,
+    .problem-box p,
+    .notification-content strong,
+    .document-name
+){
+    font-size:
+        14px !important;
+
+    line-height:
+        1.55 !important;
+}
+
+
+/* =========================================================
+   NYAYASETU V16 — COMPLETE DASHBOARD THEME SEPARATION FIX
+   Fixes Admin/Lawyer dashboard hard-coded dark surfaces.
+   Day Mode = fully light.
+   Dark Mode = fully dark.
+   No layout/structure changes.
+========================================================= */
+
+/* ---------- PAGE / MAIN CANVAS ---------- */
+
+html[data-theme="light"] :is(
+    .admin-page,
+    .admin-content,
+    .admin-main,
+    .lawyer-page,
+    .lawyer-main,
+    .client-dashboard,
+    .client-dashboard-page
+),
+html[data-theme="dark"] :is(
+    .admin-page,
+    .admin-content,
+    .admin-main,
+    .lawyer-page,
+    .lawyer-main,
+    .client-dashboard,
+    .client-dashboard-page
+){
+    background:var(--page-bg) !important;
+    color:var(--text-main) !important;
+}
+
+
+/* ---------- SIDEBARS ---------- */
+
+:is(
+    .admin-sidebar,
+    .lawyer-sidebar,
+    .client-sidebar
+){
+    background:var(--section-bg) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+}
+
+:is(
+    .admin-brand,
+    .lawyer-brand,
+    .client-brand
+){
+    border-color:var(--border) !important;
+}
+
+:is(
+    .admin-brand strong,
+    .lawyer-brand strong,
+    .client-brand strong,
+    .admin-user-copy strong,
+    .lawyer-sidebar-copy strong
+){
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-brand small,
+    .lawyer-brand small,
+    .client-brand small,
+    .admin-user-copy span,
+    .lawyer-sidebar-copy span,
+    .admin-nav-title,
+    .lawyer-nav-title,
+    .client-nav-title
+){
+    color:var(--text-muted) !important;
+}
+
+:is(
+    .admin-sidebar-user,
+    .lawyer-sidebar-profile,
+    .lawyer-sidebar-profile-row,
+    .client-sidebar-user
+){
+    background:var(--surface-1) !important;
+    border-color:var(--border) !important;
+}
+
+
+/* ---------- SIDEBAR NAVIGATION ---------- */
+
+:is(
+    .admin-nav-button,
+    .lawyer-nav-button,
+    .client-nav-button,
+    .dashboard-nav-button
+){
+    background:transparent !important;
+    color:var(--text-secondary) !important;
+    border-color:transparent !important;
+}
+
+:is(
+    .admin-nav-button,
+    .lawyer-nav-button,
+    .client-nav-button,
+    .dashboard-nav-button
+):hover{
+    background:var(--surface-3) !important;
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-nav-button,
+    .lawyer-nav-button,
+    .client-nav-button,
+    .dashboard-nav-button
+).active{
+    background:var(--gold-surface) !important;
+    color:var(--gold) !important;
+}
+
+
+/* ---------- TOPBARS ---------- */
+
+:is(
+    .admin-topbar,
+    .lawyer-topbar,
+    .client-topbar
+){
+    background:var(--page-bg) !important;
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-topbar h1,
+    .lawyer-topbar h1,
+    .client-topbar h1
+){
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-topbar p,
+    .lawyer-topbar p,
+    .client-topbar p,
+    .admin-eyebrow,
+    .lawyer-eyebrow
+){
+    color:var(--text-muted) !important;
+}
+
+:is(
+    .admin-refresh,
+    .lawyer-refresh,
+    .client-refresh
+){
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border:1px solid var(--border) !important;
+}
+
+
+/* ---------- KPI CARDS ---------- */
+
+:is(
+    .admin-kpi,
+    .lawyer-kpi,
+    .client-kpi
+){
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+    box-shadow:var(--shadow) !important;
+}
+
+:is(
+    .admin-kpi-label,
+    .lawyer-kpi-label,
+    .client-kpi-label,
+    .admin-kpi-foot,
+    .lawyer-kpi-foot,
+    .client-kpi-foot
+){
+    color:var(--text-muted) !important;
+}
+
+:is(
+    .admin-kpi-value,
+    .lawyer-kpi-value,
+    .client-kpi-value
+){
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-kpi-icon,
+    .lawyer-kpi-icon,
+    .client-kpi-icon
+){
+    background:var(--gold-surface) !important;
+    color:var(--gold) !important;
+}
+
+
+/* ---------- DASHBOARD PANELS ---------- */
+
+:is(
+    .admin-panel,
+    .lawyer-panel,
+    .client-panel,
+    .lawyer-welcome,
+    .lawyer-profile-card
+){
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+    box-shadow:var(--shadow) !important;
+}
+
+:is(
+    .admin-panel-heading,
+    .lawyer-panel-heading,
+    .client-panel-heading,
+    .lawyer-notification-head
+){
+    background:var(--surface-1) !important;
+    border-color:var(--border) !important;
+}
+
+:is(
+    .admin-panel-title h2,
+    .lawyer-panel-title h2,
+    .client-panel-title h2,
+    .lawyer-welcome h2,
+    .lawyer-profile-copy h3
+){
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-panel-title p,
+    .lawyer-panel-title p,
+    .client-panel-title p,
+    .lawyer-welcome p,
+    .lawyer-profile-meta
+){
+    color:var(--text-muted) !important;
+}
+
+:is(
+    .admin-panel-icon,
+    .lawyer-panel-icon,
+    .client-panel-icon
+){
+    background:var(--gold-surface) !important;
+    color:var(--gold) !important;
+}
+
+
+/* ---------- PAYMENT / PAYOUT / REFUND / LAWYER CARDS ---------- */
+
+:is(
+    .admin-payment-card,
+    .admin-payout-card,
+    .admin-refund-card,
+    .admin-lawyer-card,
+    .appointment-card,
+    .review-card,
+    .notification-item,
+    .lawyer-bell-item,
+    .earning-box
+){
+    background:var(--surface-2) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+}
+
+:is(
+    .person-box,
+    .payment-detail,
+    .payout-detail,
+    .refund-detail,
+    .refund-reason,
+    .appointment-detail,
+    .problem-box,
+    .document-row
+){
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+}
+
+:is(
+    .person-box span,
+    .payment-detail span,
+    .payout-detail span,
+    .refund-detail span,
+    .refund-reason span,
+    .appointment-detail span,
+    .problem-box span,
+    .payment-time,
+    .payout-time,
+    .refund-time,
+    .appointment-id,
+    .lawyer-profile-category,
+    .admin-lawyer-category,
+    .admin-lawyer-meta
+){
+    color:var(--text-muted) !important;
+}
+
+:is(
+    .person-box strong,
+    .payment-detail strong,
+    .payout-detail strong,
+    .refund-detail strong,
+    .appointment-detail strong,
+    .problem-box p,
+    .payment-code,
+    .payout-code,
+    .refund-code,
+    .appointment-title,
+    .admin-lawyer-name
+){
+    color:var(--text-main) !important;
+}
+
+
+/* ---------- TABLES ---------- */
+
+.admin-table-wrap{
+    background:var(--surface-1) !important;
+    border-color:var(--border) !important;
+}
+
+.admin-table{
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+}
+
+.admin-table th{
+    background:var(--surface-2) !important;
+    color:var(--text-muted) !important;
+    border-color:var(--border) !important;
+}
+
+.admin-table td{
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+}
+
+.admin-table tbody tr:hover td{
+    background:var(--surface-3) !important;
+}
+
+
+/* ---------- NOTIFICATION PANEL ---------- */
+
+:is(
+    .lawyer-notification-panel,
+    .lawyer-notification-list
+){
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+}
+
+.lawyer-bell-item:hover{
+    background:var(--surface-3) !important;
+}
+
+.lawyer-bell-item.unread{
+    background:var(--gold-soft) !important;
+}
+
+.notification-content strong,
+.lawyer-bell-copy strong{
+    color:var(--text-main) !important;
+}
+
+.notification-content p,
+.notification-content small,
+.lawyer-bell-copy span{
+    color:var(--text-muted) !important;
+}
+
+
+/* ---------- BUTTONS THAT WERE HARD-CODED DARK ---------- */
+
+:is(
+    .admin-logout,
+    .lawyer-logout,
+    .modal-cancel,
+    .document-btn,
+    .lawyer-mark-all-read,
+    .lawyer-notification-btn
+){
+    background:var(--surface-2) !important;
+    color:var(--text-secondary) !important;
+    border-color:var(--border) !important;
+}
+
+:is(
+    .admin-logout,
+    .lawyer-logout,
+    .modal-cancel,
+    .document-btn,
+    .lawyer-mark-all-read,
+    .lawyer-notification-btn
+):hover{
+    background:var(--surface-3) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border-strong) !important;
+}
+
+
+/* ---------- EMPTY STATES ---------- */
+
+:is(
+    .admin-empty,
+    .lawyer-empty,
+    .lawyer-bell-empty
+){
+    background:transparent !important;
+    color:var(--text-secondary) !important;
+}
+
+:is(
+    .admin-empty strong,
+    .lawyer-empty strong,
+    .lawyer-bell-empty strong
+){
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-empty span,
+    .lawyer-empty span,
+    .lawyer-bell-empty span
+){
+    color:var(--text-muted) !important;
+}
+
+
+/* ---------- MODALS ---------- */
+
+:is(
+    .admin-modal,
+    .lawyer-modal
+){
+    background:rgba(0,0,0,.45) !important;
+}
+
+:is(
+    .admin-modal-card,
+    .lawyer-modal-card
+){
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+    box-shadow:var(--shadow) !important;
+}
+
+:is(
+    .admin-modal-card h3,
+    .lawyer-modal-card h3,
+    .admin-modal-field label,
+    .lawyer-modal-field label
+){
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-modal-card p,
+    .lawyer-modal-card p
+){
+    color:var(--text-muted) !important;
+}
+
+:is(
+    .admin-modal-field select,
+    .admin-modal-field textarea,
+    .lawyer-modal-field select,
+    .lawyer-modal-field textarea
+){
+    background:var(--input-bg) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border-strong) !important;
+}
+
+
+/* ---------- LOADING LAYERS ---------- */
+
+:is(
+    .admin-loading,
+    .lawyer-loading
+){
+    background:var(--page-bg) !important;
+    color:var(--text-main) !important;
+}
+
+:is(
+    .admin-loading-box,
+    .lawyer-loading-box
+){
+    background:var(--surface-1) !important;
+    color:var(--text-main) !important;
+    border-color:var(--border) !important;
+}
+
+
+/* ---------- IMAGES / AVATARS ---------- */
+
+:is(
+    .admin-lawyer-photo,
+    .lawyer-profile-photo,
+    .lawyer-sidebar-photo,
+    .admin-avatar
+){
+    background:var(--surface-3) !important;
+    border-color:var(--border) !important;
+}
+
+
+/* =========================================================
+   ABSOLUTE DAY-MODE GUARD
+   These rules intentionally override hard-coded dashboard
+   #08111b / #0d1723 / #131f2c / #111d29 colors.
+========================================================= */
+
+html[data-theme="light"] :is(
+    .admin-sidebar,
+    .lawyer-sidebar,
+    .client-sidebar
+){
+    background:#f2f0e9 !important;
+    border-color:#dfe3e8 !important;
+}
+
+html[data-theme="light"] :is(
+    .admin-kpi,
+    .lawyer-kpi,
+    .client-kpi,
+    .admin-panel,
+    .lawyer-panel,
+    .client-panel,
+    .lawyer-welcome,
+    .lawyer-profile-card,
+    .admin-modal-card,
+    .lawyer-modal-card,
+    .admin-sidebar-user,
+    .lawyer-sidebar-profile,
+    .lawyer-sidebar-profile-row
+){
+    background:#ffffff !important;
+    color:#172131 !important;
+    border-color:#dfe3e8 !important;
+}
+
+html[data-theme="light"] :is(
+    .admin-payment-card,
+    .admin-payout-card,
+    .admin-refund-card,
+    .admin-lawyer-card,
+    .appointment-card,
+    .review-card,
+    .notification-item,
+    .lawyer-bell-item,
+    .earning-box,
+    .admin-table th
+){
+    background:#faf9f6 !important;
+    color:#172131 !important;
+    border-color:#dfe3e8 !important;
+}
+
+html[data-theme="light"] :is(
+    .person-box,
+    .payment-detail,
+    .payout-detail,
+    .refund-detail,
+    .refund-reason,
+    .appointment-detail,
+    .problem-box,
+    .document-row,
+    .admin-table td
+){
+    background:#ffffff !important;
+    color:#172131 !important;
+    border-color:#dfe3e8 !important;
+}
+
+
+/* =========================================================
+   ABSOLUTE DARK-MODE GUARD
+========================================================= */
+
+html[data-theme="dark"] :is(
+    .admin-sidebar,
+    .lawyer-sidebar,
+    .client-sidebar
+){
+    background:#0f1721 !important;
+    border-color:#2c3948 !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-kpi,
+    .lawyer-kpi,
+    .client-kpi,
+    .admin-panel,
+    .lawyer-panel,
+    .client-panel,
+    .lawyer-welcome,
+    .lawyer-profile-card,
+    .admin-modal-card,
+    .lawyer-modal-card,
+    .admin-sidebar-user,
+    .lawyer-sidebar-profile,
+    .lawyer-sidebar-profile-row
+){
+    background:#151f2b !important;
+    color:#f4f6f8 !important;
+    border-color:#2c3948 !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-payment-card,
+    .admin-payout-card,
+    .admin-refund-card,
+    .admin-lawyer-card,
+    .appointment-card,
+    .review-card,
+    .notification-item,
+    .lawyer-bell-item,
+    .earning-box,
+    .admin-table th
+){
+    background:#111a24 !important;
+    color:#f4f6f8 !important;
+    border-color:#2c3948 !important;
+}
+
+html[data-theme="dark"] :is(
+    .person-box,
+    .payment-detail,
+    .payout-detail,
+    .refund-detail,
+    .refund-reason,
+    .appointment-detail,
+    .problem-box,
+    .document-row,
+    .admin-table td
+){
+    background:#151f2b !important;
+    color:#f4f6f8 !important;
+    border-color:#2c3948 !important;
+}
+
+
+
+/* =========================================================
+   NYAYASETU V17 — PERMANENT DASHBOARD TEXT CONTRAST FIX
+   Day mode: dark readable text on light surfaces.
+   Dark mode: light readable text on dark surfaces.
+   No layout or structural changes.
+========================================================= */
+
+/* ---------- GENERIC DASHBOARD TEXT ---------- */
+
+html[data-theme="light"] :is(
+    .admin-page,
+    .admin-main,
+    .admin-content,
+    .lawyer-page,
+    .lawyer-main,
+    .client-dashboard,
+    .client-dashboard-page
+){
+    color:#172131 !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-page,
+    .admin-main,
+    .admin-content,
+    .lawyer-page,
+    .lawyer-main,
+    .client-dashboard,
+    .client-dashboard-page
+){
+    color:#f4f6f8 !important;
+}
+
+
+/* ---------- LAWYER DASHBOARD PRIMARY TEXT ---------- */
+
+html[data-theme="light"] :is(
+    .lawyer-topbar h1,
+    .lawyer-welcome h2,
+    .lawyer-panel-title h2,
+    .lawyer-profile-copy h3,
+    .lawyer-kpi-value,
+    .earning-box strong,
+    .appointment-title,
+    .appointment-detail strong,
+    .problem-box p,
+    .notification-content strong,
+    .lawyer-bell-copy strong,
+    .document-name,
+    .review-card strong,
+    .lawyer-empty strong,
+    .lawyer-sidebar-copy strong
+){
+    color:#172131 !important;
+}
+
+html[data-theme="dark"] :is(
+    .lawyer-topbar h1,
+    .lawyer-welcome h2,
+    .lawyer-panel-title h2,
+    .lawyer-profile-copy h3,
+    .lawyer-kpi-value,
+    .earning-box strong,
+    .appointment-title,
+    .appointment-detail strong,
+    .problem-box p,
+    .notification-content strong,
+    .lawyer-bell-copy strong,
+    .document-name,
+    .review-card strong,
+    .lawyer-empty strong,
+    .lawyer-sidebar-copy strong
+){
+    color:#f4f6f8 !important;
+}
+
+
+/* ---------- LAWYER DASHBOARD SECONDARY TEXT ---------- */
+
+html[data-theme="light"] :is(
+    .lawyer-topbar p,
+    .lawyer-welcome p,
+    .lawyer-panel-title p,
+    .lawyer-kpi-label,
+    .lawyer-kpi-foot,
+    .earning-box span,
+    .appointment-id,
+    .appointment-detail span,
+    .problem-box span,
+    .notification-content p,
+    .notification-content small,
+    .lawyer-bell-copy span,
+    .lawyer-bell-copy time,
+    .lawyer-profile-meta,
+    .lawyer-sidebar-copy span,
+    .lawyer-empty span
+){
+    color:#5d6978 !important;
+}
+
+html[data-theme="dark"] :is(
+    .lawyer-topbar p,
+    .lawyer-welcome p,
+    .lawyer-panel-title p,
+    .lawyer-kpi-label,
+    .lawyer-kpi-foot,
+    .earning-box span,
+    .appointment-id,
+    .appointment-detail span,
+    .problem-box span,
+    .notification-content p,
+    .notification-content small,
+    .lawyer-bell-copy span,
+    .lawyer-bell-copy time,
+    .lawyer-profile-meta,
+    .lawyer-sidebar-copy span,
+    .lawyer-empty span
+){
+    color:#aeb9c6 !important;
+}
+
+
+/* ---------- ADMIN DASHBOARD PRIMARY TEXT ---------- */
+
+html[data-theme="light"] :is(
+    .admin-topbar h1,
+    .admin-panel-title h2,
+    .admin-kpi-value,
+    .payment-code,
+    .payment-detail strong,
+    .person-box strong,
+    .payout-detail strong,
+    .refund-detail strong,
+    .admin-lawyer-name,
+    .admin-table td,
+    .admin-empty strong,
+    .admin-user-copy strong
+){
+    color:#172131 !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-topbar h1,
+    .admin-panel-title h2,
+    .admin-kpi-value,
+    .payment-code,
+    .payment-detail strong,
+    .person-box strong,
+    .payout-detail strong,
+    .refund-detail strong,
+    .admin-lawyer-name,
+    .admin-table td,
+    .admin-empty strong,
+    .admin-user-copy strong
+){
+    color:#f4f6f8 !important;
+}
+
+
+/* ---------- ADMIN DASHBOARD SECONDARY TEXT ---------- */
+
+html[data-theme="light"] :is(
+    .admin-topbar p,
+    .admin-panel-title p,
+    .admin-kpi-label,
+    .admin-kpi-foot,
+    .payment-time,
+    .payment-detail span,
+    .person-box span,
+    .payout-detail span,
+    .refund-detail span,
+    .refund-reason span,
+    .admin-lawyer-category,
+    .admin-lawyer-meta,
+    .admin-table th,
+    .admin-empty span,
+    .admin-user-copy span
+){
+    color:#5d6978 !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-topbar p,
+    .admin-panel-title p,
+    .admin-kpi-label,
+    .admin-kpi-foot,
+    .payment-time,
+    .payment-detail span,
+    .person-box span,
+    .payout-detail span,
+    .refund-detail span,
+    .refund-reason span,
+    .admin-lawyer-category,
+    .admin-lawyer-meta,
+    .admin-table th,
+    .admin-empty span,
+    .admin-user-copy span
+){
+    color:#aeb9c6 !important;
+}
+
+
+/* ---------- CLIENT DASHBOARD TEXT ---------- */
+
+html[data-theme="light"] :is(
+    .client-dashboard h1,
+    .client-dashboard h2,
+    .client-dashboard h3,
+    .client-dashboard strong,
+    .client-dashboard-page h1,
+    .client-dashboard-page h2,
+    .client-dashboard-page h3,
+    .client-dashboard-page strong
+){
+    color:#172131 !important;
+}
+
+html[data-theme="dark"] :is(
+    .client-dashboard h1,
+    .client-dashboard h2,
+    .client-dashboard h3,
+    .client-dashboard strong,
+    .client-dashboard-page h1,
+    .client-dashboard-page h2,
+    .client-dashboard-page h3,
+    .client-dashboard-page strong
+){
+    color:#f4f6f8 !important;
+}
+
+html[data-theme="light"] :is(
+    .client-dashboard p,
+    .client-dashboard span,
+    .client-dashboard small,
+    .client-dashboard-page p,
+    .client-dashboard-page span,
+    .client-dashboard-page small
+){
+    color:#5d6978 !important;
+}
+
+html[data-theme="dark"] :is(
+    .client-dashboard p,
+    .client-dashboard span,
+    .client-dashboard small,
+    .client-dashboard-page p,
+    .client-dashboard-page span,
+    .client-dashboard-page small
+){
+    color:#aeb9c6 !important;
+}
+
+
+/* ---------- EARNINGS BOXES: SPECIFIC FIX FOR SCREENSHOT ---------- */
+
+html[data-theme="light"] .earning-box{
+    background:#ffffff !important;
+    border-color:#dfe3e8 !important;
+}
+
+html[data-theme="light"] .earning-box span{
+    color:#5d6978 !important;
+}
+
+html[data-theme="light"] .earning-box strong{
+    color:#172131 !important;
+}
+
+html[data-theme="dark"] .earning-box{
+    background:#111a24 !important;
+    border-color:#2c3948 !important;
+}
+
+html[data-theme="dark"] .earning-box span{
+    color:#aeb9c6 !important;
+}
+
+html[data-theme="dark"] .earning-box strong{
+    color:#f4f6f8 !important;
+}
+
+
+/* ---------- SIDEBAR TEXT CONTRAST ---------- */
+
+html[data-theme="light"] :is(
+    .admin-brand strong,
+    .lawyer-brand strong,
+    .client-brand strong,
+    .admin-user-copy strong,
+    .lawyer-sidebar-copy strong
+){
+    color:#172131 !important;
+}
+
+html[data-theme="light"] :is(
+    .admin-brand small,
+    .lawyer-brand small,
+    .client-brand small,
+    .admin-user-copy span,
+    .lawyer-sidebar-copy span,
+    .admin-nav-title,
+    .lawyer-nav-title,
+    .client-nav-title
+){
+    color:#5d6978 !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-brand strong,
+    .lawyer-brand strong,
+    .client-brand strong,
+    .admin-user-copy strong,
+    .lawyer-sidebar-copy strong
+){
+    color:#f4f6f8 !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-brand small,
+    .lawyer-brand small,
+    .client-brand small,
+    .admin-user-copy span,
+    .lawyer-sidebar-copy span,
+    .admin-nav-title,
+    .lawyer-nav-title,
+    .client-nav-title
+){
+    color:#aeb9c6 !important;
+}
+
+
+/* ---------- INPUT / BUTTON READABILITY ---------- */
+
+html[data-theme="light"] :is(
+    .admin-page,
+    .lawyer-page,
+    .client-dashboard,
+    .client-dashboard-page
+) :is(
+    input,
+    select,
+    textarea
+){
+    background:#ffffff !important;
+    color:#172131 !important;
+    border-color:#cbd2da !important;
+}
+
+html[data-theme="dark"] :is(
+    .admin-page,
+    .lawyer-page,
+    .client-dashboard,
+    .client-dashboard-page
+) :is(
+    input,
+    select,
+    textarea
+){
+    background:#0c151f !important;
+    color:#f4f6f8 !important;
+    border-color:#3b4959 !important;
+}
+
+
+/* ---------- FINAL WHITE-TEXT LEAK GUARD ---------- */
+/*
+   The dashboard HTML contains legacy hard-coded color:#ffffff
+   rules. These targeted selectors win in Day Mode without
+   changing status colors, icons, green/red action buttons,
+   or gold accents.
+*/
+
+html[data-theme="light"] .lawyer-page :is(
+    .lawyer-kpi-value,
+    .earning-box strong,
+    .appointment-title,
+    .appointment-detail strong,
+    .problem-box p,
+    .notification-content strong,
+    .lawyer-bell-copy strong,
+    .lawyer-profile-copy h3,
+    .lawyer-sidebar-copy strong
+),
+html[data-theme="light"] .admin-page :is(
+    .admin-kpi-value,
+    .payment-code,
+    .payment-detail strong,
+    .person-box strong,
+    .payout-detail strong,
+    .refund-detail strong,
+    .admin-lawyer-name,
+    .admin-user-copy strong
+){
+    color:#172131 !important;
+}
+

@@ -1,0 +1,18 @@
+[build]
+  publish = "Frontend"
+
+[functions]
+  directory = "netlify/functions"
+  external_node_modules = ["express", "serverless-http"]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/"
+  to = "/html/index.html"
+  status = 302 

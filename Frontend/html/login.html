@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+
+<html
+    lang="en"
+    data-theme="dark"
+>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Login | NyayaSetu
+    </title>
+
+
+    <!-- =====================================================
+         APPLY SAVED THEME BEFORE PAGE LOAD
+    ====================================================== -->
+
+    <script>
+
+        (function(){
+
+            const savedTheme =
+                localStorage.getItem(
+                    "nyayasetu-theme"
+                );
+
+            document.documentElement
+                .setAttribute(
+
+                    "data-theme",
+
+                    savedTheme === "light"
+                        ? "light"
+                        : "dark"
+
+                );
+
+        })();
+
+    </script>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         GLOBAL THEME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+
+    <!-- =====================================================
+         AUTH PAGE STYLING
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/auth.css"
+    >
+
+
+    <style>
+
+        .auth-logo,
+        .auth-logo:link,
+        .auth-logo:visited,
+        .auth-logo:hover,
+        .auth-logo:active,
+        .auth-logo *{
+
+            text-decoration:
+                none !important;
+
+        }
+
+        #loginError,
+        .auth-security-note {
+            display: none !important;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="auth-page">
+
+
+    <!-- =====================================================
+         LEFT BRAND PANEL
+    ====================================================== -->
+
+    <section class="auth-brand-panel">
+
+
+        <a
+            href="index.html"
+            class="auth-logo"
+        >
+
+            <span class="auth-logo-icon">
+
+                <i class="fa-solid fa-scale-balanced"></i>
+
+            </span>
+
+
+            <span>
+
+                <strong>
+                    NYAYASETU
+                </strong>
+
+                <small>
+                    Legal Dispute Management System
+                </small>
+
+            </span>
+
+        </a>
+
+
+        <div class="auth-brand-content">
+
+
+            <span class="auth-brand-tag">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                SECURE ACCESS PORTAL
+
+            </span>
+
+
+            <h1>
+
+                One Platform.
+
+                <span>
+                    Two Secure Roles.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Clients and verified lawyers access separate
+                protected areas of NyayaSetu. Select your role
+                and sign in using your registered credentials.
+
+            </p>
+
+
+            <div class="auth-trust-list">
+
+
+                <div class="auth-trust-item">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <div>
+
+                        <strong>
+                            Protected Accounts
+                        </strong>
+
+                        <span>
+                            Each role receives access only to
+                            permitted information.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-trust-item">
+
+                    <i class="fa-solid fa-scale-balanced"></i>
+
+                    <div>
+
+                        <strong>
+                            Verified Lawyers
+                        </strong>
+
+                        <span>
+                            Lawyer dashboard access begins only
+                            after Admin approval.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-trust-item">
+
+                    <i class="fa-solid fa-file-shield"></i>
+
+                    <div>
+
+                        <strong>
+                            Private Documents
+                        </strong>
+
+                        <span>
+                            Legal documents remain limited to
+                            authorized participants.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="auth-trust-item">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <div>
+
+                        <strong>
+                            Role-Based Access
+                        </strong>
+
+                        <span>
+                            Client, Lawyer and Admin permissions
+                            remain separated.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <i
+            class="fa-solid fa-scale-balanced auth-watermark"
+        ></i>
+
+
+        <div class="auth-brand-footer">
+
+
+            <a
+                href="index.html"
+                class="auth-home-link"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to NyayaSetu
+
+            </a>
+
+
+            <span>
+                Secure Human Legal Consultation Platform
+            </span>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RIGHT LOGIN PANEL
+    ====================================================== -->
+
+    <section class="auth-form-panel">
+
+
+        <div class="auth-container">
+
+
+            <div class="auth-form-heading">
+
+
+                <span>
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    ACCOUNT LOGIN
+
+                </span>
+
+
+                <h2>
+                    Welcome Back
+                </h2>
+
+
+                <p>
+                    Enter your registered email and password to
+                    access your NyayaSetu account.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 LOGIN FORM
+            ================================================== -->
+
+            <form
+                class="auth-card"
+                id="loginForm"
+            >
+
+
+                <div class="auth-card-title">
+
+
+                    <span
+                        class="auth-card-title-icon"
+                        id="loginRoleIcon"
+                    >
+
+                        <i class="fa-solid fa-user"></i>
+
+                    </span>
+
+
+                    <div>
+
+                        <h3 id="loginRoleTitle">
+                            Login as User
+                        </h3>
+
+                        <p id="loginRoleDescription">
+                            Access your appointments, payments
+                            and legal consultations.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="auth-field">
+
+
+                    <label for="loginEmail">
+                        Email Address
+                    </label>
+
+
+                    <div class="auth-input-wrapper">
+
+
+                        <i
+                            class="fa-solid fa-envelope auth-input-icon"
+                        ></i>
+
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Enter your registered email"
+                            autocomplete="email"
+                            required
+                        >
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="auth-field">
+
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+
+                    <div class="auth-input-wrapper">
+
+
+                        <i
+                            class="fa-solid fa-lock auth-input-icon"
+                        ></i>
+
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            autocomplete="current-password"
+                            required
+                        >
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="passwordToggle"
+                            aria-label="Show password"
+                        >
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    class="auth-submit-button"
+                    id="loginSubmitButton"
+                >
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    <span id="loginSubmitText">
+                        Login as User
+                    </span>
+
+                </button>
+
+
+
+                <!-- REGISTRATION -->
+
+                <div
+                    class="auth-register-box"
+                    id="registrationBox"
+                >
+
+
+                    <div>
+
+                        <span>
+                            New to NyayaSetu?
+                        </span>
+
+                        <strong id="registrationText">
+                            Create your User account
+                        </strong>
+
+                    </div>
+
+
+                    <a
+                        href="client-register.html"
+                        class="auth-register-link"
+                        id="registrationLink"
+                    >
+
+                        Register
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- ERROR -->
+
+                <div
+                    class="auth-message"
+                    id="loginError"
+                    role="alert"
+                    aria-live="polite"
+                >
+
+                    <i class="fa-solid fa-circle-exclamation"></i>
+
+                    <span id="loginErrorText"></span>
+
+                </div>
+
+
+            </form>
+
+
+            <div class="auth-security-note">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>
+                    Your account credentials are protected
+                    through secure authentication.
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="../js/supabase.js"></script>
+
+<script src="../js/theme.js"></script>
+
+
+
+<!-- =========================================================
+     LOGIN LOGIC
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        "use strict";
+
+
+        /* =====================================================
+           ROLE CONFIGURATION
+        ====================================================== */
+
+        const roleData = {
+
+
+            client:{
+
+                title:
+                    "Login as User",
+
+                description:
+                    "Access your appointments, payments and legal consultations.",
+
+                submitText:
+                    "Login as User",
+
+                icon:
+                    "fa-user",
+
+                registrationText:
+                    "Create your User account",
+
+                registrationLink:
+                    "client-register.html"
+
+            },
+
+
+            admin:{
+
+                title:
+                    "Login as Admin",
+
+                description:
+                    "NyayaSetu platform management and administration.",
+
+                submitText:
+                    "Login as Admin",
+
+                icon:
+                    "fa-user-shield",
+
+                registrationText:
+                    "Platform Administrator",
+
+                registrationLink:
+                    "#"
+
+            }
+
+        };
+
+
+        let selectedRole =
+            "client";
+
+
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
+
+        const roleButtons =
+            document.querySelectorAll(
+                ".auth-role-button"
+            );
+
+
+        const roleTitle =
+            document.getElementById(
+                "loginRoleTitle"
+            );
+
+
+        const roleDescription =
+            document.getElementById(
+                "loginRoleDescription"
+            );
+
+
+        const roleIcon =
+            document.getElementById(
+                "loginRoleIcon"
+            );
+
+
+        const registrationBox =
+            document.getElementById(
+                "registrationBox"
+            );
+
+
+        const registrationText =
+            document.getElementById(
+                "registrationText"
+            );
+
+
+        const registrationLink =
+            document.getElementById(
+                "registrationLink"
+            );
+
+
+        const passwordInput =
+            document.getElementById(
+                "loginPassword"
+            );
+
+
+        const passwordToggle =
+            document.getElementById(
+                "passwordToggle"
+            );
+
+
+        const loginForm =
+            document.getElementById(
+                "loginForm"
+            );
+
+
+        const loginEmail =
+            document.getElementById(
+                "loginEmail"
+            );
+
+
+        const loginButton =
+            document.getElementById(
+                "loginSubmitButton"
+            );
+
+
+        const loginSubmitText =
+            document.getElementById(
+                "loginSubmitText"
+            );
+
+
+        const loginError =
+            document.getElementById(
+                "loginError"
+            );
+
+
+        const loginErrorText =
+            document.getElementById(
+                "loginErrorText"
+            );
+
+
+        /* =====================================================
+           ERROR HELPERS
+        ====================================================== */
+
+        function showLoginError(
+            message
+        ){
+
+            loginErrorText.textContent =
+                message;
+
+
+            loginError.classList.add(
+                "show"
+            );
+
+        }
+
+
+        function hideLoginError(){
+
+            loginError.classList.remove(
+                "show"
+            );
+
+
+            loginErrorText.textContent =
+                "";
+
+        }
+
+
+        /* =====================================================
+           LOADING BUTTON
+        ====================================================== */
+
+        function setLoginLoading(
+            loading
+        ){
+
+            loginButton.disabled =
+                loading;
+
+
+            if(
+                loading
+            ){
+
+                loginButton.innerHTML =
+                    `
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        <span>
+                            Checking Account...
+                        </span>
+
+                    `;
+
+            }
+            else{
+
+                loginButton.innerHTML =
+                    `
+
+                        <i class="fa-solid fa-right-to-bracket"></i>
+
+                        <span>
+                            ${roleData[selectedRole].submitText}
+                        </span>
+
+                    `;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ROLE SELECTION
+        ====================================================== */
+
+        function selectRole(
+            role
+        ){
+
+            if(
+                !roleData[
+                    role
+                ]
+            ){
+
+                return;
+
+            }
+
+
+            selectedRole =
+                role;
+
+
+            hideLoginError();
+
+
+            roleButtons.forEach(
+                function(
+                    button
+                ){
+
+                    button.classList.toggle(
+
+                        "active",
+
+                        button.dataset.role ===
+                            role
+
+                    );
+
+                }
+            );
+
+
+            const data =
+                roleData[
+                    role
+                ];
+
+
+            roleTitle.textContent =
+                data.title;
+
+
+            roleDescription.textContent =
+                data.description;
+
+
+            loginSubmitText.textContent =
+                data.submitText;
+
+
+            roleIcon.innerHTML =
+                `
+
+                    <i class="fa-solid ${data.icon}"></i>
+
+                `;
+
+
+            registrationBox.style.display =
+                "flex";
+
+            registrationText.textContent =
+                data.registrationText;
+
+            registrationLink.href =
+                data.registrationLink;
+
+        }
+
+
+        roleButtons.forEach(
+            function(
+                button
+            ){
+
+                button.addEventListener(
+                    "click",
+                    function(){
+
+                        selectRole(
+                            button.dataset.role
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           PASSWORD SHOW / HIDE
+        ====================================================== */
+
+        passwordToggle.addEventListener(
+            "click",
+            function(){
+
+                const hidden =
+                    passwordInput.type ===
+                    "password";
+
+
+                passwordInput.type =
+                    hidden
+                        ? "text"
+                        : "password";
+
+
+                passwordToggle.innerHTML =
+
+                    hidden
+
+                    ?
+
+                    '<i class="fa-solid fa-eye-slash"></i>'
+
+                    :
+
+                    '<i class="fa-solid fa-eye"></i>';
+
+
+                passwordToggle.setAttribute(
+
+                    "aria-label",
+
+                    hidden
+                        ? "Hide password"
+                        : "Show password"
+
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CLIENT LOGIN
+
+           IMPORTANT SINGLE-FLOW RULE:
+
+           Client stays authenticated,
+           but ALWAYS returns to index.html.
+
+           Dashboard is opened manually through:
+           Settings -> YOUR DASHBOARD
+        ====================================================== */
+
+        async function handleClientLogin(
+            user
+        ){
+
+            const supabase =
+                window.NyayaSetuSupabase;
+
+
+            const {
+                data:
+                    profile,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "profiles"
+                    )
+                    .select(
+                        "id, role, is_active"
+                    )
+                    .eq(
+                        "id",
+                        user.id
+                    )
+                    .maybeSingle();
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            if(
+                !profile
+                ||
+                profile.role !==
+                    "client"
+            ){
+
+                await supabase
+                    .auth
+                    .signOut();
+
+
+                showLoginError(
+                    "This account is not registered as a NyayaSetu User."
+                );
+
+
+                return;
+
+            }
+
+
+            if(
+                profile.is_active ===
+                false
+            ){
+
+                await supabase
+                    .auth
+                    .signOut();
+
+
+                showLoginError(
+                    "Your NyayaSetu User account is currently inactive."
+                );
+
+
+                return;
+
+            }
+
+
+            /*
+                SINGLE-FLOW RETURN RULE:
+
+                A normal Client login always opens index.html.
+
+                The only exception is when a protected NyayaSetu
+                flow (Booking or Payment) explicitly sent the Client
+                to Login.
+
+                In that case, resume only that known safe local page
+                and only when its required session data is available.
+
+                This preserves the exact selected Lawyer.
+            */
+
+            const requestedReturnRoute =
+                sessionStorage.getItem(
+                    "nyayasetuAfterLogin"
+                );
+
+
+            let safeReturnRoute =
+                "index.html";
+
+
+            if(
+                requestedReturnRoute ===
+                    "booking.html"
+                &&
+                sessionStorage.getItem(
+                    "selectedLawyer"
+                )
+            ){
+
+                safeReturnRoute =
+                    "booking.html";
+
+            }
+            else if(
+                requestedReturnRoute ===
+                    "payment.html"
+                &&
+                (
+                    sessionStorage.getItem(
+                        "pendingBooking"
+                    )
+                    ||
+                    sessionStorage.getItem(
+                        "pendingAppointmentId"
+                    )
+                )
+            ){
+
+                safeReturnRoute =
+                    "payment.html";
+
+            }
+
+
+            sessionStorage.removeItem(
+                "nyayasetuAfterLogin"
+            );
+
+
+            /*
+                DO NOT SIGN OUT.
+
+                Supabase session remains active because
+                persistSession:true is enabled in supabase.js.
+            */
+
+            window.location.replace(
+                safeReturnRoute
+            );
+
+        }
+
+
+        async function handleAdminLogin(
+            user
+        ){
+
+            const supabase =
+                window.NyayaSetuSupabase;
+
+
+            const {
+                data:
+                    profile,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "profiles"
+                    )
+                    .select(
+                        "id, role, is_active"
+                    )
+                    .eq(
+                        "id",
+                        user.id
+                    )
+                    .maybeSingle();
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            if(
+                !profile
+                ||
+                profile.role !==
+                    "admin"
+            ){
+
+                await supabase
+                    .auth
+                    .signOut();
+
+
+                showLoginError(
+                    "Access denied. This account does not have Admin privileges."
+                );
+
+
+                return;
+
+            }
+
+
+            window.location.replace(
+                "admin-dashboard.html"
+            );
+
+        }
+
+        async function handleLogin(
+            user
+        ){
+
+            if(
+                selectedRole ===
+                "client"
+            ){
+
+                await handleClientLogin(
+                    user
+                );
+
+            }
+            else if(
+                selectedRole ===
+                "admin"
+            ){
+
+                await handleAdminLogin(
+                    user
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           LOGIN SUBMIT
+        ====================================================== */
+
+        loginForm.addEventListener(
+            "submit",
+            async function(
+                event
+            ){
+
+                event.preventDefault();
+
+
+                hideLoginError();
+
+
+                const email =
+                    loginEmail
+                        .value
+                        .trim()
+                        .toLowerCase();
+
+
+                const password =
+                    passwordInput.value;
+
+
+                if(
+                    !email
+                    ||
+                    !password
+                ){
+
+                    showLoginError(
+                        "Please enter your email address and password."
+                    );
+
+
+                    return;
+
+                }
+
+
+                if(
+                    !window.NyayaSetuSupabaseConfigured
+                    ||
+                    !window.NyayaSetuSupabase
+                ){
+
+                    showLoginError(
+                        "NyayaSetu authentication is currently unavailable."
+                    );
+
+
+                    return;
+
+                }
+
+
+                const supabase =
+                    window.NyayaSetuSupabase;
+
+
+                setLoginLoading(
+                    true
+                );
+
+
+                try{
+
+
+                    /*
+                        Clear any existing account session before
+                        attempting login as the selected role.
+                    */
+
+                    try{
+
+                        await supabase
+                            .auth
+                            .signOut();
+
+                    }
+                    catch(
+                        oldSessionError
+                    ){
+
+                        console.warn(
+                            "Previous session cleanup:",
+                            oldSessionError
+                        );
+
+                    }
+
+
+                    const {
+                        data,
+                        error
+                    } =
+
+                        await supabase
+                            .auth
+                            .signInWithPassword({
+
+                                email:
+                                    email,
+
+                                password:
+                                    password
+
+                            });
+
+
+                    if(
+                        error
+                    ){
+
+                        console.error(
+                            error
+                        );
+
+
+                        const message =
+                            String(
+                                error.message
+                                ||
+                                ""
+                            )
+                            .toLowerCase();
+
+
+                        if(
+                            message.includes(
+                                "email not confirmed"
+                            )
+                        ){
+
+                            showLoginError(
+                                "Please confirm your email address before logging in."
+                            );
+
+                        }
+                        else{
+
+                            showLoginError(
+                                "Email or password is incorrect."
+                            );
+
+                        }
+
+
+                        return;
+
+                    }
+
+
+                    if(
+                        !data
+                        ||
+                        !data.user
+                    ){
+
+                        showLoginError(
+                            "Unable to verify your NyayaSetu account."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    const user =
+                        data.user;
+
+
+                    if(
+                        !user.email_confirmed_at
+                    ){
+
+                        await supabase
+                            .auth
+                            .signOut();
+
+
+                        showLoginError(
+                            "Please confirm your email address before logging in."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    await handleLogin(
+                        user
+                    );
+
+                    return;
+
+
+                    await supabase
+                        .auth
+                        .signOut();
+
+
+                    showLoginError(
+                        "Invalid NyayaSetu account type."
+                    );
+
+
+                }
+                catch(
+                    error
+                ){
+
+                    console.error(
+
+                        "NyayaSetu login error:",
+
+                        error
+
+                    );
+
+
+                    try{
+
+                        await supabase
+                            .auth
+                            .signOut();
+
+                    }
+                    catch(
+                        cleanupError
+                    ){
+
+                        console.warn(
+                            "Login cleanup:",
+                            cleanupError
+                        );
+
+                    }
+
+
+                    showLoginError(
+
+                        error.message
+
+                        ||
+
+                        "Something went wrong while signing in. Please try again."
+
+                    );
+
+
+                }
+                finally{
+
+                    setLoginLoading(
+                        false
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           INITIAL ROLE
+        ====================================================== */
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const requestedRole = urlParams.get("role");
+        if (requestedRole && roleData[requestedRole]) {
+            selectRole(requestedRole);
+        } else {
+            selectRole("client");
+        }
+
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

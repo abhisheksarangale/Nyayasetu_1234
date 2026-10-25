@@ -1,0 +1,2545 @@
+<!DOCTYPE html>
+
+<html
+    lang="en"
+    data-theme="dark"
+>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+
+    <title>
+        Payment Verification | NyayaSetu
+    </title>
+
+
+    <!-- GLOBAL THEME FIRST -->
+
+    <script src="../js/theme.js"></script>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    ></script>
+
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+</head>
+
+
+
+<body class="confirmation-page">
+
+
+<!-- =========================================================
+                          NAVBAR
+========================================================= -->
+
+<header class="header">
+
+
+    <nav class="navbar">
+
+
+        <div class="logo">
+
+            <i class="fa-solid fa-scale-balanced"></i>
+
+            <span>
+                NYAYSETU
+            </span>
+
+        </div>
+
+
+
+        <ul class="nav-menu">
+
+
+            <li>
+
+                <a href="index.html#home">
+                    Home
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="index.html#practice-areas">
+                    Services
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="index.html#lawyers">
+                    Lawyers
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="index.html#contact">
+                    Contact
+                </a>
+
+            </li>
+
+        </ul>
+
+
+
+        <div class="nav-buttons">
+
+            <button
+                class="register-btn"
+                type="button"
+                onclick="window.location.href='client-register.html'"
+            >
+                Register
+            </button>
+
+            <a
+                href="login.html?role=client"
+                class="login-btn"
+            >
+                Client Login
+            </a>
+
+            <!-- SETTINGS IS AUTOMATICALLY ADDED HERE -->
+
+        </div>
+
+
+    </nav>
+
+
+</header>
+
+
+
+<!-- =========================================================
+                    CONFIRMATION MAIN
+========================================================= -->
+
+<main class="confirmation-main">
+
+
+    <section class="confirmation-section">
+
+
+        <!-- =================================================
+                         STATUS
+        ================================================== -->
+
+        <div class="confirmation-success">
+
+
+            <h1 id="confirmationTopTitle">
+
+                Payment Submitted Successfully
+
+            </h1>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                         PROGRESS
+        ================================================== -->
+
+        <div class="confirmation-progress">
+
+
+            <div class="booking-step completed">
+
+                <span>
+
+                    <i class="fa-solid fa-check"></i>
+
+                </span>
+
+                <p>
+                    Appointment
+                </p>
+
+            </div>
+
+
+            <div class="booking-progress-line completed-line"></div>
+
+
+            <div class="booking-step completed">
+
+                <span>
+
+                    <i class="fa-solid fa-check"></i>
+
+                </span>
+
+                <p>
+                    Payment Submitted
+                </p>
+
+            </div>
+
+
+            <div class="booking-progress-line completed-line"></div>
+
+
+            <div class="booking-step completed">
+
+                <span style="background: var(--green, #10b981) !important; color: #ffffff !important; border-color: var(--green, #10b981) !important;">
+
+                    <i class="fa-solid fa-check"></i>
+
+                </span>
+
+                <p>
+                    Verification
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="confirmation-layout">
+
+
+            <!-- =================================================
+                     APPOINTMENT DETAILS
+            ================================================== -->
+
+            <section class="confirmation-card">
+
+
+                <div class="confirmation-card-heading">
+
+
+                    <h2>
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                        Appointment Details
+
+                    </h2>
+
+
+                </div>
+
+
+
+                <div class="confirmation-lawyer">
+
+
+                    <img
+                        src=""
+                        alt="Lawyer"
+                        id="confirmationLawyerImage"
+                    >
+
+
+                    <div>
+
+
+                        <span class="confirmation-verified">
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Verified Lawyer
+
+                        </span>
+
+
+                        <h3 id="confirmationLawyerName">
+                            Lawyer
+                        </h3>
+
+
+                        <p id="confirmationLawyerCategory">
+                            Legal Specialist
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="confirmation-details-grid">
+
+
+                    <div class="confirmation-detail">
+
+
+                        <div class="confirmation-detail-icon">
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Appointment Date
+                            </span>
+
+                            <strong id="confirmationDate">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="confirmation-detail">
+
+
+                        <div class="confirmation-detail-icon">
+
+                            <i class="fa-regular fa-clock"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Appointment Time
+                            </span>
+
+                            <strong id="confirmationTime">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="confirmation-detail">
+
+
+                        <div class="confirmation-detail-icon">
+
+                            <i class="fa-solid fa-video"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Consultation Mode
+                            </span>
+
+                            <strong id="confirmationMode">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="confirmation-detail">
+
+
+                        <div class="confirmation-detail-icon">
+
+                            <i class="fa-solid fa-scale-balanced"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Legal Category
+                            </span>
+
+                            <strong id="confirmationCategory">
+                                -
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="confirmation-problem">
+
+
+                    <h3>
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                        Legal Problem
+
+                    </h3>
+
+
+                    <p id="confirmationProblem">
+                        -
+                    </p>
+
+
+                </div>
+
+
+
+                <div class="confirmation-documents">
+
+
+                    <h3>
+
+                        <i class="fa-solid fa-paperclip"></i>
+
+                        Uploaded Documents
+
+                    </h3>
+
+
+                    <div id="confirmationDocuments">
+
+                        <p class="no-document-text">
+
+                            No supporting documents uploaded.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                       PAYMENT STATUS
+            ================================================== -->
+
+            <aside class="confirmation-payment-card">
+
+
+
+                <div class="receipt-info">
+
+
+                    <div>
+
+                        <span>
+                            Payment ID
+                        </span>
+
+                        <strong id="confirmationPaymentId">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            UPI Transaction ID / UTR
+                        </span>
+
+                        <strong id="confirmationUtr">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Payment Method
+                        </span>
+
+                        <strong>
+                            Google Pay / UPI
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="receipt-money">
+
+
+                    <div>
+
+                        <span>
+                            Consultation Fee
+                        </span>
+
+                        <strong id="confirmationTotal">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <span>
+
+                            NyayaSetu Platform Share
+
+                            <small>
+                                10%
+                            </small>
+
+                        </span>
+
+                        <strong id="confirmationPlatform">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div>
+
+                        <span>
+
+                            Lawyer Payable
+
+                            <small>
+                                90%
+                            </small>
+
+                        </span>
+
+                        <strong id="confirmationLawyerShare">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </aside>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+                     NEXT STEPS
+        ================================================== -->
+
+        <section class="confirmation-next">
+
+
+            <h2>
+                What Happens Next?
+            </h2>
+
+
+
+            <div class="next-steps-grid">
+
+
+                <article class="next-step-card">
+
+
+                    <span>
+                        01
+                    </span>
+
+
+                    <h3>
+                        Payment Verification
+                    </h3>
+
+
+                    <p>
+
+                        NyayaSetu checks your submitted
+                        UPI transaction ID and payment amount.
+
+                    </p>
+
+
+                </article>
+
+
+
+                <article class="next-step-card">
+
+
+                    <span>
+                        02
+                    </span>
+
+
+                    <h3>
+                        Official Receipt
+                    </h3>
+
+
+                    <p>
+
+                        The official receipt becomes available
+                        only after the payment is verified.
+
+                    </p>
+
+
+                </article>
+
+
+
+                <article class="next-step-card">
+
+
+                    <span>
+                        03
+                    </span>
+
+
+                    <h3>
+                        Lawyer Request
+                    </h3>
+
+
+                    <p>
+
+                        Your appointment request continues
+                        through the lawyer acceptance workflow.
+
+                    </p>
+
+
+                </article>
+
+
+            </div>
+
+
+
+            <div class="confirmation-actions">
+
+
+                <button
+                    type="button"
+                    class="confirmation-home-btn"
+                    id="confirmationHomeBtn"
+                >
+
+                    <i class="fa-solid fa-house"></i>
+
+                    Back to Home
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="confirmation-lawyers-btn"
+                    id="confirmationLawyersBtn"
+                >
+
+                    <i class="fa-solid fa-scale-balanced"></i>
+
+                    View Lawyers
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="confirmation-pdf-btn"
+                    id="confirmationPdfBtn"
+                >
+
+                    <i class="fa-solid fa-file-pdf"></i>
+
+                    Download PDF
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+                     SUPABASE JAVASCRIPT
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="../js/supabase.js"></script>
+
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function(){
+
+        "use strict";
+
+
+        /* =====================================================
+                     PAYMENT DATA
+        ====================================================== */
+
+        const paymentRaw =
+
+            sessionStorage.getItem(
+                "latestPayment"
+            )
+
+            ||
+
+            sessionStorage.getItem(
+                "pendingPaymentVerification"
+            );
+
+
+        if(
+            !paymentRaw
+        ){
+
+            window.location.replace(
+                "index.html"
+            );
+
+            return;
+
+        }
+
+
+        let payment;
+
+
+        try{
+
+            payment =
+                JSON.parse(
+                    paymentRaw
+                );
+
+        }
+        catch(error){
+
+            console.error(
+                "Confirmation payment parse error:",
+                error
+            );
+
+
+            window.location.replace(
+                "index.html"
+            );
+
+            return;
+
+        }
+
+
+        let booking =
+            payment.booking
+            ||
+            {};
+
+
+        let currentUser =
+            null;
+
+
+        let realtimeChannel =
+            null;
+
+
+        let refreshTimer =
+            null;
+
+
+        /* =====================================================
+                           MONEY
+        ====================================================== */
+
+        function money(
+            value
+        ){
+
+            const number =
+                Number(
+                    value || 0
+                );
+
+
+            return (
+                "₹"
+                +
+                number.toLocaleString(
+                    "en-IN",
+                    {
+                        minimumFractionDigits:
+                            number % 1 === 0
+                            ?
+                            0
+                            :
+                            2,
+
+                        maximumFractionDigits:
+                            2
+                    }
+                )
+            );
+
+        }
+
+
+        /* =====================================================
+                           DATE
+        ====================================================== */
+
+        function readableDate(
+            value
+        ){
+
+            if(
+                !value
+            ){
+
+                return "-";
+
+            }
+
+
+            const date =
+                new Date(
+                    value
+                    +
+                    "T00:00:00"
+                );
+
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day:"numeric",
+                    month:"long",
+                    year:"numeric"
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+                         HUMANIZE STATUS
+        ====================================================== */
+
+        function humanize(
+            value
+        ){
+
+            return String(
+                value || "Payment Verified"
+            )
+            .replaceAll(
+                "_",
+                " "
+            );
+
+        }
+
+
+        /* =====================================================
+             UNIVERSAL LAWYER IMAGE RESOLVER
+
+             WORKS FOR:
+             1. ALL directory Lawyer JPGs
+             2. ALL registered Lawyer Supabase photos
+             3. Full URLs
+             4. Relative Lawyer image paths
+        ====================================================== */
+
+        const SUPABASE_PROJECT_URL =
+            "https://pyavkcoajkyvkwvuskuc.supabase.co";
+
+
+        function encodePathSegments(
+            value
+        ){
+
+            return String(
+                value || ""
+            )
+            .replace(
+                /\\/g,
+                "/"
+            )
+            .split(
+                "/"
+            )
+            .filter(
+                Boolean
+            )
+            .map(
+                function(
+                    segment
+                ){
+
+                    try{
+
+                        return encodeURIComponent(
+                            decodeURIComponent(
+                                segment
+                            )
+                        );
+
+                    }
+                    catch(error){
+
+                        return encodeURIComponent(
+                            segment
+                        );
+
+                    }
+
+                }
+            )
+            .join(
+                "/"
+            );
+
+        }
+
+
+        function normalizeLawyerImage(
+            value,
+            directoryProfileId
+        ){
+
+            const image =
+                String(
+                    value || ""
+                )
+                .trim();
+
+
+            if(
+                !image
+            ){
+
+                return "";
+
+            }
+
+
+            /* =============================================
+               ALREADY COMPLETE IMAGE URL
+            ============================================== */
+
+            if(
+                image.startsWith(
+                    "data:"
+                )
+                ||
+                image.startsWith(
+                    "blob:"
+                )
+                ||
+                /^https?:\/\//i.test(
+                    image
+                )
+            ){
+
+                return image;
+
+            }
+
+
+            const normalized =
+                image.replace(
+                    /\\/g,
+                    "/"
+                );
+
+
+            /* =============================================
+               REAL REGISTERED LAWYER PHOTO
+
+               Example:
+               c3f626be-c5ae-46b5-876c-eeaed177ba14/profile.jpg
+            ============================================== */
+
+            if(
+                /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\//i
+                    .test(
+                        normalized
+                    )
+            ){
+
+                return (
+                    SUPABASE_PROJECT_URL
+                    +
+                    "/storage/v1/object/public/lawyer-profile-photos/"
+                    +
+                    encodePathSegments(
+                        normalized
+                    )
+                );
+
+            }
+
+
+            /* =============================================
+               DIRECTORY LAWYER PHOTO
+
+               Examples:
+               Neha Kapoor.jpg
+               Amit Desai.jpg
+               Arjun Mehta.jpg
+            ============================================== */
+
+            if(
+                directoryProfileId
+                ||
+                (
+                    !normalized.includes(
+                        "/"
+                    )
+                    &&
+                    /\.(png|jpe?g|webp|gif|avif)$/i
+                        .test(
+                            normalized
+                        )
+                )
+            ){
+
+                return new URL(
+                    "../images/lawyers/"
+                    +
+                    encodePathSegments(
+                        normalized
+                    ),
+                    window.location.href
+                ).href;
+
+            }
+
+
+            /* =============================================
+               EXISTING RELATIVE LAWYER PATH
+            ============================================== */
+
+            if(
+                /(?:^|\/)images\/lawyers\//i
+                    .test(
+                        normalized
+                    )
+                ||
+                normalized.startsWith(
+                    "../images/lawyers/"
+                )
+                ||
+                normalized.startsWith(
+                    "./images/lawyers/"
+                )
+            ){
+
+                try{
+
+                    return new URL(
+                        normalized,
+                        window.location.href
+                    ).href;
+
+                }
+                catch(error){
+
+                    return image;
+
+                }
+
+            }
+
+
+            /* =============================================
+               FINAL NORMAL URL RESOLUTION
+            ============================================== */
+
+            try{
+
+                return new URL(
+                    normalized,
+                    window.location.href
+                ).href;
+
+            }
+            catch(error){
+
+                return image;
+
+            }
+
+        }
+
+
+        /* =====================================================
+                       DOCUMENTS
+        ====================================================== */
+
+        function renderDocuments(){
+
+            const documents =
+                document.getElementById(
+                    "confirmationDocuments"
+                );
+
+
+            const documentNames =
+
+                Array.isArray(
+                    booking.documentNames
+                )
+
+                ?
+
+                booking.documentNames
+
+                :
+
+                [];
+
+
+            if(
+                documentNames.length ===
+                0
+            ){
+
+                return;
+
+            }
+
+
+            documents.innerHTML =
+                "";
+
+
+            documentNames.forEach(
+                function(
+                    name
+                ){
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    item.className =
+                        "confirmation-file";
+
+
+                    const icon =
+                        document.createElement(
+                            "i"
+                        );
+
+
+                    icon.className =
+                        "fa-solid fa-file-lines";
+
+
+                    const label =
+                        document.createElement(
+                            "span"
+                        );
+
+
+                    label.textContent =
+                        name;
+
+
+                    item.appendChild(
+                        icon
+                    );
+
+
+                    item.appendChild(
+                        label
+                    );
+
+
+                    documents.appendChild(
+                        item
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+                        STATUS COPY
+        ====================================================== */
+
+        function statusCopy(
+            paymentStatus,
+            appointmentStatus,
+            receipt
+        ){
+
+            const status =
+                String(
+                    paymentStatus
+                    ||
+                    "PAYMENT_VERIFIED"
+                )
+                .toUpperCase();
+
+
+            if(
+                status ===
+                "PAYMENT_VERIFIED"
+                ||
+                status ===
+                "PENDING_VERIFICATION"
+            ){
+
+                return {
+
+                    badge:
+                        "Payment Verified",
+
+                    title:
+                        "Payment Verified Successfully",
+
+                    text:
+                        "NyayaSetu has verified your payment. Your consultation request is now confirmed.",
+
+                    headline:
+                        "Payment Verified",
+
+                    receiptText:
+                        receipt?.receipt_number
+                        ?
+                        "Official receipt "
+                        +
+                        receipt.receipt_number
+                        +
+                        " is available in YOUR DASHBOARD."
+                        :
+                        "Your official receipt is available in YOUR DASHBOARD."
+
+                };
+
+            }
+
+
+            if(
+                status ===
+                "PAYMENT_REJECTED"
+            ){
+
+                return {
+
+                    badge:
+                        "Payment Needs Attention",
+
+                    title:
+                        "Payment Verification Rejected",
+
+                    text:
+                        "The submitted transaction could not be verified. Return to the payment step and submit the correct UTR.",
+
+                    headline:
+                        "Payment Rejected",
+
+                    receiptText:
+                        "No official receipt is issued for a rejected payment submission."
+
+                };
+
+            }
+
+
+            if(
+                status ===
+                "REFUND_PENDING"
+                ||
+                String(
+                    appointmentStatus || ""
+                )
+                .toUpperCase() ===
+                    "REFUND_PENDING"
+            ){
+
+                return {
+
+                    badge:
+                        "Refund Pending",
+
+                    title:
+                        "Full Refund Is Pending",
+
+                    text:
+                        "The Lawyer rejected this paid appointment. NyayaSetu Admin must now complete the full refund.",
+
+                    headline:
+                        "Refund Pending",
+
+                    receiptText:
+                        "Your verified payment remains recorded while the full refund is processed."
+
+                };
+
+            }
+
+
+            if(
+                status ===
+                "REFUNDED"
+                ||
+                String(
+                    appointmentStatus || ""
+                )
+                .toUpperCase() ===
+                    "REFUNDED"
+            ){
+
+                return {
+
+                    badge:
+                        "Refund Completed",
+
+                    title:
+                        "Full Refund Completed",
+
+                    text:
+                        "NyayaSetu has marked the full consultation payment as refunded.",
+
+                    headline:
+                        "Refunded",
+
+                    receiptText:
+                        "You can review the payment and refund status from YOUR DASHBOARD."
+
+                };
+
+            }
+
+
+            return {
+
+                badge:
+                    "Payment Verified",
+
+                title:
+                    "Payment Confirmed Successfully",
+
+                text:
+                    "Your payment has been successfully recorded in Supabase. Your consultation booking is confirmed.",
+
+                headline:
+                    "Payment Verified",
+
+                receiptText:
+                    receipt?.receipt_number
+                    ? "Official receipt " + receipt.receipt_number + " is available in YOUR DASHBOARD."
+                    : "Your official receipt is available in YOUR DASHBOARD."
+
+            };
+
+        }
+
+
+        /* =====================================================
+                          RENDER
+        ====================================================== */
+
+        function render(
+            dbAppointment =
+                null,
+            dbPayment =
+                null,
+            receipt =
+                null
+        ){
+
+            /* =============================================
+               UPDATE BOOKING FROM SUPABASE
+            ============================================== */
+
+            if(
+                dbAppointment
+            ){
+
+                booking = {
+
+                    ...booking,
+
+
+                    appointmentId:
+                        dbAppointment.id,
+
+
+                    lawyerId:
+                        dbAppointment.lawyer_id,
+
+
+                    directoryProfileId:
+                        dbAppointment.directory_profile_id
+                        ||
+                        booking.directoryProfileId
+                        ||
+                        null,
+
+
+                    publicLawyerName:
+                        dbAppointment.public_lawyer_name
+                        ||
+                        booking.publicLawyerName,
+
+
+                    publicLawyerImage:
+                        dbAppointment.public_lawyer_image
+                        ||
+                        booking.publicLawyerImage,
+
+
+                    lawyerName:
+                        dbAppointment.public_lawyer_name
+                        ||
+                        booking.lawyerName,
+
+
+                    lawyerCategory:
+                        dbAppointment.legal_category,
+
+
+                    lawyerFee:
+                        Number(
+                            dbAppointment.consultation_fee
+                        ),
+
+
+                    appointmentDate:
+                        dbAppointment.appointment_date,
+
+
+                    appointmentTime:
+                        dbAppointment.appointment_time,
+
+
+                    consultationMode:
+                        dbAppointment.consultation_mode,
+
+
+                    problemDescription:
+                        dbAppointment.problem_description,
+
+
+                    appointmentStatus:
+                        dbAppointment.status
+
+                };
+
+            }
+
+
+            /* =============================================
+               UPDATE PAYMENT FROM SUPABASE
+            ============================================== */
+
+            if(
+                dbPayment
+            ){
+
+                payment = {
+
+                    ...payment,
+
+
+                    databasePaymentId:
+                        dbPayment.id,
+
+
+                    paymentId:
+                        dbPayment.payment_code
+                        ||
+                        payment.paymentId,
+
+
+                    appointmentId:
+                        dbPayment.appointment_id,
+
+
+                    expectedAmount:
+                        Number(
+                            dbPayment.expected_amount
+                        ),
+
+
+                    totalAmount:
+                        Number(
+                            dbPayment.total_amount
+                        ),
+
+
+                    platformFee:
+                        Number(
+                            dbPayment.platform_fee
+                        ),
+
+
+                    lawyerAmount:
+                        Number(
+                            dbPayment.lawyer_amount
+                        ),
+
+
+                    upiTransactionId:
+                        dbPayment.upi_transaction_id,
+
+
+                    paymentMethod:
+                        dbPayment.payment_method,
+
+
+                    paymentStatus:
+                        dbPayment.payment_status,
+
+
+                    submittedAt:
+                        dbPayment.submitted_at,
+
+
+                    verifiedAt:
+                        dbPayment.verified_at,
+
+
+                    refundStatus:
+                        dbPayment.refund_status,
+
+
+                    payoutStatus:
+                        dbPayment.payout_status,
+
+
+                    receiptId:
+                        receipt?.id
+                        ||
+                        payment.receiptId
+                        ||
+                        null,
+
+
+                    booking:
+                        booking
+
+                };
+
+
+                sessionStorage.setItem(
+                    "latestPayment",
+                    JSON.stringify(
+                        payment
+                    )
+                );
+
+            }
+
+
+            /* =============================================
+                    EXACT PUBLIC LAWYER NAME
+            ============================================== */
+
+            const publicLawyerName =
+
+                booking.publicLawyerName
+
+                ||
+
+                payment.publicLawyerName
+
+                ||
+
+                booking.lawyerName
+
+                ||
+
+                "-";
+
+
+            /* =============================================
+                    EXACT PUBLIC LAWYER IMAGE
+            ============================================== */
+
+            const publicLawyerImage =
+
+                normalizeLawyerImage(
+
+                    booking.publicLawyerImage
+
+                    ||
+
+                    payment.publicLawyerImage
+
+                    ||
+
+                    booking.lawyerImage,
+
+                    booking.directoryProfileId
+
+                );
+
+
+            const lawyerImage =
+                document.getElementById(
+                    "confirmationLawyerImage"
+                );
+
+
+            lawyerImage.src =
+                publicLawyerImage;
+
+
+            lawyerImage.alt =
+                publicLawyerName;
+
+
+            /* =============================================
+               LAST-RESORT OLD DIRECTORY RECORD REPAIR
+
+               If an older directory appointment has an invalid
+               stored image path, automatically try the Lawyer's
+               visible name as the JPG filename.
+            ============================================== */
+
+            lawyerImage.onerror =
+                function(){
+
+                    if(
+                        booking.directoryProfileId
+                        &&
+                        publicLawyerName
+                    ){
+
+                        const fallbackFileName =
+
+                            String(
+                                publicLawyerName
+                            )
+                            .replace(
+                                /^Adv\.?\s*/i,
+                                ""
+                            )
+                            .trim()
+
+                            +
+
+                            ".jpg";
+
+
+                        const fallbackUrl =
+
+                            normalizeLawyerImage(
+                                fallbackFileName,
+                                booking.directoryProfileId
+                            );
+
+
+                        if(
+                            lawyerImage.src !==
+                            fallbackUrl
+                        ){
+
+                            lawyerImage.src =
+                                fallbackUrl;
+
+                        }
+
+                    }
+
+                };
+
+
+            /* =============================================
+                         LAWYER DETAILS
+            ============================================== */
+
+            document.getElementById(
+                "confirmationLawyerName"
+            ).textContent =
+                publicLawyerName;
+
+
+            document.getElementById(
+                "confirmationLawyerCategory"
+            ).textContent =
+                booking.lawyerCategoryName
+                ||
+                booking.lawyerCategory
+                ||
+                "-";
+
+
+            document.getElementById(
+                "confirmationDate"
+            ).textContent =
+                readableDate(
+                    booking.appointmentDate
+                );
+
+
+            document.getElementById(
+                "confirmationTime"
+            ).textContent =
+                booking.appointmentTime
+                ||
+                "-";
+
+
+            document.getElementById(
+                "confirmationMode"
+            ).textContent =
+                booking.consultationMode
+                ||
+                "-";
+
+
+            document.getElementById(
+                "confirmationCategory"
+            ).textContent =
+                booking.lawyerCategoryName
+                ||
+                booking.lawyerCategory
+                ||
+                "-";
+
+
+            document.getElementById(
+                "confirmationProblem"
+            ).textContent =
+                booking.problemDescription
+                ||
+                "-";
+
+
+            /* =============================================
+                         PAYMENT DETAILS
+            ============================================== */
+
+            document.getElementById(
+                "confirmationPaymentId"
+            ).textContent =
+                payment.paymentId
+                ||
+                "-";
+
+
+            document.getElementById(
+                "confirmationUtr"
+            ).textContent =
+                payment.upiTransactionId
+                ||
+                "-";
+
+
+            document.getElementById(
+                "confirmationTotal"
+            ).textContent =
+                money(
+                    payment.totalAmount
+                );
+
+
+            document.getElementById(
+                "confirmationPlatform"
+            ).textContent =
+                money(
+                    payment.platformFee
+                );
+
+
+            document.getElementById(
+                "confirmationLawyerShare"
+            ).textContent =
+                money(
+                    payment.lawyerAmount
+                );
+
+
+            /* =============================================
+                         STATUS TEXT
+            ============================================== */
+
+            const copy =
+                statusCopy(
+                    payment.paymentStatus,
+                    booking.appointmentStatus,
+                    receipt
+                );
+
+
+            const topBadgeEl = document.getElementById(
+                "confirmationTopBadge"
+            );
+            if (topBadgeEl) {
+                topBadgeEl.textContent = copy.badge;
+            }
+
+
+            document.getElementById(
+                "confirmationTopTitle"
+            ).textContent =
+                copy.title;
+
+
+            const topTextEl = document.getElementById(
+                "confirmationTopText"
+            );
+            if (topTextEl) {
+                topTextEl.textContent = copy.text;
+            }
+
+
+            const paymentStatusHeadlineEl = document.getElementById(
+                "confirmationPaymentStatusHeadline"
+            );
+            if (paymentStatusHeadlineEl) {
+                paymentStatusHeadlineEl.textContent = copy.headline;
+            }
+
+
+            const receiptTextEl = document.getElementById(
+                "confirmationReceiptText"
+            );
+            if (receiptTextEl) {
+                receiptTextEl.textContent = copy.receiptText;
+            }
+
+
+            const paymentStatusEl = document.getElementById(
+                "confirmationPaymentStatus"
+            );
+            if (paymentStatusEl) {
+                paymentStatusEl.textContent = humanize(
+                    payment.paymentStatus
+                );
+            }
+
+
+            renderDocuments();
+
+        }
+
+
+        /* =====================================================
+                    REFRESH FROM SUPABASE
+        ====================================================== */
+
+        async function refreshFromSupabase(){
+            const supabase = window.NyayaSetuSupabase;
+
+            if(!supabase){
+                render();
+                return;
+            }
+
+            let session = null;
+            try {
+                const res = await supabase.auth.getSession();
+                session = res?.data?.session;
+            } catch(e) {}
+
+            currentUser = session?.user || JSON.parse(localStorage.getItem("currentUser") || "null") || JSON.parse(localStorage.getItem("nyayasetu-demo-session") || "null");
+
+
+            const appointmentId =
+
+                booking.appointmentId
+
+                ||
+
+                payment.appointmentId;
+
+
+            const databasePaymentId =
+
+                payment.databasePaymentId
+
+                ||
+
+                sessionStorage.getItem(
+                    "latestPaymentId"
+                );
+
+
+            let dbAppointment =
+                null;
+
+
+            let dbPayment =
+                null;
+
+
+            let receipt =
+                null;
+
+
+            /* =============================================
+                    LOAD APPOINTMENT
+            ============================================== */
+
+            if(
+                appointmentId
+            ){
+
+                const {
+                    data
+                } =
+                    await supabase
+                        .from(
+                            "appointments"
+                        )
+                        .select(
+                            "id, client_id, lawyer_id, directory_profile_id, public_lawyer_name, public_lawyer_image, legal_category, appointment_date, appointment_time, consultation_mode, problem_description, consultation_fee, status, created_at, updated_at"
+                        )
+                        .eq(
+                            "id",
+                            appointmentId
+                        )
+                        // client_id check relaxed to support guest/demo bookings
+                        .maybeSingle();
+
+
+                dbAppointment =
+                    data
+                    ||
+                    null;
+
+            }
+
+
+            /* =============================================
+                       LOAD PAYMENT
+            ============================================== */
+
+            if(databasePaymentId){
+                const { data } = await supabase
+                    .from("payments")
+                    .select("*")
+                    .eq("id", databasePaymentId)
+                    .maybeSingle();
+                dbPayment = data || null;
+            }
+            else if(appointmentId){
+                const { data } = await supabase
+                    .from("payments")
+                    .select("*")
+                    .eq("appointment_id", appointmentId)
+                    .maybeSingle();
+                dbPayment = data || null;
+            }
+
+            if(dbPayment){
+                dbPayment.payment_code = dbPayment.transaction_id || dbPayment.upi_id || dbPayment.id;
+                dbPayment.upi_transaction_id = dbPayment.transaction_id || dbPayment.upi_id;
+                dbPayment.submitted_at = dbPayment.created_at;
+                dbPayment.expected_amount = dbPayment.total_amount;
+            }
+
+
+            /* =============================================
+                       LOAD RECEIPT
+            ============================================== */
+
+            if(
+                dbPayment?.id
+            ){
+
+                const {
+                    data
+                } =
+                    await supabase
+                        .from(
+                            "receipts"
+                        )
+                        .select(
+                            "id, receipt_number, payment_id, appointment_id, public_lawyer_name, payment_status, issued_at"
+                        )
+                        .eq(
+                            "payment_id",
+                            dbPayment.id
+                        )
+                        .maybeSingle();
+
+
+                receipt =
+                    data
+                    ||
+                    null;
+
+            }
+
+
+            render(
+                dbAppointment,
+                dbPayment,
+                receipt
+            );
+
+        }
+
+
+        /* =====================================================
+                     REALTIME REFRESH TIMER
+        ====================================================== */
+
+        function scheduleRefresh(){
+
+            window.clearTimeout(
+                refreshTimer
+            );
+
+
+            refreshTimer =
+                window.setTimeout(
+                    function(){
+
+                        refreshFromSupabase()
+                            .catch(
+                                function(
+                                    error
+                                ){
+
+                                    console.error(
+                                        "Confirmation realtime refresh error:",
+                                        error
+                                    );
+
+                                }
+                            );
+
+                    },
+                    150
+                );
+
+        }
+
+
+        /* =====================================================
+                     INSTALL REALTIME
+        ====================================================== */
+
+        function installRealtime(){
+
+            const supabase =
+                window.NyayaSetuSupabase;
+
+
+            const appointmentId =
+
+                booking.appointmentId
+
+                ||
+
+                payment.appointmentId;
+
+
+            const paymentId =
+
+                payment.databasePaymentId
+
+                ||
+
+                sessionStorage.getItem(
+                    "latestPaymentId"
+                );
+
+
+            if(
+                !supabase
+                ||
+                realtimeChannel
+                ||
+                !appointmentId
+            ){
+
+                return;
+
+            }
+
+
+            let channel =
+
+                supabase.channel(
+                    "nyayasetu-confirmation-live-"
+                    +
+                    appointmentId
+                );
+
+
+            channel =
+                channel.on(
+                    "postgres_changes",
+                    {
+                        event:"*",
+                        schema:"public",
+                        table:"appointments",
+                        filter:
+                            "id=eq."
+                            +
+                            appointmentId
+                    },
+                    scheduleRefresh
+                );
+
+
+            if(
+                paymentId
+            ){
+
+                channel =
+                    channel
+                        .on(
+                            "postgres_changes",
+                            {
+                                event:"*",
+                                schema:"public",
+                                table:"payments",
+                                filter:
+                                    "id=eq."
+                                    +
+                                    paymentId
+                            },
+                            scheduleRefresh
+                        )
+                        .on(
+                            "postgres_changes",
+                            {
+                                event:"*",
+                                schema:"public",
+                                table:"receipts",
+                                filter:
+                                    "payment_id=eq."
+                                    +
+                                    paymentId
+                            },
+                            scheduleRefresh
+                        );
+
+            }
+
+
+            realtimeChannel =
+                channel.subscribe();
+
+        }
+
+
+        /* =====================================================
+                         BUTTONS
+        ====================================================== */
+
+        document.getElementById(
+            "confirmationHomeBtn"
+        )
+        .addEventListener(
+            "click",
+            function(){
+
+                window.location.href =
+                    "index.html";
+
+            }
+        );
+
+
+        document.getElementById(
+            "confirmationLawyersBtn"
+        )
+        .addEventListener(
+            "click",
+            function(){
+
+                window.location.href =
+                    "index.html#lawyers";
+
+            }
+        );
+
+
+        function downloadConfirmationPdf(){
+            if(!window.jspdf || !window.jspdf.jsPDF){
+                alert("PDF engine is initializing, please try again in a few seconds.");
+                return;
+            }
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF({
+                    orientation: "portrait",
+                    unit: "mm",
+                    format: "a4"
+                });
+
+                const pageWidth = doc.internal.pageSize.getWidth();
+                const pageHeight = doc.internal.pageSize.getHeight();
+                const left = 16;
+                const right = pageWidth - 16;
+                const contentWidth = right - left;
+
+                const navy = [15, 23, 42];
+                const gold = [214, 165, 44];
+                const darkText = [30, 41, 59];
+                const muted = [100, 116, 139];
+                const lightBorder = [226, 232, 240];
+                const cardBg = [248, 250, 252];
+                const green = [31, 167, 108];
+                const amber = [217, 119, 6];
+
+                // Outer border
+                doc.setDrawColor(...lightBorder);
+                doc.setLineWidth(0.4);
+                doc.rect(8, 8, pageWidth - 16, pageHeight - 16);
+
+                // Header Background
+                doc.setFillColor(...navy);
+                doc.rect(8, 8, pageWidth - 16, 32, "F");
+
+                // Gold Accent Line
+                doc.setFillColor(...gold);
+                doc.rect(8, 40, pageWidth - 16, 2, "F");
+
+                // Header Logo & Branding
+                doc.setTextColor(255, 255, 255);
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(18);
+                doc.text("NYAYASETU", left, 22);
+
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(8);
+                doc.setTextColor(200, 210, 225);
+                doc.text("LEGAL DISPUTE MANAGEMENT PLATFORM", left, 28);
+
+                // Header Right
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(11);
+                doc.setTextColor(255, 255, 255);
+                doc.text("PAYMENT ACKNOWLEDGMENT", right, 20, { align: "right" });
+
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(8);
+                doc.setTextColor(214, 165, 44);
+                const apptRef = String(payment?.appointment_id || payment?.id || "APT-" + Date.now()).toUpperCase();
+                const utrVal = payment?.upi_id || payment?.upiId || payment?.utr || payment?.transaction_id || "-";
+                doc.text("REF: " + apptRef, right, 27, { align: "right" });
+
+                let y = 50;
+
+                // Section 1: Appointment Details
+                doc.setFillColor(...cardBg);
+                doc.setDrawColor(...lightBorder);
+                doc.setLineWidth(0.3);
+                doc.roundedRect(left, y, contentWidth, 54, 3, 3, "FD");
+
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(10.5);
+                doc.setTextColor(...navy);
+                doc.text("1. APPOINTMENT DETAILS", left + 5, y + 8);
+
+                const lawyerName = booking?.lawyerName || booking?.display_name || booking?.name || "Advocate";
+                const category = booking?.lawyerCategoryName || booking?.legal_category || "Legal Consultation";
+                const apptDate = booking?.appointmentDate ? readableDate(booking.appointmentDate) : "-";
+                const apptTime = booking?.appointmentTime || "-";
+                const mode = booking?.consultationMode ? (booking.consultationMode === "VIDEO" ? "Video Consultation" : booking.consultationMode === "PHONE" || booking.consultationMode === "Phone Consultation" ? "Phone Consultation" : "In-Person Consultation") : "Legal Consultation";
+                const problem = booking?.problemDescription || booking?.problem || "Legal consultation request";
+
+                const col1 = left + 5;
+                const col2 = left + contentWidth / 2 + 5;
+
+                doc.setFontSize(8);
+                doc.setFont("helvetica", "bold");
+                doc.setTextColor(...muted);
+                doc.text("Lawyer / Legal Counsel:", col1, y + 16);
+                doc.setTextColor(...darkText);
+                doc.setFont("helvetica", "bold");
+                doc.text(String(lawyerName), col1, y + 21);
+
+                doc.setFont("helvetica", "bold");
+                doc.setTextColor(...muted);
+                doc.text("Legal Domain / Category:", col2, y + 16);
+                doc.setTextColor(...darkText);
+                doc.setFont("helvetica", "normal");
+                doc.text(String(category), col2, y + 21);
+
+                doc.setFont("helvetica", "bold");
+                doc.setTextColor(...muted);
+                doc.text("Scheduled Date & Time:", col1, y + 28);
+                doc.setTextColor(...darkText);
+                doc.setFont("helvetica", "normal");
+                doc.text(apptDate + " at " + apptTime, col1, y + 33);
+
+                doc.setFont("helvetica", "bold");
+                doc.setTextColor(...muted);
+                doc.text("Consultation Mode:", col2, y + 28);
+                doc.setTextColor(...darkText);
+                doc.setFont("helvetica", "normal");
+                doc.text(String(mode), col2, y + 33);
+
+                doc.setFont("helvetica", "bold");
+                doc.setTextColor(...muted);
+                doc.text("Problem Summary:", col1, y + 40);
+                doc.setTextColor(...darkText);
+                doc.setFont("helvetica", "normal");
+                const splitProblem = doc.splitTextToSize(String(problem), contentWidth - 10);
+                doc.text(splitProblem.slice(0, 2), col1, y + 45);
+
+                y += 62;
+
+                // Section 2: Payment & Fee Breakdown
+                doc.setFillColor(...cardBg);
+                doc.setDrawColor(...lightBorder);
+                doc.setLineWidth(0.3);
+                doc.roundedRect(left, y, contentWidth, 54, 3, 3, "FD");
+
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(10.5);
+                doc.setTextColor(...navy);
+                doc.text("2. PAYMENT SUBMISSION & FEE BREAKDOWN", left + 5, y + 8);
+
+                const payMethod = payment?.payment_method || "Google Pay / UPI";
+                const totalAmt = Number(payment?.total_amount || payment?.consultation_fee || booking?.lawyerFee || 0);
+                const platformAmt = Number(payment?.platform_fee || (totalAmt * 0.10).toFixed(2));
+                const lawyerAmt = Number(payment?.lawyer_amount || (totalAmt - platformAmt).toFixed(2));
+
+                doc.setFontSize(8);
+                doc.setFont("helvetica", "bold");
+                doc.setTextColor(...muted);
+                doc.text("UPI Transaction ID / UTR:", col1, y + 16);
+                doc.setTextColor(...darkText);
+                doc.setFont("helvetica", "bold");
+                doc.text(String(utrVal), col1, y + 21);
+
+                doc.setFont("helvetica", "bold");
+                doc.setTextColor(...muted);
+                doc.text("Payment Method:", col2, y + 16);
+                doc.setTextColor(...darkText);
+                doc.setFont("helvetica", "normal");
+                doc.text(String(payMethod), col2, y + 21);
+
+                // Table Header
+                const tableY = y + 27;
+                doc.setFillColor(238, 242, 246);
+                doc.rect(col1, tableY, contentWidth - 10, 6, "F");
+
+                doc.setFont("helvetica", "bold");
+                doc.setFontSize(7.5);
+                doc.setTextColor(...muted);
+                doc.text("ITEM DESCRIPTION", col1 + 3, tableY + 4.2);
+                doc.text("AMOUNT (INR)", right - 8, tableY + 4.2, { align: "right" });
+
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(8.5);
+                doc.setTextColor(...darkText);
+                doc.text("Total Consultation Fee (Advocate Consultation)", col1 + 3, tableY + 11);
+                doc.text("Rs. " + totalAmt.toLocaleString("en-IN"), right - 8, tableY + 11, { align: "right" });
+
+                doc.setFontSize(7.5);
+                doc.setTextColor(...muted);
+                doc.text("  - NyayaSetu Platform Service Share (10%)", col1 + 5, tableY + 16);
+                doc.text("Rs. " + platformAmt.toLocaleString("en-IN"), right - 8, tableY + 16, { align: "right" });
+
+                doc.text("  - Lawyer Direct Consultation Share (90%)", col1 + 5, tableY + 20);
+                doc.text("Rs. " + lawyerAmt.toLocaleString("en-IN"), right - 8, tableY + 20, { align: "right" });
+
+                // Footer
+                const footerY = pageHeight - 16;
+                doc.setDrawColor(...lightBorder);
+                doc.line(left, footerY - 5, right, footerY - 5);
+
+                doc.setFont("helvetica", "normal");
+                doc.setFontSize(7.5);
+                doc.setTextColor(...muted);
+                doc.text("NyayaSetu Legal Dispute Management Platform - Support: support@nyayasetu.in - www.nyayasetu.in", left, footerY);
+                doc.text("Electronically Generated Acknowledgment", right, footerY, { align: "right" });
+
+                const filename = "NyayaSetu_Payment_Acknowledgment_" + (apptRef.replace(/[^a-zA-Z0-9_-]/g, "_")) + ".pdf";
+                doc.save(filename);
+            } catch(e) {
+                console.error("PDF generation failed:", e);
+                alert("Failed to generate PDF. Please try again.");
+            }
+        }
+
+        const pdfBtn = document.getElementById("confirmationPdfBtn");
+        if(pdfBtn){
+            pdfBtn.addEventListener("click", downloadConfirmationPdf);
+        }
+
+
+        /* =====================================================
+                     PAGE REFRESH EVENTS
+        ====================================================== */
+
+        window.addEventListener(
+            "pageshow",
+            scheduleRefresh
+        );
+
+
+        document.addEventListener(
+            "visibilitychange",
+            function(){
+
+                if(
+                    document.visibilityState ===
+                    "visible"
+                ){
+
+                    scheduleRefresh();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+                    REALTIME CLEANUP
+        ====================================================== */
+
+        window.addEventListener(
+            "beforeunload",
+            function(){
+
+                if(
+                    window.NyayaSetuSupabase
+                    &&
+                    realtimeChannel
+                ){
+
+                    window
+                        .NyayaSetuSupabase
+                        .removeChannel(
+                            realtimeChannel
+                        );
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+                        INITIAL RENDER
+        ====================================================== */
+
+        render();
+
+
+        try{
+
+            await refreshFromSupabase();
+
+            installRealtime();
+
+        }
+        catch(error){
+
+            console.error(
+                "Confirmation Supabase refresh error:",
+                error
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

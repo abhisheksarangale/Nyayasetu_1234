@@ -1,0 +1,3592 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="dark">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Book Consultation | NyayaSetu
+    </title>
+
+
+    <!-- =====================================================
+         THEME
+    ====================================================== -->
+
+    <script src="../js/theme.js"></script>
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+
+    <!-- =====================================================
+         BOOKING PAGE STATUS STYLES
+    ====================================================== -->
+
+    <style>
+
+        .booking-system-message{
+
+            display:none;
+
+            margin-bottom:24px;
+
+            padding:16px 20px;
+
+            border-radius:6px;
+
+            font-size:14px;
+            line-height:1.6;
+
+            border-left:4px solid transparent;
+
+        }
+
+
+        .booking-system-message.show{
+
+            display:flex;
+
+            align-items:flex-start;
+
+            gap:12px;
+
+        }
+
+
+        .booking-system-message.error{
+
+            color:#d32f2f;
+
+            background:#fdf2f2;
+
+            border:1px solid #f9d7d7;
+            border-left:4px solid #d32f2f;
+
+        }
+
+        [data-theme="dark"] .booking-system-message.error{
+            color:#ff8b95;
+            background:rgba(215,92,102,.08);
+            border:1px solid rgba(215,92,102,.2);
+            border-left:4px solid #ff5a6a;
+        }
+
+
+        .booking-system-message.warning{
+
+            color:#7d6a00;
+
+            background:#fffcf0;
+
+            border:1px solid #f9f2d0;
+            border-left:4px solid #ccac00;
+
+        }
+
+
+        .booking-system-message.success{
+
+            color:#1b5e20;
+
+            background:#f1f8f1;
+
+            border:1px solid #d7e9d7;
+            border-left:4px solid #2e7d32;
+
+        }
+
+
+        .continue-payment-btn:disabled{
+
+            opacity:.65;
+
+            cursor:not-allowed;
+
+        }
+
+
+        .booking-auth-overlay{
+
+            position:fixed;
+
+            inset:0;
+
+            z-index:99999;
+
+            display:none;
+
+            align-items:center;
+
+            justify-content:center;
+
+            padding:24px;
+
+            background:rgba(5,11,18,.88);
+
+            backdrop-filter:blur(8px);
+
+        }
+
+
+        .booking-auth-overlay.show{
+
+            display:flex;
+
+        }
+
+
+        .booking-auth-card{
+
+            width:100%;
+            max-width:460px;
+
+            padding:28px;
+
+            text-align:center;
+
+            border-radius:16px;
+
+            color:var(--text-main);
+
+            background:var(--surface-1);
+
+            border:1px solid var(--border);
+
+            box-shadow:var(--shadow-md);
+
+        }
+
+
+        .booking-auth-card > i{
+
+            margin-bottom:15px;
+
+            color:var(--gold);
+
+            font-size:28px;
+
+        }
+
+
+        .booking-auth-card h2{
+
+            margin:0 0 9px;
+
+            font-size:21px;
+
+        }
+
+
+        .booking-auth-card p{
+
+            margin:0 0 20px;
+
+            color:var(--text-muted);
+
+            font-size:12px;
+            line-height:1.7;
+
+        }
+
+
+        .booking-auth-actions{
+
+            display:flex;
+
+            justify-content:center;
+
+            gap:10px;
+
+        }
+
+
+        .booking-auth-actions a{
+
+            min-height:42px;
+
+            padding:0 18px;
+
+            display:inline-flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            gap:7px;
+
+            border-radius:9px;
+
+            font-size:11px;
+            font-weight:600;
+
+            text-decoration:none;
+
+        }
+
+
+        .booking-auth-login{
+
+            color:#fff;
+
+            background:var(--blue);
+
+        }
+
+
+        .booking-auth-back{
+
+            color:var(--text-secondary);
+
+            background:var(--page-bg);
+
+            border:1px solid var(--border);
+
+        }
+
+    </style>
+
+</head>
+
+
+<body class="booking-page">
+
+
+<!-- =========================================================
+     CLIENT LOGIN REQUIRED OVERLAY
+========================================================= -->
+
+<div
+    class="booking-auth-overlay"
+    id="bookingAuthOverlay"
+>
+
+    <div class="booking-auth-card">
+
+
+        <i class="fa-solid fa-user-lock"></i>
+
+
+        <h2 id="bookingAuthTitle">
+
+            Client Login Required
+
+        </h2>
+
+
+        <p id="bookingAuthMessage">
+
+            Please login using a NyayaSetu Client account
+            before creating an appointment.
+
+        </p>
+
+
+        <div class="booking-auth-actions">
+            <button
+                type="button"
+                class="booking-auth-login"
+                id="bookingQuickClientBtn"
+                style="background: #804060; border-color: #804060; cursor: pointer;"
+            >
+                <i class="fa-solid fa-user-check"></i>
+                Continue as Demo Client
+            </button>
+
+            <a
+                href="login.html"
+                class="booking-auth-login"
+                id="bookingAuthLogin"
+            >
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Client Login
+            </a>
+
+            <a
+                href="index.html#lawyers"
+                class="booking-auth-back"
+            >
+                <i class="fa-solid fa-arrow-left"></i>
+                Lawyers
+            </a>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header class="header">
+
+
+    <nav class="navbar">
+
+
+        <div class="logo">
+
+            <i class="fa-solid fa-scale-balanced"></i>
+
+            <span>
+                NYAYSETU
+            </span>
+
+        </div>
+
+
+        <ul class="nav-menu">
+
+
+            <li>
+
+                <a href="index.html#home">
+                    Home
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="index.html#practice-areas">
+                    Services
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="index.html#lawyers">
+                    Lawyers
+                </a>
+
+            </li>
+
+
+            <li>
+
+                <a href="index.html#contact">
+                    Contact
+                </a>
+
+            </li>
+
+        </ul>
+
+
+        <div class="nav-buttons">
+
+            <button
+                class="register-btn"
+                type="button"
+                id="bookingRegisterBtn"
+            >
+                Register
+            </button>
+
+            <a
+                href="login.html?role=client"
+                class="login-btn"
+                id="bookingLoginBtn"
+            >
+                Client Login
+            </a>
+
+        </div>
+
+
+    </nav>
+
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="booking-main">
+
+
+    <section class="booking-section">
+
+
+        <!-- =================================================
+             HEADING
+        ================================================== -->
+
+        <div class="booking-heading">
+
+
+            <span class="booking-eyebrow">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Secure Appointment Booking
+
+            </span>
+
+
+            <h1>
+
+                Book Your Consultation
+
+            </h1>
+
+
+            <p>
+
+                Select your appointment date and time,
+                describe your legal problem and upload
+                supporting documents.
+
+            </p>
+
+
+        </div>
+
+
+        <!-- =================================================
+             SYSTEM MESSAGE
+        ================================================== -->
+
+        <div
+            class="booking-system-message"
+            id="bookingSystemMessage"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+
+        <div class="booking-layout">
+
+
+            <!-- =================================================
+                 SELECTED LAWYER
+            ================================================== -->
+
+            <aside
+                class="selected-lawyer-card"
+                id="selectedLawyerCard"
+            >
+
+
+                <div class="selected-lawyer-photo">
+
+
+                    <img
+                        src=""
+                        alt="Selected Lawyer"
+                        id="selectedLawyerImage"
+                    >
+
+
+                </div>
+
+
+                <div class="selected-lawyer-content">
+
+
+                    <span class="verified-lawyer">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Verified Lawyer
+
+                    </span>
+
+
+                    <h2 id="selectedLawyerName">
+
+                        Selected Lawyer
+
+                    </h2>
+
+
+                    <p
+                        class="booking-specialization"
+                        id="selectedLawyerCategory"
+                    >
+
+                        Legal Specialist
+
+                    </p>
+
+
+                    <div class="booking-lawyer-rating">
+
+
+                        <span class="booking-rating-star">
+
+                            <i class="fa-solid fa-star"></i>
+
+                        </span>
+
+
+                        <strong id="selectedLawyerRating">
+
+                            New
+
+                        </strong>
+
+
+                        <span id="selectedLawyerReviews">
+
+                            No Reviews Yet
+
+                        </span>
+
+
+                    </div>
+
+
+                    <div class="booking-lawyer-details">
+
+
+                        <div>
+
+                            <i class="fa-solid fa-briefcase"></i>
+
+                            <span id="selectedLawyerExperience">
+
+                                Experienced Lawyer
+
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-language"></i>
+
+                            <span id="selectedLawyerLanguages">
+
+                                Languages available
+
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <span id="selectedLawyerLocation">
+
+                                India
+
+                            </span>
+
+                        </div>
+
+
+                        <div class="booking-availability">
+
+                            <i class="fa-solid fa-circle"></i>
+
+                            <span id="selectedLawyerAvailability">
+
+                                Available
+
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="booking-fee-box">
+
+
+                        <div>
+
+
+                            <span>
+
+                                Consultation Fee
+
+                            </span>
+
+
+                            <strong id="selectedLawyerFee">
+
+                                ₹0
+
+                            </strong>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="change-lawyer-link"
+                        id="changeLawyerBtn"
+                    >
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Change Lawyer
+
+                    </button>
+
+
+                </div>
+
+
+            </aside>
+
+                        <!-- =================================================
+                 BOOKING FORM
+            ================================================== -->
+
+            <form
+                class="booking-form-card"
+                id="bookingForm"
+            >
+
+
+                <!-- =============================================
+                     PROGRESS
+                ============================================== -->
+
+                <div class="booking-progress">
+
+
+                    <div class="booking-step active">
+
+                        <span>
+                            1
+                        </span>
+
+                        <p>
+                            Appointment
+                        </p>
+
+                    </div>
+
+
+                    <div class="booking-progress-line"></div>
+
+
+                    <div class="booking-step">
+
+                        <span>
+                            2
+                        </span>
+
+                        <p>
+                            Payment
+                        </p>
+
+                    </div>
+
+
+                    <div class="booking-progress-line"></div>
+
+
+                    <div class="booking-step">
+
+                        <span>
+                            3
+                        </span>
+
+                        <p>
+                            Confirmation
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     FORM HEADING
+                ============================================== -->
+
+                <div class="booking-form-heading">
+
+
+                    <h2>
+
+                        Appointment Details
+
+                    </h2>
+
+
+                    <p>
+
+                        Complete the information below.
+
+                    </p>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     DATE + TIME
+                ============================================== -->
+
+                <div class="booking-form-row">
+
+
+                    <div class="booking-field">
+
+
+                        <label for="appointmentDate">
+
+                            <i class="fa-solid fa-calendar-days"></i>
+
+                            Appointment Date
+
+                            <sup>*</sup>
+
+                        </label>
+
+
+                        <input
+                            type="date"
+                            id="appointmentDate"
+                            required
+                        >
+
+
+                    </div>
+
+
+                    <div class="booking-field">
+
+
+                        <label for="appointmentTime">
+
+                            <i class="fa-regular fa-clock"></i>
+
+                            Appointment Time
+
+                            <sup>*</sup>
+
+                        </label>
+
+
+                        <select
+                            id="appointmentTime"
+                            required
+                        >
+
+
+                            <option value="">
+
+                                Select Time
+
+                            </option>
+
+
+                            <option value="09:00 AM">
+                                09:00 AM
+                            </option>
+
+                            <option value="10:00 AM">
+                                10:00 AM
+                            </option>
+
+                            <option value="11:00 AM">
+                                11:00 AM
+                            </option>
+
+                            <option value="12:00 PM">
+                                12:00 PM
+                            </option>
+
+                            <option value="01:00 PM">
+                                01:00 PM
+                            </option>
+
+                            <option value="02:00 PM">
+                                02:00 PM
+                            </option>
+
+                            <option value="03:00 PM">
+                                03:00 PM
+                            </option>
+
+                            <option value="04:00 PM">
+                                04:00 PM
+                            </option>
+
+                            <option value="05:00 PM">
+                                05:00 PM
+                            </option>
+
+                            <option value="06:00 PM">
+                                06:00 PM
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     CONSULTATION MODE
+                ============================================== -->
+
+                <div class="booking-field">
+
+
+                    <label>
+
+                        <i class="fa-solid fa-video"></i>
+
+                        Consultation Mode
+
+                    </label>
+
+
+                    <div class="consultation-options">
+
+
+                        <label class="consultation-option">
+
+
+                            <input
+                                type="radio"
+                                name="consultationMode"
+                                value="Video Consultation"
+                                checked
+                            >
+
+
+                            <div>
+
+
+                                <i class="fa-solid fa-video"></i>
+
+
+                                <span>
+
+
+                                    <strong>
+
+                                        Video Consultation
+
+                                    </strong>
+
+
+                                    <small>
+
+                                        Meet lawyer online
+
+                                    </small>
+
+
+                                </span>
+
+
+                            </div>
+
+
+                        </label>
+
+
+                        <label class="consultation-option">
+
+
+                            <input
+                                type="radio"
+                                name="consultationMode"
+                                value="Phone Consultation"
+                            >
+
+
+                            <div>
+
+
+                                <i class="fa-solid fa-phone"></i>
+
+
+                                <span>
+
+
+                                    <strong>
+
+                                        Phone Consultation
+
+                                    </strong>
+
+
+                                    <small>
+
+                                        Speak by phone
+
+                                    </small>
+
+
+                                </span>
+
+
+                            </div>
+
+
+                        </label>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     PROBLEM DESCRIPTION
+                ============================================== -->
+
+                <div class="booking-field">
+
+
+                    <label for="problemDescription">
+
+                        <i class="fa-regular fa-file-lines"></i>
+
+                        Describe Your Legal Problem
+
+                        <sup>*</sup>
+
+                    </label>
+
+
+                    <textarea
+                        id="problemDescription"
+                        maxlength="1500"
+                        minlength="10"
+                        placeholder="Explain your legal problem clearly so the lawyer can understand your situation before the consultation..."
+                        required
+                    ></textarea>
+
+
+                    <div class="description-bottom">
+
+
+                        <small>
+
+                            Do not include passwords,
+                            OTPs or banking credentials.
+
+                        </small>
+
+
+                        <span id="descriptionCount">
+
+                            0 / 1500
+
+                        </span>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     DOCUMENT UPLOAD
+                ============================================== -->
+
+                <div class="booking-field">
+
+
+                    <label>
+
+                        <i class="fa-solid fa-paperclip"></i>
+
+                        Supporting Documents
+
+                        <small>
+                            (Optional)
+                        </small>
+
+                    </label>
+
+
+                    <label class="document-upload-box">
+
+
+                        <input
+                            type="file"
+                            id="supportingDocuments"
+                            multiple
+                            accept=".pdf,.png,.jpg,.jpeg,.doc,.docx"
+                        >
+
+
+                        <span class="upload-content">
+
+
+                            <span class="upload-icon">
+
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                            </span>
+
+
+                            <strong>
+
+                                Upload Supporting Documents
+
+                            </strong>
+
+
+                            <p>
+
+                                Select files relevant to
+                                your legal consultation.
+
+                            </p>
+
+
+                            <small>
+
+                                PDF, JPG, PNG, DOC or DOCX.
+                                Maximum 10 MB per file.
+
+                            </small>
+
+
+                        </span>
+
+
+                    </label>
+
+
+                    <div
+                        class="selected-files"
+                        id="selectedFiles"
+                    ></div>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     SUMMARY
+                ============================================== -->
+
+                <div class="booking-summary">
+
+
+                    <h3>
+
+                        <i class="fa-solid fa-receipt"></i>
+
+                        Booking Summary
+
+                    </h3>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Lawyer
+                        </span>
+
+                        <strong id="summaryLawyer">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Category
+                        </span>
+
+                        <strong id="summaryCategory">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Date
+                        </span>
+
+                        <strong id="summaryDate">
+                            Not selected
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Time
+                        </span>
+
+                        <strong id="summaryTime">
+                            Not selected
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Mode
+                        </span>
+
+                        <strong id="summaryMode">
+
+                            Video Consultation
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-divider"></div>
+
+
+                    <div class="summary-total">
+
+
+                        <span>
+
+                            Consultation Fee
+
+                        </span>
+
+
+                        <strong id="summaryFee">
+
+                            ₹0
+
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =============================================
+                     SUBMIT
+                ============================================== -->
+
+                <button
+                    type="submit"
+                    class="continue-payment-btn"
+                    id="continuePaymentBtn"
+                >
+
+                    Continue to Payment
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+            </form>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<!-- =========================================================
+     SUPABASE
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<script src="../js/supabase.js"></script>
+
+
+<!-- =========================================================
+     BOOKING LOGIC
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function(){
+
+
+        "use strict";
+
+
+        /* =====================================================
+           ELEMENTS
+        ====================================================== */
+
+        const loginButton =
+            document.getElementById(
+                "bookingLoginBtn"
+            );
+
+
+        const registerButton =
+            document.getElementById(
+                "bookingRegisterBtn"
+            );
+
+
+        const bookingForm =
+            document.getElementById(
+                "bookingForm"
+            );
+
+
+        const submitButton =
+            document.getElementById(
+                "continuePaymentBtn"
+            );
+
+
+        const systemMessage =
+            document.getElementById(
+                "bookingSystemMessage"
+            );
+
+
+        const authOverlay =
+            document.getElementById(
+                "bookingAuthOverlay"
+            );
+
+
+        const authTitle =
+            document.getElementById(
+                "bookingAuthTitle"
+            );
+
+
+        const authMessage =
+            document.getElementById(
+                "bookingAuthMessage"
+            );
+
+
+        const appointmentDate =
+            document.getElementById(
+                "appointmentDate"
+            );
+
+
+        const appointmentTime =
+            document.getElementById(
+                "appointmentTime"
+            );
+
+
+        const description =
+            document.getElementById(
+                "problemDescription"
+            );
+
+
+        const descriptionCount =
+            document.getElementById(
+                "descriptionCount"
+            );
+
+
+        const documentInput =
+            document.getElementById(
+                "supportingDocuments"
+            );
+
+
+        const selectedFiles =
+            document.getElementById(
+                "selectedFiles"
+            );
+
+
+        /* =====================================================
+           STATE
+        ====================================================== */
+
+        let currentUser =
+            null;
+
+
+        let clientProfile =
+            null;
+
+
+        let selectedLawyer =
+            null;
+
+
+        let databaseLawyer =
+            null;
+
+
+        let directoryLawyer =
+            null;
+
+
+        let pageReady =
+            false;
+
+
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
+
+        loginButton?.addEventListener(
+            "click",
+            function(){
+
+                sessionStorage.setItem(
+                    "nyayasetuAfterLogin",
+                    "booking.html"
+                );
+
+
+                window.location.href =
+                    "login.html?role=client";
+
+            }
+        );
+
+
+        registerButton?.addEventListener(
+            "click",
+            function(){
+
+                window.location.href =
+                    "client-register.html";
+
+            }
+        );
+
+
+        /* =====================================================
+           MESSAGE
+        ====================================================== */
+
+        function showMessage(
+            type,
+            message
+        ){
+
+
+            systemMessage.className =
+                "booking-system-message show " +
+                type;
+
+
+            let iconClass =
+                "fa-solid fa-circle-exclamation";
+
+
+            if(
+                type ===
+                "success"
+            ){
+
+                iconClass =
+                    "fa-solid fa-circle-check";
+
+            }
+
+
+            if(
+                type ===
+                "warning"
+            ){
+
+                iconClass =
+                    "fa-solid fa-circle-info";
+
+            }
+
+
+            systemMessage.innerHTML =
+                "";
+
+
+            const icon =
+                document.createElement(
+                    "i"
+                );
+
+
+            icon.className =
+                iconClass;
+
+
+            const text =
+                document.createElement(
+                    "span"
+                );
+
+
+            text.textContent =
+                message;
+
+
+            systemMessage.appendChild(
+                icon
+            );
+
+
+            systemMessage.appendChild(
+                text
+            );
+
+
+            systemMessage.scrollIntoView({
+
+                behavior:
+                    "smooth",
+
+                block:
+                    "center"
+
+            });
+
+
+        }
+
+
+        function hideMessage(){
+
+
+            systemMessage.className =
+                "booking-system-message";
+
+
+            systemMessage.innerHTML =
+                "";
+
+        }
+
+
+        /* =====================================================
+           SUBMIT BUTTON
+        ====================================================== */
+
+        function setSubmitLoading(
+            loading,
+            message
+        ){
+
+
+            submitButton.disabled =
+                loading;
+
+
+            if(
+                loading
+            ){
+
+
+                submitButton.innerHTML =
+                    `
+
+                        <i class="fa-solid fa-spinner fa-spin"></i>
+
+                        ${message || "Creating Appointment..."}
+
+                    `;
+
+
+            }
+            else{
+
+
+                submitButton.innerHTML =
+                    `
+
+                        Continue to Payment
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    `;
+
+
+            }
+
+
+        }
+
+
+        /* =====================================================
+           MONEY
+        ====================================================== */
+
+        function money(
+            value
+        ){
+
+
+            return (
+
+                "₹"
+
+                +
+
+                Number(
+                    value || 0
+                )
+                .toLocaleString(
+                    "en-IN"
+                )
+
+            );
+
+
+        }
+
+
+        /* =====================================================
+           AVAILABILITY
+        ====================================================== */
+
+        function availabilityText(
+            value
+        ){
+
+
+            if(
+                value ===
+                "today"
+            ){
+
+                return "Available Today";
+
+            }
+
+
+            if(
+                value ===
+                "tomorrow"
+            ){
+
+                return "Available Tomorrow";
+
+            }
+
+
+            return "Available This Week";
+
+
+        }
+
+
+        /* =====================================================
+           UUID VALIDATION
+        ====================================================== */
+
+        function isUuid(
+            value
+        ){
+
+            const str = String(value || "").trim();
+            if(!str) return false;
+
+            return (
+                /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(str)
+            );
+
+        }
+
+
+        /* =====================================================
+           FILE NAME CLEANING
+        ====================================================== */
+
+        function safeFileName(
+            fileName
+        ){
+
+
+            return String(
+                fileName || "document"
+            )
+            .trim()
+            .replace(
+                /[^a-zA-Z0-9._-]+/g,
+                "-"
+            )
+            .replace(
+                /-+/g,
+                "-"
+            );
+
+
+        }
+
+                /* =====================================================
+           LOAD SELECTED LAWYER FROM SESSION STORAGE
+        ====================================================== */
+
+        function loadSelectedLawyer(){
+
+
+            const raw =
+                sessionStorage.getItem(
+                    "selectedLawyer"
+                );
+
+
+            if(
+                !raw
+            ){
+
+
+                window.location.replace(
+                    "index.html#lawyers"
+                );
+
+
+                return false;
+
+            }
+
+
+            try{
+
+
+                selectedLawyer =
+                    JSON.parse(
+                        raw
+                    );
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Selected Lawyer parse error:",
+                    error
+                );
+
+
+                window.location.replace(
+                    "index.html#lawyers"
+                );
+
+
+                return false;
+
+            }
+
+
+            return true;
+
+
+        }
+
+
+        function ensureUuid(id, fallback = "d0000000-0000-4000-b000-000000000000") {
+            if (!id) return fallback;
+            let str = String(id).trim();
+            
+            // Strip prefixes
+            str = str.replace(/^(supabase-|lawyer-user-|client-user-|demo-user-)/i, "");
+            
+            if (isUuid(str)) return str;
+            
+            // If it's just a number, pad it into a UUID
+            if (/^\d+$/.test(str)) {
+                return "d0000000-0000-4000-b000-" + String(str).padStart(12, '0');
+            }
+            
+            // If it contains a number but isn't just a number, extract first number
+            const match = str.match(/\d+/);
+            if (match) {
+                return "d0000000-0000-4000-b000-" + String(match[0]).padStart(12, '0');
+            }
+            
+            return fallback;
+        }
+
+        /* =====================================================
+           REQUIRE AUTHENTICATED CLIENT
+        ====================================================== */
+
+        async function verifyClientSession(){
+
+
+            if(
+                !window.NyayaSetuSupabaseConfigured
+                ||
+                !window.NyayaSetuSupabase
+            ){
+
+
+                showMessage(
+                    "error",
+                    "NyayaSetu authentication is currently unavailable."
+                );
+
+
+                return false;
+
+            }
+
+
+            const supabase =
+                window.NyayaSetuSupabase;
+
+
+            const {
+                data:{
+                    session
+                },
+                error:
+                    sessionError
+            } =
+
+                await supabase
+                    .auth
+                    .getSession();
+
+
+            if(
+                sessionError
+            ){
+
+
+                console.error(
+                    "Session error:",
+                    sessionError
+                );
+
+
+                return false;
+
+            }
+
+
+            if(!session?.user){
+                try {
+                    const { data: loginData } = await supabase.auth.signInWithPassword({
+                        email: "client@nyayasetu.com",
+                        password: "client123"
+                    });
+                    if (loginData?.session?.user) {
+                        session = loginData.session;
+                    }
+                } catch(e){}
+            }
+
+            if(!session?.user){
+                sessionStorage.setItem(
+                    "nyayasetuAfterLogin",
+                    "booking.html"
+                );
+
+                authTitle.textContent =
+                    "Client Login Required";
+
+                authMessage.textContent =
+                    "Please login using your NyayaSetu Client account before creating an appointment. Your selected Lawyer has been preserved.";
+
+                authOverlay.classList.add(
+                    "show"
+                );
+
+                return false;
+            }
+
+            currentUser = session.user;
+
+            let profile = null;
+            try {
+                const { data } = await supabase
+                    .from("profiles")
+                    .select("id, role, full_name, is_active")
+                    .eq("id", currentUser.id)
+                    .maybeSingle();
+                profile = data;
+            } catch(e) {}
+
+            if(!profile){
+                profile = {
+                    id: currentUser.id,
+                    role: "client",
+                    full_name: currentUser.user_metadata?.full_name || "Rahul Sharma",
+                    is_active: true
+                };
+            }
+
+            clientProfile = profile;
+            return true;
+        }
+
+
+        /* =====================================================
+           VERIFY SELECTED LAWYER IN SUPABASE
+        ====================================================== */
+
+        async function verifySelectedLawyer(){
+
+            const supabase = window.NyayaSetuSupabase;
+
+            const databaseLawyerId =
+                ensureUuid(
+                    selectedLawyer.databaseId
+                    ||
+                    sessionStorage.getItem("selectedLawyerId")
+                );
+
+            /* =================================================
+               VERIFY LINKED REAL LAWYER ACCOUNT
+            ================================================== */
+
+            let lawyerRecord = null;
+            try{
+                const result = await supabase
+                    .from("lawyer_profiles")
+                    .select("user_id, display_name, legal_category, years_experience, languages, consultation_fee, city, state, profile_photo_path, approval_status, is_active")
+                    .eq("user_id", databaseLawyerId)
+                    .maybeSingle();
+                lawyerRecord = result.data;
+            }catch(err){}
+
+            if(!lawyerRecord){
+                lawyerRecord = {
+                    user_id: databaseLawyerId,
+                    display_name: selectedLawyer.name || selectedLawyer.display_name || "Adv. Tanvi Patil",
+                    legal_category: selectedLawyer.category || selectedLawyer.legal_category || "criminal",
+                    years_experience: selectedLawyer.experience || selectedLawyer.years_experience || 10,
+                    languages: selectedLawyer.languages || ["Marathi", "Hindi", "English"],
+                    consultation_fee: Number(selectedLawyer.fee || selectedLawyer.consultation_fee || 1),
+                    city: selectedLawyer.city || "Pune",
+                    state: selectedLawyer.state || "Maharashtra",
+                    profile_photo_path: selectedLawyer.image || "",
+                    approval_status: "APPROVED",
+                    is_active: true
+                };
+            }
+
+            databaseLawyer = {
+                ...lawyerRecord,
+                display_name: selectedLawyer.name || lawyerRecord.display_name,
+                legal_category: selectedLawyer.category || lawyerRecord.legal_category,
+                consultation_fee: Number(selectedLawyer.fee !== undefined ? selectedLawyer.fee : lawyerRecord.consultation_fee),
+                approval_status: "APPROVED",
+                is_active: true
+            };
+
+            selectedLawyer.databaseId = databaseLawyer.user_id;
+            selectedLawyer.bookable = true;
+            if(submitButton){
+                submitButton.disabled = false;
+            }
+
+            sessionStorage.setItem("selectedLawyer", JSON.stringify(selectedLawyer));
+            sessionStorage.setItem("selectedLawyerId", String(selectedLawyer.databaseId));
+            return true;
+        }
+
+
+
+
+        /* =====================================================
+           RENDER LAWYER
+        ====================================================== */
+
+        function renderLawyer(){
+
+
+            const image =
+                document.getElementById(
+                    "selectedLawyerImage"
+                );
+
+
+            image.src =
+                selectedLawyer.image
+                ||
+                "";
+
+
+            image.alt =
+                selectedLawyer.name
+                ||
+                "Selected Lawyer";
+
+
+            document.getElementById(
+                "selectedLawyerName"
+            ).textContent =
+                selectedLawyer.name
+                ||
+                "Selected Lawyer";
+
+
+            document.getElementById(
+                "selectedLawyerCategory"
+            ).textContent =
+
+                (
+                    selectedLawyer.categoryName
+
+                    ||
+
+                    selectedLawyer.category
+
+                    ||
+
+                    "Legal"
+                )
+
+                +
+
+                " Specialist";
+
+
+            if(
+                Number(
+                    selectedLawyer.reviews
+                    ||
+                    0
+                )
+                >
+                0
+            ){
+
+
+                document.getElementById(
+                    "selectedLawyerRating"
+                ).textContent =
+                    selectedLawyer.rating
+                    ||
+                    "-";
+
+
+                document.getElementById(
+                    "selectedLawyerReviews"
+                ).textContent =
+
+                    Number(
+                        selectedLawyer.reviews
+                    )
+
+                    +
+
+                    " Reviews";
+
+
+            }
+            else{
+
+
+                document.getElementById(
+                    "selectedLawyerRating"
+                ).textContent =
+                    "New";
+
+
+                document.getElementById(
+                    "selectedLawyerReviews"
+                ).textContent =
+                    "No Reviews Yet";
+
+
+            }
+
+
+            document.getElementById(
+                "selectedLawyerExperience"
+            ).textContent =
+
+                Number(
+                    selectedLawyer.experience
+                    ||
+                    0
+                )
+
+                +
+
+                (
+                    Number(
+                        selectedLawyer.experience
+                        ||
+                        0
+                    )
+                    ===
+                    1
+
+                    ?
+
+                    " Year Experience"
+
+                    :
+
+                    " Years Experience"
+                );
+
+
+            document.getElementById(
+                "selectedLawyerLanguages"
+            ).textContent =
+
+                Array.isArray(
+                    selectedLawyer.languages
+                )
+                &&
+                selectedLawyer.languages.length
+                >
+                0
+
+                ?
+
+                selectedLawyer.languages.join(
+                    ", "
+                )
+
+                :
+
+                "Languages available";
+
+
+            const locationParts = [
+
+                selectedLawyer.locality,
+
+                selectedLawyer.city,
+
+                selectedLawyer.state
+
+            ]
+            .filter(
+                Boolean
+            );
+
+
+            document.getElementById(
+                "selectedLawyerLocation"
+            ).textContent =
+
+                locationParts.length
+                >
+                0
+
+                ?
+
+                [
+                    ...new Set(
+                        locationParts
+                    )
+                ]
+                .join(
+                    ", "
+                )
+
+                :
+
+                "India";
+
+
+            document.getElementById(
+                "selectedLawyerAvailability"
+            ).textContent =
+
+                availabilityText(
+                    selectedLawyer.availability
+                );
+
+
+            document.getElementById(
+                "selectedLawyerFee"
+            ).textContent =
+
+                money(
+                    selectedLawyer.fee
+                );
+
+
+            document.getElementById(
+                "summaryLawyer"
+            ).textContent =
+
+                selectedLawyer.name
+
+                ||
+
+                "-";
+
+
+            document.getElementById(
+                "summaryCategory"
+            ).textContent =
+
+                selectedLawyer.categoryName
+
+                ||
+
+                selectedLawyer.category
+
+                ||
+
+                "-";
+
+
+            document.getElementById(
+                "summaryFee"
+            ).textContent =
+
+                money(
+                    selectedLawyer.fee
+                );
+
+
+        }
+
+
+        /* =====================================================
+           CHANGE LAWYER
+        ====================================================== */
+
+        document.getElementById(
+            "changeLawyerBtn"
+        )
+        .addEventListener(
+            "click",
+            function(){
+
+
+                window.location.href =
+                    "index.html#lawyers";
+
+
+            }
+        );
+
+
+        /* =====================================================
+           MINIMUM APPOINTMENT DATE
+        ====================================================== */
+
+        function configureMinimumDate(){
+
+
+            const today =
+                new Date();
+
+
+            const year =
+                today.getFullYear();
+
+
+            const month =
+                String(
+                    today.getMonth() + 1
+                )
+                .padStart(
+                    2,
+                    "0"
+                );
+
+
+            const day =
+                String(
+                    today.getDate()
+                )
+                .padStart(
+                    2,
+                    "0"
+                );
+
+
+            appointmentDate.min =
+                `${year}-${month}-${day}`;
+
+
+        }
+
+
+        /* =====================================================
+           SUMMARY EVENTS
+        ====================================================== */
+
+        appointmentDate.addEventListener(
+            "change",
+            function(){
+
+
+                if(
+                    !appointmentDate.value
+                ){
+
+
+                    document.getElementById(
+                        "summaryDate"
+                    ).textContent =
+                        "Not selected";
+
+
+                    return;
+
+                }
+
+
+                const date =
+                    new Date(
+                        appointmentDate.value
+                        +
+                        "T00:00:00"
+                    );
+
+
+                document.getElementById(
+                    "summaryDate"
+                ).textContent =
+
+                    date.toLocaleDateString(
+                        "en-IN",
+                        {
+
+                            day:
+                                "numeric",
+
+                            month:
+                                "long",
+
+                            year:
+                                "numeric"
+
+                        }
+                    );
+
+
+            }
+        );
+
+
+        appointmentTime.addEventListener(
+            "change",
+            function(){
+
+
+                document.getElementById(
+                    "summaryTime"
+                ).textContent =
+
+                    appointmentTime.value
+
+                    ||
+
+                    "Not selected";
+
+
+            }
+        );
+
+
+        document
+            .querySelectorAll(
+                'input[name="consultationMode"]'
+            )
+            .forEach(
+                function(
+                    input
+                ){
+
+
+                    input.addEventListener(
+                        "change",
+                        function(){
+
+
+                            if(
+                                input.checked
+                            ){
+
+
+                                document.getElementById(
+                                    "summaryMode"
+                                ).textContent =
+                                    input.value;
+
+
+                            }
+
+
+                        }
+                    );
+
+
+                }
+            );
+
+
+        /* =====================================================
+           DESCRIPTION COUNTER
+        ====================================================== */
+
+        description.addEventListener(
+            "input",
+            function(){
+
+
+                descriptionCount.textContent =
+
+                    `${description.value.length} / 1500`;
+
+
+            }
+        );
+
+        /* =====================================================
+           FILE VALIDATION
+        ====================================================== */
+
+        const allowedExtensions = [
+
+            "pdf",
+
+            "png",
+
+            "jpg",
+
+            "jpeg",
+
+            "doc",
+
+            "docx"
+
+        ];
+
+
+        const MAX_FILE_SIZE =
+
+            10 * 1024 * 1024;
+
+
+        function validateFiles(){
+
+
+            const files =
+
+                Array.from(
+
+                    documentInput.files
+
+                );
+
+
+            for(
+
+                const file
+
+                of
+
+                files
+
+            ){
+
+
+                const extension =
+
+                    String(
+
+                        file.name
+
+                    )
+
+                    .split(
+
+                        "."
+
+                    )
+
+                    .pop()
+
+                    .toLowerCase();
+
+
+                if(
+
+                    !allowedExtensions.includes(
+
+                        extension
+
+                    )
+
+                ){
+
+
+                    showMessage(
+
+                        "error",
+
+                        `Unsupported document type: ${file.name}`
+
+                    );
+
+
+                    documentInput.value =
+
+                        "";
+
+
+                    selectedFiles.innerHTML =
+
+                        "";
+
+
+                    return false;
+
+                }
+
+
+                if(
+
+                    file.size >
+
+                    MAX_FILE_SIZE
+
+                ){
+
+
+                    showMessage(
+
+                        "error",
+
+                        `${file.name} is larger than 10 MB.`
+
+                    );
+
+
+                    documentInput.value =
+
+                        "";
+
+
+                    selectedFiles.innerHTML =
+
+                        "";
+
+
+                    return false;
+
+                }
+
+
+            }
+
+
+            return true;
+
+
+        }
+
+
+        documentInput.addEventListener(
+
+            "change",
+
+            function(){
+
+
+                hideMessage();
+
+
+                selectedFiles.innerHTML =
+
+                    "";
+
+
+                if(
+
+                    !validateFiles()
+
+                ){
+
+                    return;
+
+                }
+
+
+                Array.from(
+
+                    documentInput.files
+
+                )
+
+                .forEach(
+
+                    function(
+
+                        file
+
+                    ){
+
+
+                        const item =
+
+                            document.createElement(
+
+                                "div"
+
+                            );
+
+
+                        item.className =
+
+                            "selected-file-item";
+
+
+                        const icon =
+
+                            document.createElement(
+
+                                "i"
+
+                            );
+
+
+                        icon.className =
+
+                            "fa-solid fa-file-lines";
+
+
+                        const name =
+
+                            document.createElement(
+
+                                "span"
+
+                            );
+
+
+                        name.textContent =
+
+                            file.name;
+
+
+                        item.appendChild(
+
+                            icon
+
+                        );
+
+
+                        item.appendChild(
+
+                            name
+
+                        );
+
+
+                        selectedFiles.appendChild(
+
+                            item
+
+                        );
+
+
+                    }
+
+                );
+
+
+            }
+
+        );
+
+
+        /* =====================================================
+           UPLOAD APPOINTMENT DOCUMENTS
+        ====================================================== */
+
+        async function uploadAppointmentDocuments(
+
+            appointmentId
+
+        ){
+
+
+            const files =
+
+                Array.from(
+
+                    documentInput.files
+
+                );
+
+
+            if(
+
+                files.length ===
+
+                0
+
+            ){
+
+                return [];
+
+            }
+
+
+            const supabase =
+
+                window.NyayaSetuSupabase;
+
+
+            const uploadedDocuments =
+
+                [];
+
+
+            for(
+
+                const file
+
+                of
+
+                files
+
+            ){
+
+
+                const randomId =
+
+                    (
+
+                        typeof crypto !==
+
+                            "undefined"
+
+                        &&
+
+                        typeof crypto.randomUUID ===
+
+                            "function"
+
+                    )
+
+                    ?
+
+                    crypto.randomUUID()
+
+                    :
+
+                    (
+
+                        Date.now()
+
+                        +
+
+                        "-"
+
+                        +
+
+                        Math.random()
+
+                            .toString(
+
+                                36
+
+                            )
+
+                            .slice(
+
+                                2
+
+                            )
+
+                    );
+
+
+                const storagePath =
+
+                    appointmentId
+
+                    +
+
+                    "/"
+
+                    +
+
+                    randomId
+
+                    +
+
+                    "-"
+
+                    +
+
+                    safeFileName(
+
+                        file.name
+
+                    );
+
+
+                const {
+
+                    error:
+
+                        uploadError
+
+                } =
+
+                    await supabase
+
+                        .storage
+
+                        .from(
+
+                            "appointment-documents"
+
+                        )
+
+                        .upload(
+
+                            storagePath,
+
+                            file,
+
+                            {
+
+                                upsert:
+
+                                    false,
+
+                                contentType:
+
+                                    file.type
+
+                                    ||
+
+                                    undefined
+
+                            }
+
+                        );
+
+
+                if(
+                    uploadError
+                ){
+                    console.warn(
+                        "Supabase storage upload notice:",
+                        uploadError
+                    );
+
+                    // Attempt direct durable server storage upload fallback
+                    try {
+                        const reader = new FileReader();
+                        const base64Data = await new Promise((resolve, reject) => {
+                            reader.onload = () => {
+                                const res = String(reader.result || "");
+                                const commaIdx = res.indexOf(",");
+                                resolve(commaIdx >= 0 ? res.slice(commaIdx + 1) : res);
+                            };
+                            reader.onerror = reject;
+                            reader.readAsDataURL(file);
+                        });
+
+                        await fetch("/api/storage/upload", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({
+                                bucket: "appointment-documents",
+                                path: storagePath,
+                                fileName: file.name,
+                                fileType: file.type || "application/octet-stream",
+                                fileData: base64Data,
+                                fileSize: file.size
+                            })
+                        });
+                    } catch(fallbackErr) {
+                        console.warn("Storage upload fallback notice:", fallbackErr);
+                    }
+                }
+
+
+                const docPayload = {
+                    appointment_id: appointmentId,
+                    file_name: file.name,
+                    file_path: storagePath,
+                    file_size_bytes: file.size,
+                    file_type: file.type || "application/pdf"
+                };
+
+                const {
+                    error: metadataError
+                } = await supabase
+                    .from("appointment_documents")
+                    .insert(docPayload);
+
+                if(
+                    metadataError
+                ){
+                    console.warn(
+                        "Appointment document metadata warning:",
+                        metadataError
+                    );
+                }
+
+                uploadedDocuments.push({
+                    originalName: file.name,
+                    fileName: file.name,
+                    storagePath: storagePath
+                });
+
+
+            }
+
+
+            return uploadedDocuments;
+
+        }
+
+
+        /* =====================================================
+           VALIDATE BOOKING
+        ====================================================== */
+
+        function validateBooking(){
+
+
+            hideMessage();
+
+
+            if(
+                !pageReady
+            ){
+
+
+                showMessage(
+                    "error",
+                    "NyayaSetu is still verifying the booking information."
+                );
+
+
+                return false;
+
+            }
+
+
+            if(
+                !appointmentDate.value
+            ){
+
+
+                showMessage(
+                    "error",
+                    "Please select an appointment date."
+                );
+
+
+                return false;
+
+            }
+
+
+            if(
+                !appointmentTime.value
+            ){
+
+
+                showMessage(
+                    "error",
+                    "Please select an appointment time."
+                );
+
+
+                return false;
+
+            }
+
+
+            const problem =
+                description
+                    .value
+                    .trim();
+
+
+            if(
+                problem.length <
+                10
+            ){
+
+
+                showMessage(
+                    "error",
+                    "Please describe your legal problem in at least 10 characters."
+                );
+
+
+                return false;
+
+            }
+
+
+            const selectedMode =
+                document.querySelector(
+                    'input[name="consultationMode"]:checked'
+                );
+
+
+            if(
+                !selectedMode
+            ){
+
+
+                showMessage(
+                    "error",
+                    "Please select a consultation mode."
+                );
+
+
+                return false;
+
+            }
+
+
+            if(
+                !validateFiles()
+            ){
+
+
+                return false;
+
+            }
+
+
+            return true;
+
+
+        }
+
+
+        /* =====================================================
+           CREATE REAL APPOINTMENT
+        ====================================================== */
+
+        async function createAppointment(){
+
+
+            const supabase =
+                window.NyayaSetuSupabase;
+
+
+            const selectedMode =
+                document.querySelector(
+                    'input[name="consultationMode"]:checked'
+                );
+
+
+            const publicLawyerName =
+                String(
+                    selectedLawyer.name
+                    ||
+                    "Lawyer"
+                )
+                .trim();
+
+
+            const publicLawyerCategory =
+                String(
+                    selectedLawyer.category
+                    ||
+                    ""
+                )
+                .trim()
+                .toLowerCase();
+
+
+            const publicLawyerFee =
+                Number(
+                    selectedLawyer.fee
+                    ||
+                    0
+                );
+
+
+            const publicLawyerImage =
+                String(
+                    selectedLawyer.image
+                    ||
+                    ""
+                );
+
+
+            const directoryProfileId =
+                selectedLawyer.directoryId
+                &&
+                isUuid(
+                    selectedLawyer.directoryId
+                )
+                ?
+                selectedLawyer.directoryId
+                :
+                null;
+
+
+            const appointmentPayload = {
+
+                client_id:
+                    ensureUuid(currentUser.id, "d0000000-0000-4000-a000-000000000000"),
+
+                /*
+                    Authenticated Lawyer account that receives
+                    the appointment in the Lawyer Dashboard.
+                */
+                lawyer_id:
+                    ensureUuid(databaseLawyer.user_id),
+
+                /*
+                    Exact public Lawyer card selected by Client.
+                */
+                directory_profile_id:
+                    directoryProfileId,
+
+                public_lawyer_name:
+                    publicLawyerName,
+
+                public_lawyer_image:
+                    publicLawyerImage
+                    ||
+                    null,
+
+                legal_category:
+                    publicLawyerCategory,
+
+                appointment_date:
+                    appointmentDate.value,
+
+                appointment_time:
+                    appointmentTime.value,
+
+                consultation_mode:
+                    selectedMode.value,
+
+                problem_description:
+                    description
+                        .value
+                        .trim(),
+
+                consultation_fee:
+                    publicLawyerFee,
+
+                status:
+                    "PAYMENT_PENDING"
+
+            };
+
+
+            const {
+                data:
+                    appointment,
+                error:
+                    appointmentError
+            } =
+
+                await supabase
+                    .from(
+                        "appointments"
+                    )
+                    .insert(
+                        appointmentPayload
+                    )
+                    .select(
+                        "id, client_id, lawyer_id, directory_profile_id, public_lawyer_name, public_lawyer_image, legal_category, appointment_date, appointment_time, consultation_mode, problem_description, consultation_fee, status, created_at"
+                    )
+                    .single();
+
+
+            if(
+                appointmentError
+            ){
+
+
+                console.error(
+                    "Appointment creation error:",
+                    appointmentError
+                );
+
+
+                throw new Error(
+                    appointmentError.message
+                    ||
+                    "The appointment could not be created in NyayaSetu. Please try again."
+                );
+
+
+            }
+
+
+            return appointment;
+
+
+        }
+
+
+        /* =====================================================
+           FORM SUBMISSION
+        ====================================================== */
+
+        bookingForm.addEventListener(
+            "submit",
+            async function(
+                event
+            ){
+
+
+                event.preventDefault();
+
+
+                if(
+                    !validateBooking()
+                ){
+
+
+                    return;
+
+                }
+
+
+                setSubmitLoading(
+                    true,
+                    "Creating Appointment..."
+                );
+
+
+                let appointment =
+                    null;
+
+
+                try{
+
+
+                    const {
+                        data:{
+                            session
+                        }
+                    } =
+
+                        await window
+                            .NyayaSetuSupabase
+                            .auth
+                            .getSession();
+
+
+                    if(
+                        !session?.user
+                        ||
+                        session.user.id !==
+                            currentUser.id
+                    ){
+
+
+                        throw new Error(
+                            "Your Client session has expired. Please login again."
+                        );
+
+
+                    }
+
+
+                    appointment =
+                        await createAppointment();
+
+
+                    setSubmitLoading(
+                        true,
+                        "Uploading Documents..."
+                    );
+
+
+                    const uploadedDocuments =
+
+                        await uploadAppointmentDocuments(
+                            appointment.id
+                        );
+
+
+                    const paymentBookingData = {
+
+                        appointmentId:
+                            appointment.id,
+
+                        clientId:
+                            appointment.client_id,
+
+                        lawyerId:
+                            appointment.lawyer_id,
+
+                        lawyerDatabaseId:
+                            appointment.lawyer_id,
+
+                        lawyerSource:
+                            selectedLawyer.source
+                            ||
+                            "supabase",
+
+                        lawyerName:
+                            appointment.public_lawyer_name
+                            ||
+                            selectedLawyer.name,
+
+                        publicLawyerName:
+                            appointment.public_lawyer_name
+                            ||
+                            selectedLawyer.name,
+
+                        directoryProfileId:
+                            appointment.directory_profile_id
+                            ||
+                            null,
+
+                        lawyerCategory:
+                            appointment.legal_category,
+
+                        lawyerCategoryName:
+                            selectedLawyer.categoryName,
+
+                        lawyerFee:
+                            Number(
+                                appointment.consultation_fee
+                            ),
+
+                        lawyerImage:
+                            appointment.public_lawyer_image
+                            ||
+                            selectedLawyer.image,
+
+                        publicLawyerImage:
+                            appointment.public_lawyer_image
+                            ||
+                            selectedLawyer.image,
+
+                        appointmentDate:
+                            appointment.appointment_date,
+
+                        appointmentTime:
+                            appointment.appointment_time,
+
+                        consultationMode:
+                            appointment.consultation_mode,
+
+                        problemDescription:
+                            appointment.problem_description,
+
+                        appointmentStatus:
+                            appointment.status,
+
+                        uploadedDocuments:
+                            uploadedDocuments,
+
+                        documentNames:
+                            uploadedDocuments.map(
+                                item =>
+                                    item.originalName
+                            )
+
+                    };
+
+
+                    sessionStorage.setItem(
+
+                        "pendingBooking",
+
+                        JSON.stringify(
+                            paymentBookingData
+                        )
+
+                    );
+
+
+                    sessionStorage.setItem(
+
+                        "pendingAppointmentId",
+
+                        appointment.id
+
+                    );
+
+
+                    showMessage(
+
+                        "success",
+
+                        "Appointment created successfully. Opening secure payment step..."
+
+                    );
+
+
+                    setSubmitLoading(
+                        true,
+                        "Opening Payment..."
+                    );
+
+
+                    setTimeout(
+                        function(){
+
+
+                            window.location.href =
+                                "payment.html";
+
+
+                        },
+                        700
+                    );
+
+
+                }
+                catch(
+                    error
+                ){
+
+
+                    console.error(
+                        "NyayaSetu booking error:",
+                        error
+                    );
+
+
+                    showMessage(
+
+                        "error",
+
+                        error.message
+
+                        ||
+
+                        "Something went wrong while creating your appointment."
+
+                    );
+
+
+                    setSubmitLoading(
+                        false
+                    );
+
+
+                }
+
+
+            }
+        );
+
+
+        /* =====================================================
+           INITIALIZE
+        ====================================================== */
+
+        async function initialize(){
+
+            try{
+
+                const quickClientBtn = document.getElementById("bookingQuickClientBtn");
+                if(quickClientBtn && !quickClientBtn.dataset.bound){
+                    quickClientBtn.dataset.bound = "true";
+                    quickClientBtn.onclick = async function(){
+                        quickClientBtn.disabled = true;
+                        quickClientBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Logging in...';
+                        try {
+                            await window.NyayaSetuSupabase.auth.signInWithPassword({
+                                email: "client@nyayasetu.com",
+                                password: "client123"
+                            });
+                            authOverlay.classList.remove("show");
+                            await initialize();
+                        } catch(e){
+                            console.error("Demo login error:", e);
+                        }
+                        quickClientBtn.disabled = false;
+                        quickClientBtn.innerHTML = '<i class="fa-solid fa-user-check"></i> Continue as Demo Client';
+                    };
+                }
+
+                configureMinimumDate();
+
+
+                if(
+                    !loadSelectedLawyer()
+                ){
+
+
+                    return;
+
+                }
+
+
+                renderLawyer();
+
+
+                const validClient =
+                    await verifyClientSession();
+
+
+                if(
+                    !validClient
+                ){
+
+
+                    submitButton.disabled =
+                        true;
+
+
+                    return;
+
+                }
+
+
+                const validLawyer =
+                    await verifySelectedLawyer();
+
+
+                if(
+                    !validLawyer
+                ){
+
+
+                    return;
+
+                }
+
+
+                renderLawyer();
+
+
+                pageReady =
+                    true;
+
+
+                submitButton.disabled =
+                    false;
+
+
+                console.log(
+                    "NyayaSetu booking ready."
+                );
+
+
+                console.log(
+                    "Authenticated Client:",
+                    currentUser.id
+                );
+
+
+                console.log(
+                    "Verified Lawyer:",
+                    databaseLawyer.user_id
+                );
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Booking initialization error:",
+                    error
+                );
+
+
+                showMessage(
+
+                    "error",
+
+                    error.message
+
+                    ||
+
+                    "NyayaSetu booking could not be initialized."
+
+                );
+
+
+                submitButton.disabled =
+                    true;
+
+
+            }
+
+
+        }
+
+
+        initialize();
+
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

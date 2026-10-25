@@ -1,0 +1,7868 @@
+<!DOCTYPE html>
+
+<html lang="en" data-theme="dark">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Admin Dashboard | NyayaSetu
+    </title>
+
+    <script src="../js/theme.js"></script>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/theme.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <style>
+
+        *{
+            box-sizing:border-box;
+        }
+
+        body{
+            margin:0;
+            min-height:100vh;
+            background:#08111b;
+            color:#f4f7fb;
+        }
+
+        button,
+        input,
+        textarea,
+        select{
+            font-family:inherit;
+        }
+
+        /* =====================================================
+                           LAYOUT
+        ====================================================== */
+
+        .admin-page{
+            min-height:100vh;
+            display:flex;
+        }
+
+        .admin-sidebar{
+            width:255px;
+            min-width:255px;
+            min-height:100vh;
+
+            position:fixed;
+            inset:0 auto 0 0;
+
+            display:flex;
+            flex-direction:column;
+
+            background:#0d1723;
+            border-right:1px solid #283646;
+
+            z-index:1000;
+        }
+
+        .admin-content{
+            width:calc(100% - 255px);
+            margin-left:255px;
+            min-height:100vh;
+            padding:28px;
+        }
+
+        /* =====================================================
+                           SIDEBAR
+        ====================================================== */
+
+        .admin-brand{
+            min-height:88px;
+            padding:22px;
+
+            display:flex;
+            align-items:center;
+            gap:13px;
+
+            border-bottom:1px solid #253342;
+        }
+
+        .admin-brand-icon{
+            width:44px;
+            height:44px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            flex-shrink:0;
+
+            border-radius:13px;
+
+            background:rgba(213,163,41,.18);
+            color:#daa720;
+
+            font-size:20px;
+        }
+
+        .admin-brand strong{
+            display:block;
+            font-size:17px;
+            letter-spacing:.2px;
+        }
+
+        .admin-brand small{
+            display:block;
+            margin-top:3px;
+
+            color:#8ea1b5;
+            font-size:12px;
+        }
+
+        .admin-nav-title{
+            padding:24px 20px 9px;
+
+            color:#7690a8;
+
+            font-size:12px;
+            font-weight:700;
+
+            letter-spacing:.7px;
+            text-transform:uppercase;
+        }
+
+        .admin-nav{
+            display:flex;
+            flex-direction:column;
+            gap:5px;
+
+            padding:0 12px;
+        }
+
+        .admin-nav-button{
+            width:100%;
+            min-height:46px;
+
+            display:flex;
+            align-items:center;
+
+            gap:12px;
+
+            padding:0 14px;
+
+            border:0;
+            border-radius:10px;
+
+            background:transparent;
+
+            color:#b9c7d6;
+
+            cursor:pointer;
+
+            text-align:left;
+
+            font-size:14px;
+            font-weight:600;
+
+            transition:.2s ease;
+        }
+
+        .admin-nav-button i{
+            width:18px;
+
+            text-align:center;
+
+            color:#89a0b6;
+        }
+
+        .admin-nav-button:hover{
+            background:#131f2c;
+            color:#ffffff;
+        }
+
+        .admin-nav-button.active{
+            background:rgba(211,160,37,.18);
+            color:#e2b330;
+        }
+
+        .admin-nav-button.active i{
+            color:#e2b330;
+        }
+
+        .admin-sidebar-user{
+            margin:auto 12px 14px;
+            padding:13px;
+
+            border:1px solid #28394a;
+            border-radius:12px;
+
+            background:#111d29;
+        }
+
+        .admin-user-row{
+            display:flex;
+            align-items:center;
+
+            gap:10px;
+
+            margin-bottom:11px;
+        }
+
+        .admin-avatar{
+            width:37px;
+            height:37px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:50%;
+
+            background:rgba(213,163,41,.18);
+            color:#e0ad25;
+
+            flex-shrink:0;
+        }
+
+        .admin-user-copy{
+            min-width:0;
+        }
+
+        .admin-user-copy strong{
+            display:block;
+
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+
+            font-size:13px;
+        }
+
+        .admin-user-copy span{
+            display:block;
+
+            margin-top:3px;
+
+            color:#8195aa;
+
+            font-size:12px;
+
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+
+        .admin-logout{
+            width:100%;
+            min-height:40px;
+
+            border:1px solid #314356;
+            border-radius:8px;
+
+            background:#0b1520;
+
+            color:#d6e0ea;
+
+            cursor:pointer;
+
+            font-size:13px;
+            font-weight:600;
+        }
+
+        /* =====================================================
+                           TOP BAR
+        ====================================================== */
+
+        .admin-topbar{
+            display:flex;
+            align-items:flex-start;
+            justify-content:space-between;
+
+            gap:20px;
+
+            margin-bottom:25px;
+        }
+
+        .admin-eyebrow{
+            display:block;
+            margin-bottom:7px;
+
+            color:#d7a72a;
+
+            font-size:12px;
+            font-weight:800;
+
+            letter-spacing:.6px;
+            text-transform:uppercase;
+        }
+
+        .admin-topbar h1{
+            margin:0;
+
+            font-size:30px;
+            line-height:1.2;
+        }
+
+        .admin-topbar p{
+            margin:7px 0 0;
+
+            color:#8ea0b2;
+
+            font-size:15px;
+        }
+
+        .admin-refresh{
+            min-height:44px;
+            padding:0 16px;
+
+            border:1px solid #304155;
+            border-radius:10px;
+
+            background:#121e2a;
+
+            color:#e6edf4;
+
+            cursor:pointer;
+
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .admin-refresh i{
+            margin-right:6px;
+            color:#e2af29;
+        }
+
+        /* =====================================================
+                           SYSTEM MESSAGE
+        ====================================================== */
+
+        .admin-message{
+            display:none;
+
+            align-items:flex-start;
+
+            gap:10px;
+
+            margin-bottom:20px;
+            padding:13px 15px;
+
+            border-radius:10px;
+
+            font-size:14px;
+            line-height:1.6;
+        }
+
+        .admin-message.show{
+            display:flex;
+        }
+
+        .admin-message.success{
+            color:#44cf91;
+
+            background:rgba(42,177,119,.09);
+
+            border:1px solid rgba(42,177,119,.35);
+        }
+
+        .admin-message.error{
+            color:#ff8e98;
+
+            background:rgba(218,80,92,.09);
+
+            border:1px solid rgba(218,80,92,.35);
+        }
+
+        .admin-message.warning{
+            color:#e4b63c;
+
+            background:rgba(215,167,45,.09);
+
+            border:1px solid rgba(215,167,45,.35);
+        }
+
+        /* =====================================================
+                           SECTIONS
+        ====================================================== */
+
+        .admin-view{
+            display:none;
+        }
+
+        .admin-view.active{
+            display:block;
+        }
+
+        /* =====================================================
+                        KPI CARDS
+        ====================================================== */
+
+        .admin-kpis{
+            display:grid;
+
+            grid-template-columns:
+                repeat(6,minmax(0,1fr));
+
+            gap:13px;
+
+            margin-bottom:20px;
+        }
+
+        .admin-kpi{
+            min-width:0;
+            min-height:150px;
+
+            position:relative;
+            overflow:hidden;
+
+            padding:
+                20px 62px 20px 18px;
+
+            border:
+                1px solid #2b3c4e;
+
+            border-radius:13px;
+
+            background:#131f2c;
+        }
+
+        .admin-kpi::after{
+            content:"";
+
+            width:70px;
+            height:70px;
+
+            position:absolute;
+
+            right:-22px;
+            top:-22px;
+
+            border-radius:50%;
+
+            background:
+                rgba(213,163,41,.04);
+
+            pointer-events:none;
+        }
+
+        .admin-kpi-label{
+            display:block;
+
+            width:100%;
+            min-height:40px;
+
+            margin-bottom:8px;
+
+            color:#9fb2c5;
+
+            font-size:14px !important;
+            font-weight:500;
+
+            line-height:1.4 !important;
+
+            overflow-wrap:break-word;
+            word-break:normal;
+        }
+
+        .admin-kpi-value{
+            display:block;
+
+            color:#ffffff;
+
+            font-size:29px !important;
+            font-weight:700;
+
+            line-height:1.15;
+        }
+
+        /* =====================================================
+           PLATFORM REVENUE — PERMANENT COLLISION FIX
+        ====================================================== */
+
+        .admin-kpi:has(#platformRevenue){
+            padding-right:86px;
+        }
+
+        #platformRevenue{
+            display:block;
+            width:100%;
+            max-width:100%;
+            position:relative;
+            z-index:1;
+            padding-right:4px;
+            font-size:clamp(18px,1.35vw,26px) !important;
+            font-weight:700;
+            line-height:1.15;
+            letter-spacing:-.45px;
+            font-variant-numeric:tabular-nums;
+            white-space:nowrap;
+        }
+
+        .admin-kpi:has(#platformRevenue) .admin-kpi-icon{
+            right:14px;
+            z-index:3;
+        }
+
+        .admin-kpi-foot{
+            display:block;
+
+            margin-top:12px;
+
+            color:#8da2b6;
+
+            font-size:13px !important;
+
+            line-height:1.55 !important;
+        }
+
+        .admin-kpi-icon{
+            width:42px;
+            height:42px;
+
+            position:absolute;
+
+            right:14px;
+            top:14px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:11px;
+
+            color:#dfa91f;
+
+            background:
+                rgba(213,163,41,.15);
+
+            font-size:17px;
+
+            z-index:2;
+        }
+
+        /* =====================================================
+                           PANELS
+        ====================================================== */
+
+        .admin-grid{
+            display:grid;
+
+            grid-template-columns:
+                minmax(0,1.5fr)
+                minmax(320px,.7fr);
+
+            gap:16px;
+
+            align-items:stretch;
+        }
+
+        .admin-panel{
+            border:1px solid #2b3c4e;
+
+            border-radius:14px;
+
+            background:#131f2c;
+
+            overflow:hidden;
+        }
+
+        .admin-grid > div > .admin-panel{
+            height:100%;
+        }
+
+        .admin-panel + .admin-panel{
+            margin-top:16px;
+        }
+
+        .admin-panel-heading{
+            min-height:72px;
+
+            padding:15px 18px;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:space-between;
+
+            gap:12px;
+
+            border-bottom:1px solid #2b3c4e;
+        }
+
+        .admin-panel-title{
+            min-width:0;
+
+            display:flex;
+            align-items:center;
+
+            gap:11px;
+        }
+
+        .admin-panel-icon{
+            width:38px;
+            height:38px;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+            border-radius:10px;
+
+            background:
+                rgba(213,163,41,.15);
+
+            color:#e1ad26;
+
+            flex-shrink:0;
+        }
+
+        .admin-panel-title h2{
+            margin:0;
+
+            font-size:18px;
+
+            line-height:1.35;
+        }
+
+        .admin-panel-title p{
+            margin:4px 0 0;
+
+            color:#8498ac;
+
+            font-size:13px;
+
+            line-height:1.45;
+        }
+
+        .admin-count-badge{
+            min-width:30px;
+            min-height:27px;
+
+            padding:0 8px;
+
+            display:flex;
+
+            align-items:center;
+            justify-content:center;
+
+            flex-shrink:0;
+
+            border-radius:20px;
+
+            background:
+                rgba(213,163,41,.15);
+
+            color:#e2ae25;
+
+            font-size:12px;
+            font-weight:800;
+        }
+
+        /* =====================================================
+                           PAYMENT CARDS
+        ====================================================== */
+
+        .payment-list{
+            padding:14px;
+
+            display:flex;
+            flex-direction:column;
+
+            gap:12px;
+        }
+
+        .admin-payment-card{
+            padding:15px;
+
+            border:1px solid #304154;
+            border-radius:12px;
+
+            background:#0c1621;
+        }
+
+        .payment-card-top{
+            display:flex;
+            justify-content:space-between;
+
+            gap:12px;
+
+            margin-bottom:14px;
+        }
+
+        .payment-code{
+            color:#f4f7fb;
+
+            font-size:15px;
+            font-weight:700;
+        }
+
+        .payment-time{
+            margin-top:4px;
+
+            color:#8195aa;
+
+            font-size:12px;
+        }
+
+        .status-badge{
+            display:inline-flex;
+
+            align-items:center;
+
+            gap:6px;
+
+            min-height:29px;
+
+            padding:0 10px;
+
+            border-radius:20px;
+
+            font-size:12px;
+            font-weight:800;
+
+            white-space:nowrap;
+        }
+
+        .status-pending{
+            background:
+                rgba(213,163,41,.15);
+
+            color:#e4b12c;
+
+            border:
+                1px solid rgba(213,163,41,.25);
+        }
+
+        .status-verified{
+            background:
+                rgba(43,181,118,.12);
+
+            color:#42ce8e;
+
+            border:
+                1px solid rgba(43,181,118,.25);
+        }
+
+        .status-rejected{
+            background:
+                rgba(215,78,91,.12);
+
+            color:#ff8a95;
+
+            border:
+                1px solid rgba(215,78,91,.25);
+        }
+
+        .payment-details-grid{
+            display:grid;
+
+            grid-template-columns:
+                repeat(4,minmax(0,1fr));
+
+            gap:9px;
+
+            margin-bottom:13px;
+        }
+
+        .payment-detail{
+            min-height:68px;
+
+            padding:11px;
+
+            border-radius:9px;
+
+            background:#111d29;
+
+            border:
+                1px solid #28394b;
+        }
+
+        .payment-detail span{
+            display:block;
+
+            margin-bottom:6px;
+
+            color:#7990a6;
+
+            font-size:12px;
+        }
+
+        .payment-detail strong{
+            display:block;
+
+            color:#eef3f7;
+
+            font-size:14px;
+
+            word-break:break-word;
+        }
+
+        .payment-people{
+            display:grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:9px;
+
+            margin-bottom:13px;
+        }
+
+        .person-box{
+            display:flex;
+
+            align-items:center;
+
+            gap:10px;
+
+            min-height:58px;
+
+            padding:10px 12px;
+
+            border-radius:9px;
+
+            background:#111d29;
+
+            border:
+                1px solid #28394b;
+        }
+
+        .person-icon{
+            width:34px;
+            height:34px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:9px;
+
+            background:
+                rgba(213,163,41,.13);
+
+            color:#d9a622;
+
+            flex-shrink:0;
+        }
+
+        .person-box span{
+            display:block;
+
+            color:#7f95aa;
+
+            font-size:12px;
+        }
+
+        .person-box strong{
+            display:block;
+
+            margin-top:3px;
+
+            color:#edf3f8;
+
+            font-size:14px;
+        }
+
+        .payment-actions{
+            display:flex;
+
+            align-items:center;
+
+            gap:8px;
+        }
+
+        .verify-payment-btn,
+        .reject-payment-btn{
+            min-height:40px;
+
+            padding:0 14px;
+
+            border-radius:8px;
+
+            cursor:pointer;
+
+            font-size:13px;
+            font-weight:700;
+        }
+                .verify-payment-btn{
+            border:
+                1px solid rgba(41,179,116,.35);
+
+            background:
+                rgba(41,179,116,.12);
+
+            color:#46d294;
+        }
+
+        .reject-payment-btn{
+            border:
+                1px solid rgba(215,78,91,.35);
+
+            background:
+                rgba(215,78,91,.10);
+
+            color:#ff8b96;
+        }
+
+        .verify-payment-btn:disabled,
+        .reject-payment-btn:disabled{
+            opacity:.55;
+            cursor:not-allowed;
+        }
+
+        /* =====================================================
+                           PAYOUT CARDS
+        ====================================================== */
+
+        .payout-list{
+            padding:14px;
+
+            display:flex;
+            flex-direction:column;
+
+            gap:12px;
+        }
+
+        .admin-payout-card{
+            padding:16px;
+
+            border:
+                1px solid #304154;
+
+            border-radius:12px;
+
+            background:#0c1621;
+        }
+
+        .payout-card-top{
+            display:flex;
+
+            align-items:flex-start;
+            justify-content:space-between;
+
+            gap:12px;
+
+            margin-bottom:14px;
+        }
+
+        .payout-code{
+            color:#f4f7fb;
+
+            font-size:15px;
+            font-weight:700;
+        }
+
+        .payout-time{
+            margin-top:4px;
+
+            color:#8195aa;
+
+            font-size:12px;
+        }
+
+        .payout-details-grid{
+            display:grid;
+
+            grid-template-columns:
+                repeat(4,minmax(0,1fr));
+
+            gap:9px;
+
+            margin-bottom:13px;
+        }
+
+        .payout-detail{
+            min-height:68px;
+
+            padding:11px;
+
+            border-radius:9px;
+
+            background:#111d29;
+
+            border:
+                1px solid #28394b;
+        }
+
+        .payout-detail span{
+            display:block;
+
+            margin-bottom:6px;
+
+            color:#7990a6;
+
+            font-size:12px;
+        }
+
+        .payout-detail strong{
+            display:block;
+
+            color:#eef3f7;
+
+            font-size:14px;
+
+            word-break:break-word;
+        }
+
+        .payout-actions{
+            display:flex;
+
+            align-items:center;
+
+            gap:8px;
+        }
+
+        .release-payout-btn{
+            min-height:40px;
+
+            padding:0 14px;
+
+            border:
+                1px solid rgba(41,179,116,.35);
+
+            border-radius:8px;
+
+            background:
+                rgba(41,179,116,.12);
+
+            color:#46d294;
+
+            cursor:pointer;
+
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .release-payout-btn:disabled{
+            opacity:.55;
+            cursor:not-allowed;
+        }
+
+
+        /* =====================================================
+                           REFUND CARDS
+        ====================================================== */
+
+        .refund-list{
+            padding:14px;
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+        }
+
+        .admin-refund-card{
+            padding:16px;
+            border:1px solid #304154;
+            border-radius:12px;
+            background:#0c1621;
+        }
+
+        .refund-card-top{
+            display:flex;
+            align-items:flex-start;
+            justify-content:space-between;
+            gap:12px;
+            margin-bottom:14px;
+        }
+
+        .refund-code{
+            color:#f4f7fb;
+            font-size:15px;
+            font-weight:700;
+        }
+
+        .refund-time{
+            margin-top:4px;
+            color:#8195aa;
+            font-size:12px;
+        }
+
+        .refund-details-grid{
+            display:grid;
+            grid-template-columns:repeat(4,minmax(0,1fr));
+            gap:9px;
+            margin-bottom:13px;
+        }
+
+        .refund-detail{
+            min-height:68px;
+            padding:11px;
+            border-radius:9px;
+            background:#111d29;
+            border:1px solid #28394b;
+        }
+
+        .refund-detail span{
+            display:block;
+            margin-bottom:6px;
+            color:#7990a6;
+            font-size:12px;
+        }
+
+        .refund-detail strong{
+            display:block;
+            color:#eef3f7;
+            font-size:14px;
+            word-break:break-word;
+        }
+
+        .refund-reason{
+            margin-bottom:13px;
+            padding:12px;
+            border:1px solid #28394b;
+            border-radius:9px;
+            background:#111d29;
+        }
+
+        .refund-reason span{
+            display:block;
+            margin-bottom:6px;
+            color:#7990a6;
+            font-size:12px;
+        }
+
+        .refund-reason strong{
+            display:block;
+            color:#eef3f7;
+            font-size:14px;
+            line-height:1.6;
+        }
+
+        .refund-actions{
+            display:flex;
+            align-items:center;
+            gap:8px;
+        }
+
+        .complete-refund-btn{
+            min-height:40px;
+            padding:0 14px;
+            border:1px solid rgba(41,179,116,.35);
+            border-radius:8px;
+            background:rgba(41,179,116,.12);
+            color:#46d294;
+            cursor:pointer;
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .complete-refund-btn:disabled{
+            opacity:.55;
+            cursor:not-allowed;
+        }
+
+        /* =====================================================
+                           LAWYER CARDS
+        ====================================================== */
+
+        .lawyer-approval-list{
+            padding:14px;
+
+            display:grid;
+
+            grid-template-columns:
+                repeat(2,minmax(0,1fr));
+
+            gap:12px;
+        }
+
+        .admin-lawyer-card{
+            padding:14px;
+
+            border:1px solid #2e4052;
+            border-radius:12px;
+
+            background:#0d1722;
+        }
+
+        .admin-lawyer-top{
+            display:flex;
+
+            align-items:flex-start;
+
+            gap:12px;
+
+            margin-bottom:12px;
+        }
+
+        .admin-lawyer-photo{
+            width:70px;
+            height:70px;
+
+            object-fit:cover;
+
+            border-radius:10px;
+
+            background:#182432;
+
+            flex-shrink:0;
+        }
+
+        .admin-lawyer-name{
+            margin:0 0 4px;
+
+            font-size:16px;
+        }
+
+        .admin-lawyer-category{
+            color:#d9a527;
+
+            font-size:13px;
+            font-weight:700;
+        }
+
+        .admin-lawyer-meta{
+            margin-top:8px;
+
+            color:#8094a8;
+
+            font-size:13px;
+
+            line-height:1.7;
+        }
+
+        .lawyer-actions{
+            display:flex;
+
+            gap:7px;
+        }
+
+        .lawyer-approve-btn,
+        .lawyer-reject-btn{
+            min-height:38px;
+
+            padding:0 12px;
+
+            border-radius:8px;
+
+            font-size:13px;
+            font-weight:700;
+
+            cursor:pointer;
+        }
+
+        .lawyer-approve-btn{
+            color:#45d093;
+
+            background:
+                rgba(42,178,118,.11);
+
+            border:
+                1px solid
+                rgba(42,178,118,.32);
+        }
+
+        .lawyer-reject-btn{
+            color:#ff8c97;
+
+            background:
+                rgba(213,80,91,.10);
+
+            border:
+                1px solid
+                rgba(213,80,91,.32);
+        }
+
+        /* =====================================================
+                           TABLE
+        ====================================================== */
+
+        .admin-table-wrap{
+            overflow:auto;
+        }
+
+        .admin-table{
+            width:100%;
+
+            border-collapse:collapse;
+
+            min-width:850px;
+        }
+
+        .admin-table th{
+            padding:13px 14px;
+
+            text-align:left;
+
+            color:#7890a6;
+
+            background:#101b27;
+
+            border-bottom:
+                1px solid #2b3c4e;
+
+            font-size:12px;
+
+            text-transform:uppercase;
+
+            letter-spacing:.4px;
+        }
+
+        .admin-table td{
+            padding:13px 14px;
+
+            border-bottom:
+                1px solid #243442;
+
+            color:#dbe4ec;
+
+            font-size:14px;
+
+            vertical-align:top;
+
+            line-height:1.5;
+        }
+
+        .admin-table tr:last-child td{
+            border-bottom:0;
+        }
+
+        /* =====================================================
+                           GENERAL EMPTY STATE
+        ====================================================== */
+
+        .admin-empty{
+            padding:45px 20px;
+
+            text-align:center;
+
+            color:#7e93a8;
+        }
+
+        .admin-empty i{
+            display:block;
+
+            margin-bottom:12px;
+
+            color:#d9a527;
+
+            font-size:28px;
+        }
+
+        .admin-empty strong{
+            display:block;
+
+            margin-bottom:7px;
+
+            color:#dbe4ec;
+
+            font-size:15px;
+        }
+
+        .admin-empty span{
+            font-size:13px;
+
+            line-height:1.6;
+        }
+
+        /* =====================================================
+              PENDING LAWYER EMPTY STATE
+        ====================================================== */
+
+        #overviewLawyerList:has(.admin-empty){
+            min-height:360px;
+
+            height:100%;
+
+            padding:20px !important;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+        }
+
+        #overviewLawyerList .admin-empty{
+            width:100%;
+
+            min-height:300px;
+
+            padding:30px 24px;
+
+            display:flex;
+
+            flex-direction:column;
+
+            align-items:center;
+
+            justify-content:center;
+
+            text-align:center;
+        }
+
+        #overviewLawyerList .admin-empty i{
+            display:block;
+
+            margin:0 0 18px;
+
+            color:#d9a527;
+
+            font-size:36px !important;
+
+            text-align:center;
+        }
+
+        #overviewLawyerList .admin-empty strong{
+            display:block;
+
+            width:100%;
+
+            max-width:260px;
+
+            margin:0 auto 10px;
+
+            color:#dbe4ec;
+
+            font-size:17px !important;
+
+            font-weight:700;
+
+            line-height:1.45 !important;
+
+            text-align:center;
+        }
+
+        #overviewLawyerList .admin-empty span{
+            display:block;
+
+            width:100%;
+
+            max-width:260px;
+
+            margin:0 auto;
+
+            color:#8fa4b8;
+
+            font-size:14px !important;
+
+            line-height:1.65 !important;
+
+            text-align:center;
+        }
+
+        /* =====================================================
+                           MODAL
+        ====================================================== */
+
+        .admin-modal{
+            position:fixed;
+
+            inset:0;
+
+            z-index:99999;
+
+            display:none;
+
+            align-items:center;
+
+            justify-content:center;
+
+            padding:24px;
+
+            background:
+                rgba(3,8,13,.84);
+
+            backdrop-filter:
+                blur(7px);
+        }
+
+        .admin-modal.show{
+            display:flex;
+        }
+
+        .admin-modal-card{
+            width:100%;
+
+            max-width:470px;
+
+            padding:22px;
+
+            border:
+                1px solid #304254;
+
+            border-radius:14px;
+
+            background:#121e2a;
+        }
+
+        .admin-modal-card h3{
+            margin:0 0 7px;
+
+            font-size:20px;
+        }
+
+        .admin-modal-card p{
+            margin:0 0 16px;
+
+            color:#8498ac;
+
+            font-size:14px;
+
+            line-height:1.6;
+        }
+
+        .admin-modal-card textarea{
+            width:100%;
+
+            min-height:110px;
+
+            resize:vertical;
+
+            padding:12px;
+
+            border:
+                1px solid #35475a;
+
+            border-radius:9px;
+
+            outline:none;
+
+            background:#0a141f;
+
+            color:#eef3f7;
+
+            font-size:14px;
+        }
+
+        .admin-modal-card textarea:focus{
+            border-color:#d8a526;
+        }
+
+        .admin-modal-actions{
+            display:flex;
+
+            justify-content:flex-end;
+
+            gap:8px;
+
+            margin-top:14px;
+        }
+
+        .modal-cancel{
+            min-height:38px;
+
+            padding:0 13px;
+
+            border:
+                1px solid #344658;
+
+            border-radius:8px;
+
+            background:#0c1722;
+
+            color:#c7d2dc;
+
+            cursor:pointer;
+
+            font-size:13px;
+        }
+
+        .modal-confirm{
+            min-height:38px;
+
+            padding:0 13px;
+
+            border:
+                1px solid
+                rgba(216,82,93,.35);
+
+            border-radius:8px;
+
+            background:
+                rgba(216,82,93,.12);
+
+            color:#ff8d98;
+
+            cursor:pointer;
+
+            font-size:13px;
+
+            font-weight:700;
+        }
+
+        /* =====================================================
+                           LOADER
+        ====================================================== */
+
+        .admin-loading{
+            position:fixed;
+
+            inset:0;
+
+            z-index:999999;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            background:#08111b;
+        }
+
+        .admin-loading.hidden{
+            display:none;
+        }
+
+        .admin-loading-box{
+            text-align:center;
+        }
+
+        .admin-loading-box i{
+            margin-bottom:12px;
+
+            color:#d9a527;
+
+            font-size:32px;
+        }
+
+        .admin-loading-box strong{
+            display:block;
+
+            font-size:16px;
+        }
+
+        .admin-loading-box span{
+            display:block;
+
+            margin-top:6px;
+
+            color:#7e93a8;
+
+            font-size:13px;
+        }
+
+        /* =====================================================
+                           RESPONSIVE
+        ====================================================== */
+
+        @media(max-width:1300px){
+
+            .admin-kpis{
+                grid-template-columns:
+                    repeat(3,1fr);
+            }
+
+            .payment-details-grid,
+            .payout-details-grid,
+            .refund-details-grid{
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+        }
+
+        @media(max-width:950px){
+
+            .admin-sidebar{
+                width:205px;
+
+                min-width:205px;
+            }
+
+            .admin-content{
+                width:
+                    calc(100% - 205px);
+
+                margin-left:205px;
+
+                padding:20px;
+            }
+
+            .admin-grid{
+                grid-template-columns:1fr;
+            }
+
+            .lawyer-approval-list{
+                grid-template-columns:1fr;
+            }
+
+            #overviewLawyerList:has(.admin-empty){
+                min-height:300px;
+            }
+
+            #overviewLawyerList .admin-empty{
+                                min-height:250px;
+            }
+
+        }
+
+        @media(max-width:720px){
+
+            .admin-kpis{
+                grid-template-columns:1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div
+    class="admin-loading"
+    id="adminLoading"
+>
+
+    <div class="admin-loading-box">
+
+        <i class="fa-solid fa-spinner fa-spin"></i>
+
+        <strong>
+            Loading NyayaSetu Admin Portal
+        </strong>
+
+        <span>
+            Verifying administrator access...
+        </span>
+
+    </div>
+
+</div>
+
+
+<div class="admin-page">
+
+
+    <aside class="admin-sidebar">
+
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+
+                <i class="fa-solid fa-scale-balanced"></i>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    NYAYSETU
+                </strong>
+
+                <small>
+                    Administration Portal
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-nav-title">
+            Admin Area
+        </div>
+
+
+        <nav class="admin-nav">
+
+
+            <button
+                type="button"
+                class="admin-nav-button active"
+                data-view="overview"
+            >
+
+                <i class="fa-solid fa-house"></i>
+
+                Overview
+
+            </button>
+
+
+            <button
+                type="button"
+                class="admin-nav-button"
+                data-view="payments"
+            >
+
+                <i class="fa-solid fa-wallet"></i>
+
+                Payment Verification
+
+            </button>
+
+
+            <button
+                type="button"
+                class="admin-nav-button"
+                data-view="payouts"
+            >
+
+                <i class="fa-solid fa-money-bill-transfer"></i>
+
+                Lawyer Payouts
+
+            </button>
+
+
+            <button
+                type="button"
+                class="admin-nav-button"
+                data-view="refunds"
+            >
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                Refunds
+
+            </button>
+
+
+            <button
+                type="button"
+                class="admin-nav-button"
+                data-view="lawyers"
+            >
+
+                <i class="fa-solid fa-user-tie"></i>
+
+                Lawyer Approvals
+
+            </button>
+
+
+            <button
+                type="button"
+                class="admin-nav-button"
+                data-view="appointments"
+            >
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                Appointments
+
+            </button>
+
+
+            <button
+                type="button"
+                class="admin-nav-button"
+                data-view="receipts"
+            >
+
+                <i class="fa-solid fa-receipt"></i>
+
+                Receipts
+
+            </button>
+
+
+            <button
+                type="button"
+                class="admin-nav-button"
+                onclick="window.location.href='index.html'"
+            >
+
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                View Website
+
+            </button>
+
+
+        </nav>
+
+
+        <div class="admin-sidebar-user">
+
+
+            <div class="admin-user-row">
+
+                <div class="admin-avatar">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                </div>
+
+                <div class="admin-user-copy">
+
+                    <strong id="adminUserName">
+                        Administrator
+                    </strong>
+
+                    <span id="adminUserEmail">
+                        -
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-logout"
+                id="adminLogout"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+
+
+    <main class="admin-content">
+
+
+        <div class="admin-topbar">
+
+
+            <div>
+
+                <span class="admin-eyebrow">
+                    Administration
+                </span>
+
+                <h1 id="adminPageTitle">
+                    Dashboard
+                </h1>
+
+                <p id="adminPageDescription">
+                    Monitor lawyers, payments, appointments and platform activity.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="admin-refresh"
+                id="adminRefresh"
+            >
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh Data
+
+            </button>
+
+
+        </div>
+
+
+        <div
+            class="admin-message"
+            id="adminMessage"
+        ></div>
+
+
+        <!-- =================================================
+                             OVERVIEW
+        ================================================== -->
+
+        <section
+            class="admin-view active"
+            id="view-overview"
+        >
+
+
+            <div class="admin-kpis">
+
+
+                <article class="admin-kpi">
+
+                    <span class="admin-kpi-label">
+                        Total Clients
+                    </span>
+
+                    <strong
+                        class="admin-kpi-value"
+                        id="totalClients"
+                    >
+                        0
+                    </strong>
+
+                    <span class="admin-kpi-foot">
+                        Registered client accounts
+                    </span>
+
+                    <div class="admin-kpi-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="admin-kpi">
+
+                    <span class="admin-kpi-label">
+                        Approved Lawyers
+                    </span>
+
+                    <strong
+                        class="admin-kpi-value"
+                        id="totalLawyers"
+                    >
+                        0
+                    </strong>
+
+                    <span class="admin-kpi-foot">
+                        Active verified lawyers
+                    </span>
+
+                    <div class="admin-kpi-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="admin-kpi">
+
+                    <span class="admin-kpi-label">
+                        Platform Revenue
+                    </span>
+
+                    <strong
+                        class="admin-kpi-value"
+                        id="platformRevenue"
+                    >
+                        ₹0
+                    </strong>
+
+                    <span class="admin-kpi-foot">
+                        Verified platform fee
+                    </span>
+
+                    <div class="admin-kpi-icon">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="admin-kpi">
+
+                    <span class="admin-kpi-label">
+                        Appointments
+                    </span>
+
+                    <strong
+                        class="admin-kpi-value"
+                        id="totalAppointments"
+                    >
+                        0
+                    </strong>
+
+                    <span class="admin-kpi-foot">
+                        Total consultation requests
+                    </span>
+
+                    <div class="admin-kpi-icon">
+                        <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="admin-kpi">
+
+                    <span class="admin-kpi-label">
+                        Pending Lawyers
+                    </span>
+
+                    <strong
+                        class="admin-kpi-value"
+                        id="pendingLawyerCount"
+                    >
+                        0
+                    </strong>
+
+                    <span class="admin-kpi-foot">
+                        Awaiting Admin review
+                    </span>
+
+                    <div class="admin-kpi-icon">
+                        <i class="fa-solid fa-user-clock"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="admin-kpi">
+
+                    <span class="admin-kpi-label">
+                        Pending Payments
+                    </span>
+
+                    <strong
+                        class="admin-kpi-value"
+                        id="pendingPaymentCount"
+                    >
+                        0
+                    </strong>
+
+                    <span class="admin-kpi-foot">
+                        Awaiting payment verification
+                    </span>
+
+                    <div class="admin-kpi-icon">
+                        <i class="fa-solid fa-hourglass-half"></i>
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <div class="admin-grid">
+
+
+                <div>
+
+
+                    <section class="admin-panel">
+
+
+                        <div class="admin-panel-heading">
+
+                            <div class="admin-panel-title">
+
+                                <div class="admin-panel-icon">
+                                    <i class="fa-solid fa-wallet"></i>
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Pending Payment Verifications
+                                    </h2>
+
+                                    <p>
+                                        Client-submitted UTR records waiting for Admin review
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="admin-count-badge"
+                                id="overviewPaymentCount"
+                            >
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="payment-list"
+                            id="overviewPaymentList"
+                        ></div>
+
+
+                    </section>
+
+
+                </div>
+
+
+                <div>
+
+
+                    <section class="admin-panel">
+
+
+                        <div class="admin-panel-heading">
+
+                            <div class="admin-panel-title">
+
+                                <div class="admin-panel-icon">
+                                    <i class="fa-solid fa-user-clock"></i>
+                                </div>
+
+                                <div>
+
+                                    <h2>
+                                        Pending Lawyer Approvals
+                                    </h2>
+
+                                    <p>
+                                        Registrations requiring Admin action
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="admin-count-badge"
+                                id="overviewLawyerCount"
+                            >
+                                0
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="lawyer-approval-list"
+                            id="overviewLawyerList"
+                        ></div>
+
+
+                    </section>
+
+
+                </div>
+
+
+            </div>
+
+
+            <section
+                class="admin-panel"
+                style="margin-top:16px;"
+            >
+
+
+                <div class="admin-panel-heading">
+
+
+                    <div class="admin-panel-title">
+
+
+                        <div class="admin-panel-icon">
+
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Pending Lawyer Payouts
+                            </h2>
+
+                            <p>
+                                Completed and reviewed consultations waiting for Admin payout release
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <span
+                        class="admin-count-badge"
+                        id="overviewPayoutCount"
+                    >
+                        0
+                    </span>
+
+
+                </div>
+
+
+                <div
+                    class="payout-list"
+                    id="overviewPayoutList"
+                ></div>
+
+
+            </section>
+
+
+            <section
+                class="admin-panel"
+                style="margin-top:16px;"
+            >
+
+                <div class="admin-panel-heading">
+
+                    <div class="admin-panel-title">
+
+                        <div class="admin-panel-icon">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Pending Refunds
+                            </h2>
+
+                            <p>
+                                Full client refunds waiting for Admin completion
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <span
+                        class="admin-count-badge"
+                        id="overviewRefundCount"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="refund-list"
+                    id="overviewRefundList"
+                ></div>
+
+
+            </section>
+
+
+        </section>
+
+
+        <!-- =================================================
+                             PAYMENTS
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="view-payments"
+        >
+
+
+            <section class="admin-panel">
+
+
+                <div class="admin-panel-heading">
+
+                    <div class="admin-panel-title">
+
+                        <div class="admin-panel-icon">
+                            <i class="fa-solid fa-money-check-dollar"></i>
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Payment Verification Queue
+                            </h2>
+
+                            <p>
+                                Review UTR details and verify or reject client payment submissions
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <span
+                        class="admin-count-badge"
+                        id="paymentPageCount"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="payment-list"
+                    id="paymentPageList"
+                ></div>
+
+
+            </section>
+
+
+        </section>
+
+
+        <!-- =================================================
+                             PAYOUTS
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="view-payouts"
+        >
+
+
+            <section class="admin-panel">
+
+
+                <div class="admin-panel-heading">
+
+
+                    <div class="admin-panel-title">
+
+
+                        <div class="admin-panel-icon">
+
+                            <i class="fa-solid fa-money-bill-transfer"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Lawyer Payout Queue
+                            </h2>
+
+                            <p>
+                                Release the Lawyer's 90% share after consultation completion and Client review
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <span
+                        class="admin-count-badge"
+                        id="payoutPageCount"
+                    >
+                        0
+                    </span>
+
+
+                </div>
+
+
+                <div
+                    class="payout-list"
+                    id="payoutPageList"
+                ></div>
+
+
+            </section>
+
+
+        </section>
+                <!-- =================================================
+                             REFUNDS
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="view-refunds"
+        >
+
+            <section class="admin-panel">
+
+                <div class="admin-panel-heading">
+
+                    <div class="admin-panel-title">
+
+                        <div class="admin-panel-icon">
+                            <i class="fa-solid fa-money-bill-wave"></i>
+                        </div>
+
+                        <div>
+                            <h2>Refund Queue</h2>
+                            <p>Complete full refunds created after Lawyer rejection of verified paid appointments</p>
+                        </div>
+
+                    </div>
+
+                    <span
+                        class="admin-count-badge"
+                        id="refundPageCount"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+                <div
+                    class="refund-list"
+                    id="refundPageList"
+                ></div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =================================================
+                             LAWYERS
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="view-lawyers"
+        >
+
+
+            <section class="admin-panel">
+
+
+                <div class="admin-panel-heading">
+
+                    <div class="admin-panel-title">
+
+                        <div class="admin-panel-icon">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Lawyer Approval Requests
+                            </h2>
+
+                            <p>
+                                Approve or reject pending professional registrations
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <span
+                        class="admin-count-badge"
+                        id="lawyerPageCount"
+                    >
+                        0
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="lawyer-approval-list"
+                    id="lawyerPageList"
+                ></div>
+
+
+            </section>
+
+
+        </section>
+
+
+        <!-- =================================================
+                         APPOINTMENTS
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="view-appointments"
+        >
+
+
+            <section class="admin-panel">
+
+
+                <div class="admin-panel-heading">
+
+                    <div class="admin-panel-title">
+
+                        <div class="admin-panel-icon">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Appointment Records
+                            </h2>
+
+                            <p>
+                                Administrative appointment status overview
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-table-wrap">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Appointment
+                                </th>
+
+                                <th>
+                                    Client
+                                </th>
+
+                                <th>
+                                    Lawyer
+                                </th>
+
+                                <th>
+                                    Date / Time
+                                </th>
+
+                                <th>
+                                    Fee
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="appointmentsTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+        <!-- =================================================
+                            RECEIPTS
+        ================================================== -->
+
+        <section
+            class="admin-view"
+            id="view-receipts"
+        >
+
+
+            <section class="admin-panel">
+
+
+                <div class="admin-panel-heading">
+
+                    <div class="admin-panel-title">
+
+                        <div class="admin-panel-icon">
+                            <i class="fa-solid fa-receipt"></i>
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                Verified Payment Receipts
+                            </h2>
+
+                            <p>
+                                Receipt records issued after Admin payment verification
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-table-wrap">
+
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Receipt
+                                </th>
+
+                                <th>
+                                    Payment
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                    Platform 10%
+                                </th>
+
+                                <th>
+                                    Lawyer 90%
+                                </th>
+
+                                <th>
+                                    Issued
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="receiptsTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- =========================================================
+                PAYMENT REJECTION MODAL
+========================================================= -->
+
+<div
+    class="admin-modal"
+    id="paymentRejectModal"
+>
+
+    <div class="admin-modal-card">
+
+        <h3>
+            Reject Payment Verification
+        </h3>
+
+        <p>
+            Enter the reason this transaction could not be verified.
+            The Client will receive this reason and can submit the
+            payment transaction again.
+        </p>
+
+        <textarea
+            id="paymentRejectReason"
+            placeholder="Example: UTR could not be matched with the submitted payment amount."
+        ></textarea>
+
+        <div class="admin-modal-actions">
+
+            <button
+                type="button"
+                class="modal-cancel"
+                id="paymentRejectCancel"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="modal-confirm"
+                id="paymentRejectConfirm"
+            >
+                Reject Payment
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+                LAWYER REJECTION MODAL
+========================================================= -->
+
+<div
+    class="admin-modal"
+    id="lawyerRejectModal"
+>
+
+    <div class="admin-modal-card">
+
+        <h3>
+            Reject Lawyer Registration
+        </h3>
+
+        <p>
+            Provide a reason for rejecting this Lawyer application.
+        </p>
+
+        <textarea
+            id="lawyerRejectReason"
+            placeholder="Enter rejection reason..."
+        ></textarea>
+
+        <div class="admin-modal-actions">
+
+            <button
+                type="button"
+                class="modal-cancel"
+                id="lawyerRejectCancel"
+            >
+                Cancel
+            </button>
+
+            <button
+                type="button"
+                class="modal-confirm"
+                id="lawyerRejectConfirm"
+            >
+                Reject Lawyer
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+                         SUPABASE
+========================================================= -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+<script src="../js/supabase.js"></script>
+
+
+<!-- =========================================================
+                      ADMIN JAVASCRIPT
+========================================================= -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    async function(){
+
+
+        "use strict";
+
+
+        const supabase =
+            window.NyayaSetuSupabase;
+
+
+       const NYAYASETU_BACKEND_URL =
+    window.NYAYASETU_BACKEND_URL
+    ||
+    (
+        window.location.protocol === "file:"
+        ||
+        ["localhost", "127.0.0.1"].includes(
+            window.location.hostname
+        )
+        ?
+        "http://localhost:3000"
+        :
+        ""
+    );
+
+
+        const loading =
+            document.getElementById(
+                "adminLoading"
+            );
+
+
+        const messageBox =
+            document.getElementById(
+                "adminMessage"
+            );
+
+
+        const refreshButton =
+            document.getElementById(
+                "adminRefresh"
+            );
+
+
+        const logoutButton =
+            document.getElementById(
+                "adminLogout"
+            );
+
+
+        const pageTitle =
+            document.getElementById(
+                "adminPageTitle"
+            );
+
+
+        const pageDescription =
+            document.getElementById(
+                "adminPageDescription"
+            );
+
+
+        const paymentRejectModal =
+            document.getElementById(
+                "paymentRejectModal"
+            );
+
+
+        const paymentRejectReason =
+            document.getElementById(
+                "paymentRejectReason"
+            );
+
+
+        const lawyerRejectModal =
+            document.getElementById(
+                "lawyerRejectModal"
+            );
+
+
+        const lawyerRejectReason =
+            document.getElementById(
+                "lawyerRejectReason"
+            );
+
+
+        let currentAdmin =
+            null;
+
+
+        let profiles =
+            [];
+
+
+        let lawyers =
+            [];
+
+
+        let appointments =
+            [];
+
+
+        let payments =
+            [];
+
+
+        let receipts =
+            [];
+
+
+        let payouts =
+            [];
+
+
+        let refunds =
+            [];
+
+
+        let selectedPaymentForRejection =
+            null;
+
+
+        let selectedLawyerForRejection =
+            null;
+
+
+        let realtimeChannel =
+            null;
+
+
+        let realtimeRefreshTimer =
+            null;
+
+
+        let realtimeRefreshPromise =
+            null;
+
+
+        const viewMeta = {
+
+
+            overview:{
+
+                title:
+                    "Dashboard",
+
+                description:
+                    "Monitor lawyers, payments, appointments and platform activity."
+
+            },
+
+
+            payments:{
+
+                title:
+                    "Payment Verification",
+
+                description:
+                    "Verify or reject client-submitted payment transactions."
+
+            },
+
+
+            payouts:{
+
+                title:
+                    "Lawyer Payouts",
+
+                description:
+                    "Release pending Lawyer payouts after completed and reviewed consultations."
+
+            },
+
+
+            refunds:{
+
+                title:
+                    "Refunds",
+
+                description:
+                    "Complete full Client refunds created after Lawyer rejection."
+
+            },
+
+
+            lawyers:{
+
+                title:
+                    "Lawyer Approvals",
+
+                description:
+                    "Review new Lawyer applications before public listing."
+
+            },
+
+
+            appointments:{
+
+                title:
+                    "Appointments",
+
+                description:
+                    "Monitor consultation requests and workflow status."
+
+            },
+
+
+            receipts:{
+
+                title:
+                    "Receipts",
+
+                description:
+                    "View receipt records issued after verified payments."
+
+            }
+
+
+        };
+
+
+        /* =====================================================
+                           UTILITIES
+        ====================================================== */
+
+        function money(
+            value
+        ){
+
+
+            return (
+
+                "₹"
+
+                +
+
+                Number(
+                    value
+                    ||
+                    0
+                )
+                .toLocaleString(
+                    "en-IN",
+                    {
+                        maximumFractionDigits:2
+                    }
+                )
+
+            );
+
+
+        }
+
+
+        function dateTime(
+            value
+        ){
+
+
+            if(
+                !value
+            ){
+
+                return "-";
+
+            }
+
+
+            const date =
+                new Date(
+                    value
+                );
+
+
+            return date.toLocaleString(
+                "en-IN",
+                {
+                    dateStyle:"medium",
+                    timeStyle:"short"
+                }
+            );
+
+
+        }
+
+
+        function escapeHtml(
+            value
+        ){
+
+
+            return String(
+                value
+                ??
+                ""
+            )
+            .replaceAll(
+                "&",
+                "&amp;"
+            )
+            .replaceAll(
+                "<",
+                "&lt;"
+            )
+            .replaceAll(
+                ">",
+                "&gt;"
+            )
+            .replaceAll(
+                '"',
+                "&quot;"
+            )
+            .replaceAll(
+                "'",
+                "&#039;"
+            );
+
+
+        }
+
+
+        function showMessage(
+            type,
+            message
+        ){
+
+
+            messageBox.className =
+                "admin-message show "
+                +
+                type;
+
+
+            const icon =
+
+                type ===
+                "success"
+
+                ?
+
+                "fa-circle-check"
+
+                :
+
+                type ===
+                "warning"
+
+                ?
+
+                "fa-circle-info"
+
+                :
+
+                "fa-circle-exclamation";
+
+
+            messageBox.innerHTML =
+
+                `
+
+                    <i class="fa-solid ${icon}"></i>
+
+                    <span>
+                        ${escapeHtml(message)}
+                    </span>
+
+                `;
+
+
+        }
+
+
+        function hideMessage(){
+
+
+            messageBox.className =
+                "admin-message";
+
+
+            messageBox.innerHTML =
+                "";
+
+
+        }
+
+
+        /* =====================================================
+                           AUTH
+        ====================================================== */
+
+        async function verifyAdmin(){
+
+
+            if(
+                !supabase
+            ){
+
+
+                throw new Error(
+                    "Supabase connection is unavailable."
+                );
+
+
+            }
+
+
+            const {
+                data:{
+                    session
+                },
+                error:
+                    sessionError
+            } =
+
+                await supabase
+                    .auth
+                    .getSession();
+
+
+            if(
+                sessionError
+            ){
+
+                throw sessionError;
+
+            }
+
+
+            if(
+                !session?.user
+            ){
+
+
+                window.location.replace(
+                    "login.html"
+                );
+
+
+                return false;
+
+            }
+
+
+            const user =
+                session.user;
+
+
+            const {
+                data:
+                    profile,
+                error:
+                    profileError
+            } =
+
+                await supabase
+                    .from(
+                        "profiles"
+                    )
+                    .select(
+                        "id, role, full_name, is_active"
+                    )
+                    .eq(
+                        "id",
+                        user.id
+                    )
+                    .maybeSingle();
+
+
+            if(
+                profileError
+            ){
+
+                throw profileError;
+
+            }
+
+
+            if(
+                !profile
+                ||
+                profile.role !==
+                    "admin"
+                ||
+                profile.is_active ===
+                    false
+            ){
+
+
+                await supabase
+                    .auth
+                    .signOut();
+
+
+                window.location.replace(
+                    "login.html"
+                );
+
+
+                return false;
+                
+                return false;
+
+            }
+
+
+            currentAdmin = {
+
+                id:
+                    user.id,
+
+                email:
+                    user.email,
+
+                fullName:
+                    profile.full_name
+                    ||
+                    "NyayaSetu Administrator"
+
+            };
+
+
+            document.getElementById(
+                "adminUserName"
+            ).textContent =
+                currentAdmin.fullName;
+
+
+            document.getElementById(
+                "adminUserEmail"
+            ).textContent =
+                currentAdmin.email
+                ||
+                "";
+
+
+            return true;
+
+
+        }
+
+
+        /* =====================================================
+                         LOAD PROFILES
+        ====================================================== */
+
+        async function loadProfiles(){
+
+
+            const {
+                data,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "profiles"
+                    )
+                    .select(
+                        "id, role, full_name, phone, city, state, is_active, created_at"
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            profiles =
+                data
+                ||
+                [];
+
+
+        }
+
+
+        /* =====================================================
+                         LOAD LAWYERS
+        ====================================================== */
+
+        async function loadLawyers(){
+
+
+            const {
+                data,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "lawyer_profiles"
+                    )
+                    .select(
+                        "user_id, display_name, legal_category, years_experience, languages, consultation_fee, city, state, profile_photo_path, approval_status, rejection_reason, approved_at, rejected_at, is_active, created_at"
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            lawyers =
+                data
+                ||
+                [];
+
+
+        }
+
+
+        /* =====================================================
+                       LOAD APPOINTMENTS
+        ====================================================== */
+
+        async function loadAppointments(){
+
+
+            const {
+                data,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "appointments"
+                    )
+                    .select(
+                        "id, client_id, lawyer_id, directory_profile_id, public_lawyer_name, public_lawyer_image, legal_category, appointment_date, appointment_time, consultation_mode, consultation_fee, status, created_at, updated_at"
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            appointments =
+                data
+                ||
+                [];
+
+
+        }
+
+
+        /* =====================================================
+                        LOAD PAYMENTS
+        ====================================================== */
+
+        async function loadPayments(){
+
+
+            const {
+                data,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "payments"
+                    )
+                    .select("*")
+                    .order(
+                        "created_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            payments = (data || []).map(p => ({
+                ...p,
+                payment_status: p.payment_status === "PENDING_VERIFICATION" ? "PAYMENT_VERIFIED" : (p.payment_status || "PAYMENT_VERIFIED"),
+                payment_code: p.transaction_id || p.id,
+                upi_transaction_id: p.transaction_id || p.upi_id,
+                expected_amount: p.total_amount,
+                submitted_at: p.created_at
+            }));
+
+
+        }
+
+
+        /* =====================================================
+                         LOAD RECEIPTS
+        ====================================================== */
+
+        async function loadReceipts(){
+
+
+            const {
+                data,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "receipts"
+                    )
+                    .select(
+                        "id, receipt_number, payment_id, appointment_id, client_id, lawyer_id, public_lawyer_name, total_amount, platform_fee, lawyer_amount, payment_method, payment_status, pdf_path, issued_at"
+                    )
+                    .order(
+                        "issued_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            receipts =
+                data
+                ||
+                [];
+
+
+        }
+
+
+        /* =====================================================
+                         LOAD PAYOUTS
+        ====================================================== */
+
+        async function loadPayouts(){
+
+
+            const {
+                data,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "payouts"
+                    )
+                    .select(
+                        "id, payment_id, appointment_id, lawyer_id, amount, status, released_by, created_at, released_at"
+                    )
+                    .order(
+                        "created_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            payouts =
+                data
+                ||
+                [];
+
+
+        }
+
+
+        /* =====================================================
+                         LOAD ALL
+        ====================================================== */
+
+
+        async function loadRefunds(){
+
+
+            const {
+                data,
+                error
+            } =
+
+                await supabase
+                    .from(
+                        "refunds"
+                    )
+                    .select(
+                        "id, payment_id, appointment_id, client_id, amount, reason, status, initiated_by, initiated_at, completed_at"
+                    )
+                    .order(
+                        "initiated_at",
+                        {
+                            ascending:false
+                        }
+                    );
+
+
+            if(
+                error
+            ){
+
+                throw error;
+
+            }
+
+
+            refunds =
+                data
+                ||
+                [];
+
+
+        }
+
+
+        async function loadAllData(){
+
+
+            hideMessage();
+
+
+            refreshButton.disabled =
+                true;
+
+
+            refreshButton.innerHTML =
+                `
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Refreshing
+
+                `;
+
+
+            try{
+
+
+                await Promise.all([
+
+                    loadProfiles(),
+
+                    loadLawyers(),
+
+                    loadAppointments(),
+
+                    loadPayments(),
+
+                    loadReceipts(),
+
+                    loadPayouts(),
+
+                    loadRefunds()
+
+                ]);
+
+
+                renderAll();
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Admin data loading error:",
+                    error
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "Admin data could not be loaded."
+                );
+
+
+            }
+            finally{
+
+
+                refreshButton.disabled =
+                    false;
+
+
+                refreshButton.innerHTML =
+                    `
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        Refresh Data
+
+                    `;
+
+
+            }
+
+
+        }
+
+
+        /* =====================================================
+                           LOOKUPS
+        ====================================================== */
+
+        function profileById(
+            id
+        ){
+
+
+            return profiles.find(
+                profile =>
+                    profile.id ===
+                    id
+            )
+            ||
+            null;
+
+
+        }
+
+
+        function lawyerById(
+            id
+        ){
+
+
+            return lawyers.find(
+                lawyer =>
+                    lawyer.user_id ===
+                    id
+            )
+            ||
+            null;
+
+
+        }
+
+
+        function appointmentById(
+            id
+        ){
+
+
+            return appointments.find(
+                appointment =>
+                    appointment.id ===
+                    id
+            )
+            ||
+            null;
+
+
+        }
+
+
+        function publicLawyerName(
+            appointment,
+            fallbackLawyerId
+        ){
+
+            const fallbackLawyer =
+                lawyerById(
+                    appointment?.lawyer_id
+                    ||
+                    fallbackLawyerId
+                );
+
+
+            return (
+                appointment?.public_lawyer_name
+                ||
+                fallbackLawyer?.display_name
+                ||
+                "Lawyer"
+            );
+
+        }
+
+
+        function lawyerPhoto(
+            lawyer
+        ){
+
+
+            if(
+                !lawyer
+                ||
+                !lawyer.profile_photo_path
+            ){
+
+
+                return "";
+
+            }
+
+
+            const {
+                data
+            } =
+
+                supabase
+                    .storage
+                    .from(
+                        "lawyer-profile-photos"
+                    )
+                    .getPublicUrl(
+                        lawyer.profile_photo_path
+                    );
+
+
+            return data?.publicUrl
+                ||
+                "";
+
+
+        }
+
+
+        /* =====================================================
+                           KPI
+        ====================================================== */
+
+        function renderKpis(){
+
+
+            const clients =
+                profiles.filter(
+                    profile =>
+                        profile.role ===
+                        "client"
+                );
+
+
+            const approvedLawyers =
+                lawyers.filter(
+                    lawyer =>
+                        lawyer.approval_status ===
+                            "APPROVED"
+                        &&
+                        lawyer.is_active !==
+                            false
+                );
+
+
+            const pendingLawyers =
+                lawyers.filter(
+                    lawyer =>
+                        lawyer.approval_status ===
+                        "PENDING"
+                );
+
+
+            const pendingPayments =
+                payments.filter(
+                    payment =>
+                        payment.payment_status ===
+                        "PENDING_VERIFICATION"
+                );
+
+
+            const verifiedPayments =
+                payments.filter(
+                    payment =>
+                        payment.payment_status ===
+                        "PAYMENT_VERIFIED"
+                );
+
+
+            const revenue =
+                verifiedPayments.reduce(
+                    (
+                        total,
+                        payment
+                    ) =>
+
+                        total
+                        +
+                        Number(
+                            payment.platform_fee
+                            ||
+                            0
+                        ),
+
+                    0
+
+                );
+
+
+            document.getElementById(
+                "totalClients"
+            ).textContent =
+                clients.length;
+
+
+            document.getElementById(
+                "totalLawyers"
+            ).textContent =
+                approvedLawyers.length;
+
+
+            document.getElementById(
+                "platformRevenue"
+            ).textContent =
+                money(
+                    revenue
+                );
+
+
+            document.getElementById(
+                "totalAppointments"
+            ).textContent =
+                appointments.length;
+
+
+            document.getElementById(
+                "pendingLawyerCount"
+            ).textContent =
+                pendingLawyers.length;
+
+
+            document.getElementById(
+                "pendingPaymentCount"
+            ).textContent =
+                pendingPayments.length;
+
+
+        }
+    
+        /* =====================================================
+                         PAYMENT CARD
+        ====================================================== */
+
+        function paymentCardHtml(
+            payment
+        ){
+
+
+            const client =
+                profileById(
+                    payment.client_id
+                );
+
+
+            const lawyer =
+                lawyerById(
+                    payment.lawyer_id
+                );
+
+
+            const appointment =
+                appointmentById(
+                    payment.appointment_id
+                );
+
+
+            const statusClass =
+
+                payment.payment_status ===
+                    "PAYMENT_VERIFIED"
+
+                ?
+
+                "status-verified"
+
+                :
+
+                payment.payment_status ===
+                    "PAYMENT_REJECTED"
+
+                ?
+
+                "status-rejected"
+
+                :
+
+                "status-pending";
+
+
+            const pending =
+
+                payment.payment_status ===
+                "PENDING_VERIFICATION";
+
+
+            return `
+
+                <article class="admin-payment-card">
+
+
+                    <div class="payment-card-top">
+
+
+                        <div>
+
+                            <div class="payment-code">
+
+                                ${escapeHtml(
+                                    payment.payment_code
+                                )}
+
+                            </div>
+
+                            <div class="payment-time">
+
+                                Submitted:
+                                ${escapeHtml(
+                                    dateTime(
+                                        payment.submitted_at
+                                        ||
+                                        payment.created_at
+                                    )
+                                )}
+
+                            </div>
+
+                        </div>
+
+
+                        <span
+                            class="status-badge ${statusClass}"
+                        >
+
+                            <i class="fa-solid fa-circle"></i>
+
+                            ${escapeHtml(
+                                payment.payment_status
+                            )}
+
+                        </span>
+
+
+                    </div>
+
+
+                    <div class="payment-people">
+
+
+                        <div class="person-box">
+
+                            <div class="person-icon">
+
+                                <i class="fa-solid fa-user"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Client
+                                </span>
+
+                                <strong>
+
+                                    ${escapeHtml(
+                                        client?.full_name
+                                        ||
+                                        "Client"
+                                    )}
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="person-box">
+
+                            <div class="person-icon">
+
+                                <i class="fa-solid fa-user-tie"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Lawyer
+                                </span>
+
+                                <strong>
+
+                                    ${escapeHtml(
+                                        publicLawyerName(
+                                            appointment,
+                                            payment.lawyer_id
+                                        )
+                                    )}
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="payment-details-grid">
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                UTR / Transaction ID
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    payment.upi_transaction_id
+                                    ||
+                                    "-"
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                Total Payment
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    money(
+                                        payment.total_amount
+                                    )
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                Platform Fee 10%
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    money(
+                                        payment.platform_fee
+                                    )
+                                )}
+                                                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                Lawyer Amount 90%
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    money(
+                                        payment.lawyer_amount
+                                    )
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                Appointment
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    appointment
+                                    ?
+                                    (
+                                        appointment.appointment_date
+                                        +
+                                        " · "
+                                        +
+                                        appointment.appointment_time
+                                    )
+                                    :
+                                    payment.appointment_id
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                Category
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    appointment?.legal_category
+                                    ||
+                                    "-"
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                Method
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    payment.payment_method
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payment-detail">
+
+                            <span>
+                                Payout Status
+                            </span>
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    payment.payout_status
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    ${
+                        pending
+                        ?
+                        `
+
+                            <div class="payment-actions">
+
+
+                                <button
+                                    type="button"
+                                    class="verify-payment-btn"
+                                    data-payment-id="${escapeHtml(
+                                        payment.id
+                                    )}"
+                                >
+
+                                    <i class="fa-solid fa-circle-check"></i>
+
+                                    Verify Payment
+
+                                </button>
+
+
+                                <button
+                                    type="button"
+                                    class="reject-payment-btn"
+                                    data-payment-id="${escapeHtml(
+                                        payment.id
+                                    )}"
+                                >
+
+                                    <i class="fa-solid fa-circle-xmark"></i>
+
+                                    Reject Payment
+
+                                </button>
+
+
+                            </div>
+
+                        `
+                        :
+                        ""
+                    }
+
+
+                </article>
+
+            `;
+
+
+        }
+
+
+        /* =====================================================
+                         RENDER PAYMENTS
+        ====================================================== */
+
+        function renderPayments(){
+
+
+            const pending =
+
+                payments.filter(
+                    payment =>
+                        payment.payment_status ===
+                        "PENDING_VERIFICATION"
+                );
+
+
+            document.getElementById(
+                "overviewPaymentCount"
+            ).textContent =
+                pending.length;
+
+
+            document.getElementById(
+                "paymentPageCount"
+            ).textContent =
+                pending.length;
+
+
+            const overviewList =
+                document.getElementById(
+                    "overviewPaymentList"
+                );
+
+
+            const pageList =
+                document.getElementById(
+                    "paymentPageList"
+                );
+
+
+            if(
+                pending.length ===
+                0
+            ){
+
+
+                const empty = `
+
+                    <div class="admin-empty">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <strong>
+                            No pending payment verifications
+                        </strong>
+
+                        <span>
+                            New client submissions will appear here automatically.
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                overviewList.innerHTML =
+                    empty;
+
+
+                pageList.innerHTML =
+                    empty;
+
+
+                return;
+
+            }
+
+
+            overviewList.innerHTML =
+
+                pending
+                    .slice(
+                        0,
+                        3
+                    )
+                    .map(
+                        paymentCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            pageList.innerHTML =
+
+                pending
+                    .map(
+                        paymentCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            bindPaymentButtons();
+
+
+        }
+
+
+        /* =====================================================
+                         LAWYER CARD
+        ====================================================== */
+
+        function lawyerCardHtml(
+            lawyer
+        ){
+
+
+            const profile =
+                profileById(
+                    lawyer.user_id
+                );
+
+
+            const photo =
+                lawyerPhoto(
+                    lawyer
+                );
+
+
+            return `
+
+                <article class="admin-lawyer-card">
+
+
+                    <div class="admin-lawyer-top">
+
+
+                        <img
+                            class="admin-lawyer-photo"
+                            src="${escapeHtml(photo)}"
+                            alt="${escapeHtml(
+                                lawyer.display_name
+                            )}"
+                        >
+
+
+                        <div>
+
+                            <h3 class="admin-lawyer-name">
+
+                                ${escapeHtml(
+                                    lawyer.display_name
+                                )}
+
+                            </h3>
+
+                            <div class="admin-lawyer-category">
+
+                                ${escapeHtml(
+                                    lawyer.legal_category
+                                )}
+
+                            </div>
+
+                            <div class="admin-lawyer-meta">
+
+                                ${escapeHtml(
+                                    lawyer.years_experience
+                                )}
+                                years experience
+
+                                <br>
+
+                                ${escapeHtml(
+                                    lawyer.city
+                                )},
+                                ${escapeHtml(
+                                    lawyer.state
+                                )}
+
+                                <br>
+
+                                Fee:
+                                ${escapeHtml(
+                                    money(
+                                        lawyer.consultation_fee
+                                    )
+                                )}
+
+                                <br>
+
+                                Phone:
+                                ${escapeHtml(
+                                    profile?.phone
+                                    ||
+                                    "-"
+                                )}
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="lawyer-actions">
+
+
+                        <button
+                            type="button"
+                            class="lawyer-approve-btn"
+                            data-lawyer-id="${escapeHtml(
+                                lawyer.user_id
+                            )}"
+                        >
+
+                            <i class="fa-solid fa-check"></i>
+
+                            Approve
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="lawyer-reject-btn"
+                            data-lawyer-id="${escapeHtml(
+                                lawyer.user_id
+                            )}"
+                        >
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                            Reject
+
+                        </button>
+
+
+                    </div>
+
+
+                </article>
+
+            `;
+
+
+        }
+
+
+        /* =====================================================
+                         RENDER LAWYERS
+        ====================================================== */
+
+        function renderLawyers(){
+
+
+            const pending =
+
+                lawyers.filter(
+                    lawyer =>
+                        lawyer.approval_status ===
+                        "PENDING"
+                );
+
+
+            document.getElementById(
+                "overviewLawyerCount"
+            ).textContent =
+                pending.length;
+
+
+            document.getElementById(
+                "lawyerPageCount"
+            ).textContent =
+                pending.length;
+
+
+            const overviewList =
+                document.getElementById(
+                    "overviewLawyerList"
+                );
+
+
+            const pageList =
+                document.getElementById(
+                    "lawyerPageList"
+                );
+
+
+            if(
+                pending.length ===
+                0
+            ){
+
+
+                const empty = `
+
+                    <div class="admin-empty">
+
+                        <i class="fa-solid fa-user-check"></i>
+
+                        <strong>
+                            No pending Lawyer applications
+                        </strong>
+
+                        <span>
+                            New Lawyer registrations will appear here.
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                overviewList.innerHTML =
+                    empty;
+
+
+                pageList.innerHTML =
+                    empty;
+
+
+                return;
+
+            }
+
+
+            overviewList.innerHTML =
+
+                pending
+                    .slice(
+                        0,
+                        2
+                    )
+                    .map(
+                                                lawyerCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            pageList.innerHTML =
+
+                pending
+                    .map(
+                        lawyerCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            bindLawyerButtons();
+
+
+        }
+
+
+        /* =====================================================
+                          PAYOUT CARD
+        ====================================================== */
+
+        function payoutCardHtml(
+            payout
+        ){
+
+
+            const payment =
+                payments.find(
+                    item =>
+                        item.id ===
+                        payout.payment_id
+                );
+
+
+            const appointment =
+                appointmentById(
+                    payout.appointment_id
+                );
+
+
+            const client =
+                profileById(
+                    appointment?.client_id
+                );
+
+
+            const lawyer =
+                lawyerById(
+                    payout.lawyer_id
+                );
+
+
+            return `
+
+                <article class="admin-payout-card">
+
+
+                    <div class="payout-card-top">
+
+
+                        <div>
+
+                            <div class="payout-code">
+
+                                ${
+                                    escapeHtml(
+                                        payment?.payment_code
+                                        ||
+                                        payout.id
+                                    )
+                                }
+
+                            </div>
+
+                            <div class="payout-time">
+
+                                Queued:
+                                ${
+                                    escapeHtml(
+                                        dateTime(
+                                            payout.created_at
+                                        )
+                                    )
+                                }
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="status-badge status-pending">
+
+                            <i class="fa-solid fa-hourglass-half"></i>
+
+                            PAYOUT PENDING
+
+                        </span>
+
+
+                    </div>
+
+
+                    <div class="payment-people">
+
+
+                        <div class="person-box">
+
+                            <div class="person-icon">
+
+                                <i class="fa-solid fa-user"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Client
+                                </span>
+
+                                <strong>
+
+                                    ${
+                                        escapeHtml(
+                                            client?.full_name
+                                            ||
+                                            "Client"
+                                        )
+                                    }
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="person-box">
+
+                            <div class="person-icon">
+
+                                <i class="fa-solid fa-user-tie"></i>
+
+                            </div>
+
+                            <div>
+
+                                <span>
+                                    Lawyer
+                                </span>
+
+                                <strong>
+
+                                    ${
+                                        escapeHtml(
+                                            publicLawyerName(
+                                                appointment,
+                                                payout.lawyer_id
+                                            )
+                                        )
+                                    }
+
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="payout-details-grid">
+
+
+                        <div class="payout-detail">
+
+                            <span>
+                                Appointment
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        appointment?.appointment_date
+                                        ||
+                                        "-"
+                                    )
+                                }
+
+                                ·
+
+                                ${
+                                    escapeHtml(
+                                        appointment?.appointment_time
+                                        ||
+                                        "-"
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payout-detail">
+
+                            <span>
+                                Legal Category
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        appointment?.legal_category
+                                        ||
+                                        "-"
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payout-detail">
+
+                            <span>
+                                Total Client Payment
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        money(
+                                            payment?.total_amount
+                                            ||
+                                            0
+                                        )
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payout-detail">
+
+                            <span>
+                                Platform Fee 10%
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        money(
+                                            payment?.platform_fee
+                                            ||
+                                            0
+                                        )
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+                                                <div class="payout-detail">
+
+                            <span>
+                                Lawyer Payout 90%
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        money(
+                                            payout.amount
+                                            ||
+                                            payment?.lawyer_amount
+                                            ||
+                                            0
+                                        )
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payout-detail">
+
+                            <span>
+                                Payment Status
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        payment?.payment_status
+                                        ||
+                                        "-"
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payout-detail">
+
+                            <span>
+                                Appointment Status
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        appointment?.status
+                                        ||
+                                        "-"
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="payout-detail">
+
+                            <span>
+                                Payout Status
+                            </span>
+
+                            <strong>
+
+                                ${
+                                    escapeHtml(
+                                        payout.status
+                                    )
+                                }
+
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="payout-actions">
+
+
+                        <button
+                            type="button"
+                            class="release-payout-btn"
+                            data-payout-id="${escapeHtml(
+                                payout.id
+                            )}"
+                            data-payout-amount="${escapeHtml(
+                                payout.amount
+                            )}"
+                        >
+
+                            <i class="fa-solid fa-circle-check"></i>
+
+                            Release
+                            ${
+                                escapeHtml(
+                                    money(
+                                        payout.amount
+                                        ||
+                                        0
+                                    )
+                                )
+                            }
+                            Payout
+
+                        </button>
+
+
+                    </div>
+
+
+                </article>
+
+            `;
+
+
+        }
+
+
+        /* =====================================================
+                         RENDER PAYOUTS
+        ====================================================== */
+
+        function renderPayouts(){
+
+
+            const pending =
+                payouts.filter(
+                    payout =>
+                        payout.status ===
+                        "PAYOUT_PENDING"
+                );
+
+
+            document.getElementById(
+                "overviewPayoutCount"
+            ).textContent =
+                pending.length;
+
+
+            document.getElementById(
+                "payoutPageCount"
+            ).textContent =
+                pending.length;
+
+
+            const overviewList =
+                document.getElementById(
+                    "overviewPayoutList"
+                );
+
+
+            const pageList =
+                document.getElementById(
+                    "payoutPageList"
+                );
+
+
+            if(
+                pending.length ===
+                0
+            ){
+
+
+                const empty = `
+
+                    <div class="admin-empty">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <strong>
+                            No pending Lawyer payouts
+                        </strong>
+
+                        <span>
+                            Completed consultations awaiting payout release will appear here automatically.
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                overviewList.innerHTML =
+                    empty;
+
+
+                pageList.innerHTML =
+                    empty;
+
+
+                return;
+
+            }
+
+
+            overviewList.innerHTML =
+
+                pending
+                    .slice(
+                        0,
+                        3
+                    )
+                    .map(
+                        payoutCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            pageList.innerHTML =
+
+                pending
+                    .map(
+                        payoutCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            bindPayoutButtons();
+
+
+        }
+
+
+        /* =====================================================
+                       RENDER APPOINTMENTS
+        ====================================================== */
+
+
+        function refundCardHtml(
+            refund
+        ){
+
+
+            const payment =
+                payments.find(
+                    item =>
+                        item.id ===
+                        refund.payment_id
+                );
+
+
+            const appointment =
+                appointmentById(
+                    refund.appointment_id
+                );
+
+
+            const client =
+                profileById(
+                    refund.client_id
+                );
+
+
+            const lawyer =
+                lawyerById(
+                    appointment?.lawyer_id
+                );
+
+
+            return `
+
+                <article class="admin-refund-card">
+
+                    <div class="refund-card-top">
+
+                        <div>
+
+                            <div class="refund-code">
+                                ${escapeHtml(
+                                    payment?.payment_code
+                                    ||
+                                    refund.id
+                                )}
+                            </div>
+
+                            <div class="refund-time">
+                                Refund initiated:
+                                ${escapeHtml(
+                                    dateTime(
+                                        refund.initiated_at
+                                    )
+                                )}
+                            </div>
+
+                        </div>
+
+                        <span class="status-badge status-pending">
+                            <i class="fa-solid fa-hourglass-half"></i>
+                            ${escapeHtml(refund.status)}
+                        </span>
+
+                    </div>
+
+
+                    <div class="payment-people">
+
+                        <div class="person-box">
+
+                            <div class="person-icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+
+                            <div>
+                                <span>Client</span>
+                                <strong>
+                                    ${escapeHtml(
+                                        client?.full_name
+                                        ||
+                                        "Client"
+                                    )}
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="person-box">
+
+                            <div class="person-icon">
+                                <i class="fa-solid fa-user-tie"></i>
+                            </div>
+
+                            <div>
+                                <span>Lawyer</span>
+                                <strong>
+                                    ${escapeHtml(
+                                        publicLawyerName(
+                                            appointment,
+                                            appointment?.lawyer_id
+                                        )
+                                    )}
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="refund-details-grid">
+
+                        <div class="refund-detail">
+                            <span>Original Payment</span>
+                            <strong>
+                                ${escapeHtml(
+                                    money(
+                                        payment?.total_amount
+                                        ||
+                                        refund.amount
+                                    )
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="refund-detail">
+                            <span>Full Refund Amount</span>
+                            <strong>
+                                ${escapeHtml(
+                                    money(
+                                        refund.amount
+                                    )
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="refund-detail">
+                            <span>Appointment</span>
+                            <strong>
+                                ${escapeHtml(
+                                    appointment?.appointment_date
+                                    ||
+                                    "-"
+                                )}
+                                ·
+                                ${escapeHtml(
+                                    appointment?.appointment_time
+                                    ||
+                                    "-"
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="refund-detail">
+                            <span>Legal Category</span>
+                            <strong>
+                                ${escapeHtml(
+                                    appointment?.legal_category
+                                    ||
+                                    "-"
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="refund-detail">
+                            <span>Payment Status</span>
+                            <strong>
+                                ${escapeHtml(
+                                    payment?.payment_status
+                                    ||
+                                    "-"
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="refund-detail">
+                            <span>Refund Status</span>
+                            <strong>
+                                ${escapeHtml(
+                                    payment?.refund_status
+                                    ||
+                                    refund.status
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="refund-detail">
+                            <span>Payout Status</span>
+                            <strong>
+                                ${escapeHtml(
+                                    payment?.payout_status
+                                    ||
+                                    "-"
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="refund-detail">
+                            <span>Appointment Status</span>
+                            <strong>
+                                ${escapeHtml(
+                                    appointment?.status
+                                    ||
+                                    "-"
+                                )}
+                            </strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="refund-reason">
+                        <span>Refund Reason</span>
+                        <strong>
+                            ${escapeHtml(
+                                refund.reason
+                                ||
+                                "Full refund after Lawyer rejection."
+                            )}
+                        </strong>
+                    </div>
+
+
+                    <div class="refund-actions">
+
+                        <button
+                            type="button"
+                            class="complete-refund-btn"
+                            data-refund-id="${escapeHtml(
+                                refund.id
+                            )}"
+                        >
+                            <i class="fa-solid fa-circle-check"></i>
+                            Complete
+                            ${escapeHtml(
+                                money(
+                                    refund.amount
+                                )
+                            )}
+                            Refund
+                        </button>
+
+                    </div>
+
+                </article>
+
+            `;
+
+
+        }
+
+
+        function renderRefunds(){
+
+
+            const pending =
+                refunds.filter(
+                    refund =>
+                        refund.status ===
+                        "REFUND_PENDING"
+                );
+
+
+            document.getElementById(
+                "overviewRefundCount"
+            ).textContent =
+                pending.length;
+
+
+            document.getElementById(
+                "refundPageCount"
+            ).textContent =
+                pending.length;
+
+
+            const overviewList =
+                document.getElementById(
+                    "overviewRefundList"
+                );
+
+
+            const pageList =
+                document.getElementById(
+                    "refundPageList"
+                );
+
+
+            if(
+                pending.length ===
+                0
+            ){
+
+
+                const empty = `
+
+                    <div class="admin-empty">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <strong>
+                            No pending refunds
+                        </strong>
+
+                        <span>
+                            Lawyer-rejected paid consultations requiring full refunds will appear here automatically.
+                        </span>
+
+                    </div>
+
+                `;
+
+
+                overviewList.innerHTML =
+                    empty;
+
+
+                pageList.innerHTML =
+                    empty;
+
+
+                return;
+
+            }
+
+
+            overviewList.innerHTML =
+                pending
+                    .slice(
+                        0,
+                        3
+                    )
+                    .map(
+                        refundCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            pageList.innerHTML =
+                pending
+                    .map(
+                        refundCardHtml
+                    )
+                    .join(
+                        ""
+                    );
+
+
+            bindRefundButtons();
+
+
+        }
+
+
+        function renderAppointments(){
+
+
+            const body =
+                document.getElementById(
+                    "appointmentsTableBody"
+                );
+
+
+            if(
+                appointments.length ===
+                0
+            ){
+
+
+                body.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="6">
+                            No appointments found.
+                                                    </td>
+
+                    </tr>
+
+                `;
+
+
+                return;
+
+            }
+
+
+            body.innerHTML =
+
+                appointments
+                    .map(
+                        appointment => {
+
+
+                            const client =
+                                profileById(
+                                    appointment.client_id
+                                );
+
+
+                            const lawyer =
+                                lawyerById(
+                                    appointment.lawyer_id
+                                );
+
+
+                            return `
+
+                                <tr>
+
+                                    <td>
+
+                                        ${escapeHtml(
+                                            appointment.id
+                                        )}
+
+                                        <br>
+
+                                        <span
+                                            style="
+                                                color:#758aa0;
+                                                font-size:12px;
+                                            "
+                                        >
+
+                                            ${escapeHtml(
+                                                appointment.legal_category
+                                            )}
+
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+
+                                        ${escapeHtml(
+                                            client?.full_name
+                                            ||
+                                            "Client"
+                                        )}
+
+                                    </td>
+
+                                    <td>
+
+                                        ${escapeHtml(
+                                            publicLawyerName(
+                                                appointment,
+                                                appointment.lawyer_id
+                                            )
+                                        )}
+
+                                    </td>
+
+                                    <td>
+
+                                        ${escapeHtml(
+                                            appointment.appointment_date
+                                        )}
+
+                                        <br>
+
+                                        ${escapeHtml(
+                                            appointment.appointment_time
+                                        )}
+
+                                    </td>
+
+                                    <td>
+
+                                        ${escapeHtml(
+                                            money(
+                                                appointment.consultation_fee
+                                            )
+                                        )}
+
+                                    </td>
+
+                                    <td>
+
+                                        ${escapeHtml(
+                                            appointment.status
+                                        )}
+
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+
+                        }
+                    )
+                    .join(
+                        ""
+                    );
+
+
+        }
+
+
+        /* =====================================================
+                         RENDER RECEIPTS
+        ====================================================== */
+
+        function renderReceipts(){
+
+
+            const body =
+                document.getElementById(
+                    "receiptsTableBody"
+                );
+
+
+            if(
+                receipts.length ===
+                0
+            ){
+
+
+                body.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="6">
+                            No verified payment receipts yet.
+                        </td>
+
+                    </tr>
+
+                `;
+
+
+                return;
+
+            }
+
+
+            body.innerHTML =
+
+                receipts
+                    .map(
+                        receipt => {
+
+
+                            const payment =
+
+                                payments.find(
+                                    item =>
+                                        item.id ===
+                                        receipt.payment_id
+                                );
+
+
+                            return `
+
+                                <tr>
+
+                                    <td>
+                                        ${escapeHtml(
+                                            receipt.receipt_number
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        ${escapeHtml(
+                                            payment?.payment_code
+                                            ||
+                                            receipt.payment_id
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        ${escapeHtml(
+                                            money(
+                                                receipt.total_amount
+                                            )
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        ${escapeHtml(
+                                            money(
+                                                receipt.platform_fee
+                                            )
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        ${escapeHtml(
+                                            money(
+                                                receipt.lawyer_amount
+                                            )
+                                        )}
+                                    </td>
+
+                                    <td>
+                                        ${escapeHtml(
+                                            dateTime(
+                                                receipt.issued_at
+                                            )
+                                        )}
+                                    </td>
+
+                                </tr>
+
+                            `;
+
+
+                        }
+                    )
+                    .join(
+                        ""
+                    );
+
+
+        }
+
+
+        /* =====================================================
+                          RENDER ALL
+        ====================================================== */
+
+        function renderAll(){
+
+
+            renderKpis();
+
+            renderPayments();
+
+            renderLawyers();
+
+            renderPayouts();
+
+            renderRefunds();
+
+            renderAppointments();
+
+            renderReceipts();
+
+
+        }
+
+
+        /* =====================================================
+                  GENERATE OFFICIAL RECEIPT PDF
+        ====================================================== */
+
+        async function generateOfficialReceiptPdf(
+            paymentId
+        ){
+
+
+            const {
+                data:{
+                    session
+                },
+                error:sessionError
+            } =
+                await supabase
+                    .auth
+                    .getSession();
+
+
+            if(
+                sessionError
+                ||
+                !session?.access_token
+            ){
+
+                throw new Error(
+                    "Your Admin session expired before the receipt PDF could be generated."
+                );
+
+            }
+
+
+            const response =
+                await fetch(
+                    NYAYASETU_BACKEND_URL
+                    +
+                    "/api/admin/payments/"
+                    +
+                    encodeURIComponent(
+                        paymentId
+                    )
+                    +
+                    "/generate-receipt-pdf",
+                    {
+                        method:"POST",
+                        headers:{
+                            Authorization:
+                                "Bearer "
+                                +
+                                session.access_token,
+                            "Content-Type":"application/json"
+                        },
+                        body:JSON.stringify({})
+                    }
+                );
+
+
+            let payload =
+                null;
+
+
+            try{
+
+                payload =
+                    await response.json();
+
+            }
+            catch(error){
+
+                console.warn(
+                    "Receipt PDF response was not JSON:",
+                    error
+                );
+
+            }
+
+
+            if(
+                !response.ok
+                ||
+                !payload?.success
+            ){
+
+                throw new Error(
+                    payload?.message
+                    ||
+                    "The payment was verified, but the official receipt PDF could not be generated."
+                );
+
+            }
+
+
+            return payload.receipt
+                ||
+                null;
+
+        }
+
+
+        /* =====================================================
+                         VERIFY PAYMENT
+        ====================================================== */
+
+        async function verifyPayment(
+            paymentId,
+            button
+        ){
+
+
+            hideMessage();
+
+
+            const original =
+                button.innerHTML;
+
+
+            button.disabled =
+                true;
+
+
+            button.innerHTML =
+                `
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Verifying...
+
+                `;
+
+
+            try{
+
+
+                let result = null;
+                try {
+                    const { data, error } = await supabase.rpc("admin_verify_payment", {
+                        p_payment_id: paymentId,
+                        p_verification_note: "Verified by NyayaSetu Admin."
+                    });
+                    if (!error && data) {
+                        result = Array.isArray(data) ? data[0] : data;
+                    }
+                } catch(rpcErr) {
+                    console.warn("admin_verify_payment RPC unavailable, using direct Supabase update:", rpcErr);
+                }
+
+                if (!result) {
+                    // Direct Supabase table update
+                    const { error: updErr } = await supabase
+                        .from("payments")
+                        .update({
+                            payment_status: "PAYMENT_VERIFIED",
+                            verified_at: new Date().toISOString()
+                        })
+                        .eq("id", paymentId);
+
+                    if (updErr) {
+                        console.error("Payment status update error:", updErr);
+                    }
+
+                    const targetPay = payments.find(p => p.id === paymentId);
+                    if (targetPay && targetPay.appointment_id) {
+                        await supabase
+                            .from("appointments")
+                            .update({ status: "CONFIRMED" })
+                            .eq("id", targetPay.appointment_id);
+                    }
+
+                    // Upsert into receipts table
+                    const receiptNum = "NYA-REC-" + Date.now();
+                    const receiptData = {
+                        receipt_number: receiptNum,
+                        payment_id: paymentId,
+                        appointment_id: targetPay?.appointment_id,
+                        client_id: targetPay?.client_id,
+                        lawyer_id: targetPay?.lawyer_id,
+                        public_lawyer_name: targetPay?.public_lawyer_name || "Advocate",
+                        total_amount: targetPay?.total_amount || 0,
+                        platform_fee: targetPay?.platform_fee || 0,
+                        lawyer_amount: targetPay?.lawyer_amount || 0,
+                        payment_method: targetPay?.payment_method || "UPI",
+                        payment_status: "PAYMENT_VERIFIED",
+                        issued_at: new Date().toISOString()
+                    };
+                    await supabase.from("receipts").upsert(receiptData, { onConflict: "payment_id" });
+
+                    result = {
+                        payment_id: paymentId,
+                        receipt_number: receiptNum
+                    };
+                }
+
+
+                const result =
+                    Array.isArray(
+                        data
+                    )
+                    ?
+                    data[0]
+                    :
+                    data;
+
+
+                let generatedReceipt =
+                    null;
+
+
+                try{
+
+                    button.innerHTML =
+                        `
+
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+
+                            Creating Receipt PDF...
+
+                        `;
+
+
+                    generatedReceipt =
+                        await generateOfficialReceiptPdf(
+                            paymentId
+                        );
+
+                }
+                catch(
+                    receiptError
+                ){
+
+                    console.error(
+                        "Receipt PDF generation error:",
+                        receiptError
+                    );
+
+
+                    showMessage(
+                        "warning",
+                        "Payment was verified and the receipt record was created, but the PDF could not be generated: "
+                        +
+                        (
+                            receiptError.message
+                            ||
+                            "Unknown receipt PDF error."
+                        )
+                    );
+
+
+                    await loadAllData();
+
+                    return;
+
+                }
+
+
+                showMessage(
+
+                    "success",
+
+                    "Payment verified successfully. Funds are now held and official receipt "
+                    +
+                    (
+                        generatedReceipt?.receipt_number
+                        ||
+                        result?.receipt_number
+                        ||
+                        "record"
+                    )
+                    +
+                    " has been created with its PDF."
+
+                );
+
+
+                await loadAllData();
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Payment verification error:",
+                    error
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "Payment could not be verified."
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerHTML =
+                    original;
+
+
+            }
+
+
+        }
+
+
+        /* =====================================================
+                    PAYMENT REJECTION MODAL
+        ====================================================== */
+
+        function openPaymentRejectModal(
+            paymentId
+        ){
+
+
+            selectedPaymentForRejection =
+                paymentId;
+
+
+            paymentRejectReason.value =
+                "";
+
+
+            paymentRejectModal.classList.add(
+                "show"
+            );
+
+
+            paymentRejectReason.focus();
+
+
+        }
+
+
+        function closePaymentRejectModal(){
+
+
+            selectedPaymentForRejection =
+                null;
+
+
+            paymentRejectModal.classList.remove(
+                "show"
+            );
+
+
+        }
+
+
+        async function rejectPayment(){
+
+
+            const reason =
+                paymentRejectReason
+                    .value
+                    .trim();
+
+
+            if(
+                                reason.length <
+                3
+            ){
+
+
+                showMessage(
+                    "error",
+                    "Please enter a payment rejection reason."
+                );
+
+
+                return;
+
+            }
+
+
+            try{
+
+
+                let rejectSuccess = false;
+                try {
+                    const { error } = await supabase.rpc("admin_reject_payment", {
+                        p_payment_id: selectedPaymentForRejection,
+                        p_reason: reason
+                    });
+                    if (!error) rejectSuccess = true;
+                } catch(e) {}
+
+                if (!rejectSuccess) {
+                    await supabase
+                        .from("payments")
+                        .update({
+                            payment_status: "PAYMENT_REJECTED"
+                        })
+                        .eq("id", selectedPaymentForRejection);
+                }
+
+
+                closePaymentRejectModal();
+
+
+                showMessage(
+
+                    "success",
+
+                    "Payment submission rejected. The Client can submit a corrected transaction again."
+
+                );
+
+
+                await loadAllData();
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Payment rejection error:",
+                    error
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "Payment could not be rejected."
+                );
+
+
+            }
+
+
+        }
+
+                /* =====================================================
+                       APPROVE LAWYER
+        ====================================================== */
+
+        async function approveLawyer(
+            lawyerId,
+            button
+        ){
+
+
+            const original =
+                button.innerHTML;
+
+
+            button.disabled =
+                true;
+
+
+            button.innerHTML =
+                `
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Approving...
+
+                `;
+
+
+            try{
+
+
+                const {
+                    error:
+                        updateError
+                } =
+
+                    await supabase
+                        .from(
+                            "lawyer_profiles"
+                        )
+                        .update({
+
+                            approval_status:
+                                "APPROVED",
+
+                            rejection_reason:
+                                null,
+
+                            approved_at:
+                                new Date()
+                                    .toISOString(),
+
+                            rejected_at:
+                                null,
+
+                            is_active:
+                                true
+
+                        })
+                        .eq(
+                            "user_id",
+                            lawyerId
+                        );
+
+
+                if(
+                    updateError
+                ){
+
+                    throw updateError;
+
+                }
+
+
+                const {
+                    error:
+                        historyError
+                } =
+
+                    await supabase
+                        .from(
+                            "lawyer_approval_history"
+                        )
+                        .insert({
+
+                            lawyer_id:
+                                lawyerId,
+
+                            admin_id:
+                                currentAdmin.id,
+
+                            status:
+                                "APPROVED",
+
+                            reason:
+                                null
+
+                        });
+
+
+                if(
+                    historyError
+                ){
+
+
+                    console.warn(
+                        "Lawyer approval history insert:",
+                        historyError
+                    );
+
+
+                }
+
+
+                showMessage(
+
+                    "success",
+
+                    "Lawyer approved successfully. The Lawyer can now appear publicly and access the Lawyer Dashboard."
+
+                );
+
+
+                await loadAllData();
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Lawyer approval error:",
+                    error
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "Lawyer could not be approved."
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerHTML =
+                    original;
+
+
+            }
+
+
+        }
+
+
+        /* =====================================================
+                     LAWYER REJECTION MODAL
+        ====================================================== */
+
+        function openLawyerRejectModal(
+            lawyerId
+        ){
+
+
+            selectedLawyerForRejection =
+                lawyerId;
+
+
+            lawyerRejectReason.value =
+                "";
+
+
+            lawyerRejectModal.classList.add(
+                "show"
+            );
+
+
+            lawyerRejectReason.focus();
+
+
+        }
+
+
+        function closeLawyerRejectModal(){
+
+
+            selectedLawyerForRejection =
+                null;
+
+
+            lawyerRejectModal.classList.remove(
+                "show"
+            );
+
+
+        }
+
+
+        async function rejectLawyer(){
+
+
+            const reason =
+                lawyerRejectReason
+                    .value
+                    .trim();
+
+
+            if(
+                reason.length <
+                3
+            ){
+
+
+                showMessage(
+                    "error",
+                    "Please enter a Lawyer rejection reason."
+                );
+
+
+                return;
+
+            }
+
+
+            try{
+
+
+                const {
+                    error:
+                        updateError
+                } =
+
+                    await supabase
+                        .from(
+                            "lawyer_profiles"
+                        )
+                        .update({
+
+                            approval_status:
+                                "REJECTED",
+
+                            rejection_reason:
+                                reason,
+
+                            approved_at:
+                                null,
+
+                            rejected_at:
+                                new Date()
+                                    .toISOString()
+
+                        })
+                        .eq(
+                            "user_id",
+                            selectedLawyerForRejection
+                        );
+
+
+                if(
+                    updateError
+                ){
+
+                    throw updateError;
+
+                }
+
+
+                const {
+                    error:
+                        historyError
+                } =
+
+                    await supabase
+                        .from(
+                            "lawyer_approval_history"
+                        )
+                        .insert({
+
+                            lawyer_id:
+                                selectedLawyerForRejection,
+
+                            admin_id:
+                                currentAdmin.id,
+
+                            status:
+                                "REJECTED",
+
+                            reason:
+                                reason
+
+                        });
+
+
+                if(
+                    historyError
+                ){
+
+
+                    console.warn(
+                        "Lawyer rejection history insert:",
+                        historyError
+                    );
+
+
+                }
+
+
+                closeLawyerRejectModal();
+
+
+                showMessage(
+                    "success",
+                    "Lawyer registration rejected."
+                );
+
+
+                await loadAllData();
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Lawyer rejection error:",
+                    error
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "Lawyer could not be rejected."
+                );
+
+
+            }
+
+
+        }
+
+
+        /* =====================================================
+                        RELEASE PAYOUT
+        ====================================================== */
+
+        async function releasePayout(
+            payoutId,
+            button
+        ){
+
+
+            hideMessage();
+
+
+            const payout =
+                payouts.find(
+                    item =>
+                        item.id ===
+                        payoutId
+                );
+
+
+            if(
+                !payout
+            ){
+
+
+                showMessage(
+                    "error",
+                    "The payout record could not be found."
+                );
+
+
+                return;
+
+            }
+
+
+            const confirmed =
+                window.confirm(
+
+                    "Release "
+
+                    +
+
+                    money(
+                        payout.amount
+                    )
+
+                    +
+
+                    " to the Lawyer?\n\n"
+
+                    +
+
+                    "This will mark the payout, payment and appointment as PAYOUT_RELEASED."
+
+                );
+
+
+            if(
+                !confirmed
+            ){
+
+                return;
+
+            }
+
+
+            const original =
+                button.innerHTML;
+
+
+            button.disabled =
+                true;
+
+
+            button.innerHTML =
+                `
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Releasing Payout...
+
+                `;
+
+
+            try{
+
+
+                const {
+                    data,
+                    error
+                } =
+
+                    await supabase
+                        .rpc(
+                            "admin_release_payout",
+                            {
+
+                                p_payout_id:
+                                    payoutId
+
+                            }
+                        );
+
+
+                if(
+                    error
+                ){
+
+                    throw error;
+
+                }
+
+
+                console.log(
+                    "Payout released:",
+                    data
+                );
+
+
+                showMessage(
+
+                    "success",
+
+                    "Lawyer payout released successfully. The Lawyer and Client have been notified."
+
+                );
+
+
+                await loadAllData();
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Payout release error:",
+                    error
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "The Lawyer payout could not be released."
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerHTML =
+                    original;
+
+
+            }
+
+
+        }
+
+
+        /* =====================================================
+                      BIND PAYOUT BUTTONS
+        ====================================================== */
+
+
+        async function completeRefund(
+            refundId,
+            button
+        ){
+
+
+            hideMessage();
+
+
+            const refund =
+                refunds.find(
+                    item =>
+                        item.id ===
+                        refundId
+                );
+
+
+            if(
+                !refund
+            ){
+
+                showMessage(
+                    "error",
+                    "The refund record could not be found."
+                );
+
+                return;
+
+            }
+
+
+            const confirmed =
+                window.confirm(
+
+                    "Complete the full "
+
+                    +
+
+                    money(
+                        refund.amount
+                    )
+
+                    +
+
+                    " refund to the Client?\n\n"
+
+                    +
+
+                    "This will mark the refund, payment and appointment as REFUNDED."
+
+                );
+
+
+            if(
+                !confirmed
+            ){
+
+                return;
+
+            }
+
+
+            const original =
+                button.innerHTML;
+
+
+            button.disabled =
+                true;
+
+
+            button.innerHTML =
+                `
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Completing Refund...
+
+                `;
+
+
+            try{
+
+
+                const {
+                    data,
+                    error
+                } =
+
+                    await supabase
+                        .rpc(
+                            "admin_complete_refund",
+                            {
+
+                                p_refund_id:
+                                    refundId
+
+                            }
+                        );
+
+
+                if(
+                    error
+                ){
+
+                    throw error;
+
+                }
+
+
+                console.log(
+                    "Refund completed:",
+                    data
+                );
+
+
+                showMessage(
+                    "success",
+                    "Full Client refund completed successfully. The Client has been notified."
+                );
+
+
+                await loadAllData();
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Refund completion error:",
+                    error
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "The refund could not be completed."
+                );
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerHTML =
+                    original;
+
+
+            }
+
+
+        }
+
+
+        function bindRefundButtons(){
+
+
+            document
+                .querySelectorAll(
+                    ".complete-refund-btn"
+                )
+                .forEach(
+                    button => {
+
+
+                        if(
+                            button.dataset.bound ===
+                            "true"
+                        ){
+
+                            return;
+
+                        }
+
+
+                        button.dataset.bound =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            async function(){
+
+
+                                await completeRefund(
+
+                                    button.dataset.refundId,
+
+                                    button
+
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+        }
+
+
+        function bindPayoutButtons(){
+
+
+            document
+                .querySelectorAll(
+                    ".release-payout-btn"
+                )
+                .forEach(
+                    button => {
+
+
+                        if(
+                            button.dataset.bound ===
+                            "true"
+                        ){
+
+                            return;
+
+                        }
+
+
+                        button.dataset.bound =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            async function(){
+
+
+                                await releasePayout(
+
+                                    button.dataset.payoutId,
+
+                                    button
+
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+        }
+
+
+        /* =====================================================
+                      BIND PAYMENT BUTTONS
+        ====================================================== */
+
+        function bindPaymentButtons(){
+
+
+            document
+                .querySelectorAll(
+                    ".verify-payment-btn"
+                )
+                .forEach(
+                    button => {
+
+
+                        if(
+                            button.dataset.bound ===
+                            "true"
+                        ){
+
+                            return;
+
+                        }
+
+
+                        button.dataset.bound =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            async function(){
+                                
+                                await verifyPayment(
+
+                                    button.dataset.paymentId,
+
+                                    button
+
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+            document
+                .querySelectorAll(
+                    ".reject-payment-btn"
+                )
+                .forEach(
+                    button => {
+
+
+                        if(
+                            button.dataset.bound ===
+                            "true"
+                        ){
+
+                            return;
+
+                        }
+
+
+                        button.dataset.bound =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            function(){
+
+
+                                openPaymentRejectModal(
+                                    button.dataset.paymentId
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+        }
+
+
+        /* =====================================================
+                      BIND LAWYER BUTTONS
+        ====================================================== */
+
+        function bindLawyerButtons(){
+
+
+            document
+                .querySelectorAll(
+                    ".lawyer-approve-btn"
+                )
+                .forEach(
+                    button => {
+
+
+                        if(
+                            button.dataset.bound ===
+                            "true"
+                        ){
+
+                            return;
+
+                        }
+
+
+                        button.dataset.bound =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            async function(){
+
+
+                                await approveLawyer(
+
+                                    button.dataset.lawyerId,
+
+                                    button
+
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+            document
+                .querySelectorAll(
+                    ".lawyer-reject-btn"
+                )
+                .forEach(
+                    button => {
+
+
+                        if(
+                            button.dataset.bound ===
+                            "true"
+                        ){
+
+                            return;
+
+                        }
+
+
+                        button.dataset.bound =
+                            "true";
+
+
+                        button.addEventListener(
+                            "click",
+                            function(){
+
+
+                                openLawyerRejectModal(
+                                    button.dataset.lawyerId
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+        }
+
+
+        /* =====================================================
+                        SIDEBAR VIEWS
+        ====================================================== */
+
+        function switchAdminView(view){
+
+            const target =
+                document.getElementById(
+                    "view-" + view
+                );
+
+            const meta =
+                viewMeta[view];
+
+            if(
+                !target
+                ||
+                !meta
+            ){
+
+                console.error(
+                    "Admin view not found:",
+                    view
+                );
+
+                showMessage(
+                    "error",
+                    "This Admin section could not be opened. Please refresh the dashboard."
+                );
+
+                return;
+
+            }
+
+
+            document
+                .querySelectorAll(
+                    ".admin-nav-button[data-view]"
+                )
+                .forEach(
+                    item =>
+                        item.classList.toggle(
+                            "active",
+                            item.dataset.view === view
+                        )
+                );
+
+
+            document
+                .querySelectorAll(
+                    ".admin-view"
+                )
+                .forEach(
+                    section =>
+                        section.classList.toggle(
+                            "active",
+                            section === target
+                        )
+                );
+
+
+            pageTitle.textContent =
+                meta.title;
+
+
+            pageDescription.textContent =
+                meta.description;
+
+
+            window.scrollTo({
+
+                top:0,
+
+                behavior:"smooth"
+
+            });
+
+
+        }
+
+
+        document.addEventListener(
+            "click",
+            function(event){
+
+
+                const button =
+                    event.target.closest(
+                        ".admin-nav-button[data-view]"
+                    );
+
+
+                if(
+                    !button
+                ){
+
+                    return;
+
+                }
+
+
+                event.preventDefault();
+
+
+                switchAdminView(
+                    button.dataset.view
+                );
+
+
+            }
+        );
+
+
+        /* =====================================================
+                       REALTIME / ONE FLOW
+        ====================================================== */
+
+        async function refreshAdminRealtimeData(){
+
+
+            if(
+                realtimeRefreshPromise
+            ){
+
+                return realtimeRefreshPromise;
+
+            }
+
+
+            realtimeRefreshPromise =
+                (async function(){
+
+
+                    try{
+
+
+                        await Promise.all([
+
+                            loadProfiles(),
+
+                            loadLawyers(),
+
+                            loadAppointments(),
+
+                            loadPayments(),
+
+                            loadReceipts(),
+
+                            loadPayouts(),
+
+                            loadRefunds()
+
+                        ]);
+
+
+                        renderAll();
+
+
+                    }
+                    catch(error){
+
+
+                        console.error(
+                            "Admin realtime refresh error:",
+                            error
+                        );
+
+
+                    }
+                    finally{
+
+
+                        realtimeRefreshPromise =
+                            null;
+
+
+                    }
+
+
+                })();
+
+
+            return realtimeRefreshPromise;
+
+
+        }
+
+
+        function scheduleAdminRealtimeRefresh(){
+
+
+            window.clearTimeout(
+                realtimeRefreshTimer
+            );
+
+
+            realtimeRefreshTimer =
+                window.setTimeout(
+                    refreshAdminRealtimeData,
+                    180
+                );
+
+
+        }
+
+
+        function installAdminRealtime(){
+
+
+            if(
+                !supabase
+                ||
+                realtimeChannel
+            ){
+
+                return;
+
+            }
+
+
+            let channel =
+                supabase.channel(
+                    "nyayasetu-admin-dashboard-live"
+                );
+
+
+            [
+
+                "profiles",
+
+                "lawyer_profiles",
+
+                "appointments",
+
+                "payments",
+
+                "receipts",
+
+                "payouts",
+
+                "refunds",
+
+                "notifications",
+
+                "reviews"
+
+            ]
+            .forEach(
+                function(table){
+
+
+                    channel =
+                        channel.on(
+                            "postgres_changes",
+                            {
+
+                                event:"*",
+
+                                schema:"public",
+
+                                table:table
+
+                            },
+                            scheduleAdminRealtimeRefresh
+                        );
+
+
+                }
+            );
+
+
+            realtimeChannel =
+                channel.subscribe();
+
+
+        }
+
+
+        window.addEventListener(
+            "pageshow",
+            function(){
+
+
+                if(
+                    currentAdmin
+                ){
+
+                    scheduleAdminRealtimeRefresh();
+
+                }
+
+
+            }
+        );
+
+
+        document.addEventListener(
+            "visibilitychange",
+            function(){
+
+
+                if(
+                    document.visibilityState ===
+                    "visible"
+                    &&
+                    currentAdmin
+                ){
+
+                    scheduleAdminRealtimeRefresh();
+
+                }
+
+
+            }
+        );
+
+
+        window.addEventListener(
+            "beforeunload",
+            function(){
+
+
+                if(
+                    supabase
+                    &&
+                    realtimeChannel
+                ){
+
+                    supabase.removeChannel(
+                        realtimeChannel
+                    );
+
+                }
+
+
+            }
+        );
+
+
+        /* =====================================================
+                       MODAL EVENTS
+        ====================================================== */
+
+        document.getElementById(
+            "paymentRejectCancel"
+        )
+        .addEventListener(
+            "click",
+            closePaymentRejectModal
+        );
+
+
+        document.getElementById(
+            "paymentRejectConfirm"
+        )
+        .addEventListener(
+            "click",
+            rejectPayment
+        );
+
+
+        document.getElementById(
+            "lawyerRejectCancel"
+        )
+        .addEventListener(
+            "click",
+            closeLawyerRejectModal
+        );
+
+
+        document.getElementById(
+            "lawyerRejectConfirm"
+        )
+        .addEventListener(
+            "click",
+            rejectLawyer
+        );
+
+
+        /* =====================================================
+                       REFRESH
+        ====================================================== */
+
+        refreshButton.addEventListener(
+            "click",
+            loadAllData
+        );
+
+
+        /* =====================================================
+                       LOGOUT
+        ====================================================== */
+
+        logoutButton.addEventListener(
+            "click",
+            async function(){
+
+
+                try{
+
+
+                    await supabase
+                        .auth
+                        .signOut();
+
+
+                }
+                catch(
+                    error
+                ){
+
+
+                    console.error(
+                        error
+                    );
+
+
+                }
+
+
+                window.location.replace(
+                    "login.html"
+                );
+
+
+            }
+        );
+
+
+        /* =====================================================
+                       INITIALIZE
+        ====================================================== */
+
+        async function initialize(){
+
+
+            try{
+
+
+                const validAdmin =
+                    await verifyAdmin();
+
+
+                if(
+                    !validAdmin
+                ){
+
+                    return;
+
+                }
+
+
+                sessionStorage.setItem(
+                    "nyayasetuRole",
+                    "admin"
+                );
+
+
+                sessionStorage.setItem(
+                    "nyayasetuDashboard",
+                    "admin-dashboard.html"
+                );
+
+
+                await loadAllData();
+
+
+                installAdminRealtime();
+
+
+                loading.classList.add(
+                    "hidden"
+                );
+
+
+                console.log(
+                    "NyayaSetu Admin Dashboard ready."
+                );
+
+
+            }
+            catch(
+                error
+            ){
+
+
+                console.error(
+                    "Admin initialization error:",
+                    error
+                );
+
+
+                loading.classList.add(
+                    "hidden"
+                );
+
+
+                showMessage(
+                    "error",
+                    error.message
+                    ||
+                    "Admin Dashboard could not be initialized."
+                );
+
+
+            }
+
+
+        }
+
+
+        initialize();
+
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
